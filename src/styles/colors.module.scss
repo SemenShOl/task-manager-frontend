@@ -1,0 +1,49 @@
+$black: #0d0d0d;
+$black2: #21262e;
+$black3: #141619;
+
+$grey: #293133;
+$whiteGrey: #5f6567;
+$white: #eee;
+
+$red: #ff3d3d;
+$redHover: #d10f0f;
+
+$green: #55ff7f;
+$greenHover: #359f4e;
+
+$blue: #3030ad;
+$purple: #9578d3;
+$purple2: #8466c5;
+$white: #fbfbfb;
+$maindark: #353535;
+$left: #3C6E71;
+
+$right: #284B63;
+
+
+$lightback: #D9D9D9;
+$backgroundBlack: rgb(43, 43, 43);
+$morethanmiddleGrey: rgb(57, 57, 57);
+$middleGrey: rgb(106, 106, 106);
+$lightGrey: rgb(217, 217, 217);
+
+:export {
+    black: $black;
+    black2: $black2;
+    black3: $black3;
+
+    grey: $grey;
+    whiteGrey: $whiteGrey;
+    white: $white;
+
+    red: $red;
+    redHover: $redHover;
+
+    green: $green;
+    greenHover: $greenHover;
+
+    blue: $blue;
+    purple: $purple;
+    purple2: $purple2;
+}

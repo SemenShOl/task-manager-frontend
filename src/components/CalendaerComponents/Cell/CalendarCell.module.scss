@@ -1,0 +1,95 @@
+@import '../../../styles/colors.module.scss';
+
+
+
+.cell {
+    border: 1.2px solid $middleGrey;
+    background-color: $backgroundBlack;
+    color: $lightGrey;
+    padding: 12px 15px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    // align-items: start;
+
+    .dayNumber {
+        // background-color: red;
+        display: flex;
+        justify-content: end;
+
+        span {
+            position: relative;
+            z-index: 30;
+        }
+
+        .currentDay {
+            position: relative;
+            z-index: 1;
+
+            &::after {
+                top: -5px;
+                right: -7px;
+                z-index: 1;
+                content: '';
+                position: absolute;
+                width: 32px;
+                height: 32px;
+                border-radius: 50px;
+                background-color: rgb(61, 130, 233);
+
+            }
+
+            &::after {}
+        }
+    }
+
+    .taskPriorityList {
+        // background-color: blue;
+        // height: 50%;
+        width: 50%;
+        padding-top: 4px;
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: space-between;
+
+        .priority {
+            width: 12px;
+            height: 12px;
+            border-radius: 100% !important;
+            // margin-left: 10px;
+
+            &:nth-child(3) {
+                background-color: rgb(147, 62, 62);
+                color: rgb(226, 139, 139);
+            }
+
+            &:nth-child(2) {
+                background-color: rgb(138, 125, 56);
+                color: rgb(216, 201, 124);
+
+            }
+
+            &:nth-child(1) {
+                background-color: rgb(50, 141, 67);
+                color: rgb(153, 240, 169);
+
+            }
+
+            span {
+                display: block;
+                text-align: center;
+                margin-top: 16px;
+                font-size: 12px;
+
+            }
+        }
+
+    }
+
+
+    &:hover {
+        opacity: 0.9;
+        cursor: pointer;
+    }
+}
