@@ -3,12 +3,13 @@
 
 
 .wrapper {
-    cursor: pointer;
     // background-color: $white;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    // gap: 10px;   
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
 
     .square {
         border: 2px solid $right;
@@ -26,6 +27,8 @@
             background-color: #f8f8f8;
         }
 
+
+
         .checkMark {
             font-size: 15px;
             color: $left !important;
@@ -33,13 +36,14 @@
             transition: all 0.3s ease-in;
 
             &:hover {
-                opacity: 0.4;
+                opacity: 0.6;
             }
 
             &.active {
                 opacity: 1;
             }
         }
+
     }
 
 

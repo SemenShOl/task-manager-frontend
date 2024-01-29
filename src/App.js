@@ -1,12 +1,7 @@
 import { CalendarPage } from "./pages/CalendarPage";
 import { DayPage } from "./pages/DayPage/DayPage";
 function App() {
-  return (
-    <div className="App">
-      {/* <CalendarPage /> */}
-      <DayPage />
-    </div>
-  );
+  return <DayPage />;
 }
 
 export default App;

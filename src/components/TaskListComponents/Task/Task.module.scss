@@ -2,22 +2,42 @@
 
 .wrapper {
     padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 3px 3px 12px rgb(0, 0, 0, 0.15);
+    // border-radius: 10px;
+    position: relative;
+    // box-shadow: 3px 3px 12px rgb(0, 0, 0, 0.15);
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 300px;
+    width: 100%;
     cursor: pointer;
     overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $lightGrey;
+    }
 
     .checkAndPWrapper {
         display: flex;
         flex-direction: row;
         align-items: center;
-        // justify-content: center;
+        justify-content: center;
         gap: 15px;
+
+
+        .description {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            color: $right;
+            padding: 0;
+            // background-color: blue;
+        }
     }
 
     &.active {
@@ -26,24 +46,42 @@
 
     }
 
-    .cross {
-        color: $right;
-        font-size: 24px;
-        transition: all .1s ease-in-out;
-        text-align: center;
+    .moreAndDelete {
+        display: flex;
 
-        &:hover {
+        gap: 10px;
+
+        .cross {
+            color: $right;
+            font-size: 18px;
             transition: all .1s ease-in-out;
-            color: $left;
+            text-align: center;
+            transform: scale(1);
 
+            &:hover {
+                transition: all .1s ease-in-out;
+                color: $left;
+                transform: scale(1.15);
+
+            }
+        }
+
+        .more {
+            color: $right;
+            font-size: 18px;
+            transition: all .1s ease-in-out;
+            text-align: center;
+            transform: scale(1);
+
+            &:hover {
+                transition: all .1s ease-in-out;
+                color: $left;
+                transform: scale(1.15);
+
+            }
         }
     }
 
-}
 
-.description {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    color: $right;
-    padding: 0;
+
 }
