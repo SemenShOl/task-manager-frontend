@@ -1,0 +1,11 @@
+.wrapper {
+    width: 100%;
+    padding: 5% 250px 5% 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wrapper>div {
+    margin-right: 50px;
+}

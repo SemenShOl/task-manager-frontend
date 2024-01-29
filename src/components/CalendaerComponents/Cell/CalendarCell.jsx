@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import cn from "classnames";
 import cl from "./CalendarCell.module.scss";
+import { PriorityList } from "../../PriorityList/PriorityList";
 export const CalendarCell = ({ day, activeDay, tasksForDay }) => {
   const isWeeknd = day.day() === 6 || day.day() === 0 ? cl.weeknd : null;
   const isCurrentDay =
@@ -17,17 +18,8 @@ export const CalendarCell = ({ day, activeDay, tasksForDay }) => {
         console.log("Click");
       }}
     >
-      <div className={cl.taskPriorityList}>
-        <div className={cl.priority}>
-          <span>{tasksForDay.b}</span>
-        </div>
-        <div className={cl.priority}>
-          <span>{tasksForDay.b}</span>
-        </div>
-        <div className={cl.priority}>
-          <span>{tasksForDay.a}</span>
-        </div>
-      </div>
+      <PriorityList tasksForDay={tasksForDay} size={60} />
+
       <div className={cl.dayNumber}>
         <span>{day.date().valueOf("day")}</span>
         {isCurrentDay && <div className={cl.currentDay}></div>}

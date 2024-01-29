@@ -1,0 +1,22 @@
+@import '../../../styles/colors.module.scss';
+
+
+
+.btn {
+    display: block;
+    background-color: $left;
+    padding: 9px 16px;
+    cursor: pointer;
+    color: $white;
+    border: none;
+    border-radius: 7px;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &.disabled {
+        opacity: 0.7;
+        cursor: auto;
+    }
+}

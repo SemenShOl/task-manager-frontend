@@ -1,0 +1,17 @@
+@import '../../../styles/colors.module.scss';
+
+
+.input {
+       border: 2px solid $right;
+       width: 350px;
+       height: 30px;
+       border-radius: 15px;
+       padding: 10px;
+
+       &:focus,
+       :active {
+              border: 2px solid $right;
+              outline: none;
+       }
+
+}

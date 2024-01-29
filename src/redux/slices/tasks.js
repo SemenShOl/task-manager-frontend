@@ -12,6 +12,38 @@ export const fetchGetBusyDays = createAsyncThunk(
     return data;
   }
 );
+
+export const fetchGetTasksForDeadline = createAsyncThunk(
+  "tasks/fetchGetTasksForDeadline",
+  async (deadline) => {
+    const { data } = await axios.get(`/calendar/${deadline}`);
+    return data;
+  }
+);
+
+export const fetchDeleteTask = createAsyncThunk(
+  "tasks/fetchDeleteTask",
+  async (id) => {
+    await axios.delete(`/calendar/${id}`);
+    return id;
+  }
+);
+export const fetchToggleTask = createAsyncThunk(
+  "tasks/fetchToggleTask",
+  async (id) => {
+    await axios.put(`/calendar/${id}`);
+    return id;
+  }
+);
+
+export const fetchAddTask = createAsyncThunk(
+  "tasks/fetchAddTask",
+  async (newTask) => {
+    const { data } = await axios.post(`/calendar`, newTask);
+    return data;
+  }
+);
+
 const initialState = {
   tasks: {
     items: [],
@@ -22,52 +54,6 @@ const initialState = {
     isLoading: true,
   },
 };
-
-// const tasksSlice = createSlice({
-//   name: "tasks",
-//   initialState,
-//   reducers: {},
-//   extraReducers: {
-//     [fetchGetBusyDays.pending]: (state) => {
-//       state.busyDays.status = "loading";
-//       state.busyDays.items = [];
-//     },
-//     [fetchGetBusyDays.fulfielld]: (state, action) => {
-//       state.busyDays.status = "loaded";
-//       state.busyDays.items = action.payload;
-//     },
-//   },
-// });
-
-// const tasksSlice = createSlice({
-//   name: "tasks",
-//   initialState,
-//   reducers: (create) => ({
-//     getBusyDays: create.asyncThunk(
-//       async (timeRange) => {
-//         const { data } = await axios.get("/calendar", {
-//           params: {
-//             from: timeRange.from,
-//             to: timeRange.to,
-//           },
-//         });
-//         return data;
-//       },
-//       {
-//         pending: (state) => {
-//           state.busyDays.loading = true;
-//         },
-//         rejected: (state, action) => {
-//           state.busyDays.loading = false;
-//         },
-//         fulfilled: (state, action) => {
-//           state.busyDays.loading = false;
-//           state.busyDays.items = action.payload;
-//         },
-//       }
-//     ),
-//   }),
-// });
 
 const tasksSlice = createSlice({
   name: "tasks",
@@ -81,6 +67,41 @@ const tasksSlice = createSlice({
       .addCase(fetchGetBusyDays.fulfilled, (state, action) => {
         state.busyDays.isLoading = false;
         state.busyDays.items = action.payload;
+      })
+      .addCase(fetchGetTasksForDeadline.pending, (state) => {
+        state.tasks.isLoading = true;
+      })
+      .addCase(fetchGetTasksForDeadline.fulfilled, (state, action) => {
+        state.tasks.isLoading = false;
+        state.tasks.items = action.payload;
+      })
+      .addCase(fetchDeleteTask.pending, (state) => {
+        state.tasks.isLoading = true;
+      })
+      .addCase(fetchDeleteTask.fulfilled, (state, action) => {
+        state.tasks.isLoading = false;
+        state.tasks.items = state.tasks.items.filter(
+          (task) => task.id !== action.payload
+        );
+        console.log(state.tasks.items);
+      })
+      .addCase(fetchAddTask.pending, (state) => {
+        state.tasks.isLoading = true;
+      })
+      .addCase(fetchAddTask.fulfilled, (state, action) => {
+        state.tasks.isLoading = true;
+        state.tasks.items = action.payload;
+      })
+      .addCase(fetchToggleTask.pending, (state) => {
+        state.tasks.isLoading = true;
+      })
+      .addCase(fetchToggleTask.fulfilled, (state, action) => {
+        state.tasks.isLoading = true;
+        const taskToBeToggled = state.tasks.items.find(
+          (task) => task.id === action.payload
+        );
+        taskToBeToggled.is_completed = !taskToBeToggled.is_completed;
+        console.log(taskToBeToggled);
       });
   },
 });

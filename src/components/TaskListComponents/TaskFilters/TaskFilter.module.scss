@@ -1,0 +1,19 @@
+@import "../../../styles/colors.module.scss";
+
+.wrapper {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+        background-color: transparent;
+        border: 2px solid $left;
+        color: $left;
+
+        &.active {
+            background-color: $left;
+            border: 0;
+            color: $white;
+        }
+    }
+}

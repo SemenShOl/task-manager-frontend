@@ -1,0 +1,46 @@
+@import '../../../styles/colors.module.scss';
+
+
+
+.wrapper {
+    cursor: pointer;
+    // background-color: $white;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+
+    .square {
+        border: 2px solid $right;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        transform: scale(1);
+        transition: all 0.4s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            transform: scale(1.05);
+            background-color: #f8f8f8;
+        }
+
+        .checkMark {
+            font-size: 15px;
+            color: $left !important;
+            opacity: 0;
+            transition: all 0.3s ease-in;
+
+            &:hover {
+                opacity: 0.4;
+            }
+
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+
+
+}

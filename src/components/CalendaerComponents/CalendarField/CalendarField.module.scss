@@ -9,44 +9,6 @@
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(6, 80px);
 
-        // .cell {
-        //     display: flex;
-        //     justify-content: end;
-        //     border: 1.2px solid $middleGrey;
-        //     background-color: $backgroundBlack;
-
-        //     color: $lightGrey;
-        //     padding: 10px 20px;
-
-        //     span {
-        //         position: relative;
-        //         z-index: 30;
-        //     }
-
-        //     .currentDay {
-        //         position: relative;
-        //         z-index: 1;
-
-        //         &::after {
-        //             top: -6.5px;
-        //             right: -8px;
-
-        //             z-index: 1;
-        //             content: '';
-        //             position: absolute;
-        //             width: 32px;
-        //             height: 32px;
-        //             border-radius: 50px;
-        //             background-color: rgb(61, 130, 233);
-
-        //         }
-        //     }
-
-        //     &:hover {
-        //         opacity: 0.9;
-        //         cursor: pointer;
-        //     }
-        // }
 
         .weeknd {
             background-color: $morethanmiddleGrey;
