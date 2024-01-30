@@ -32,10 +32,19 @@ $morethanmiddleGrey: rgb(57, 57, 57);
 $middleGrey: rgb(106, 106, 106);
 $lightGrey: rgb(217, 217, 217);
 
+
+$aPriority: rgb(147, 62, 62);
+$bPriority: rgb(165, 146, 47);
+$cPriority: rgb(50, 141, 67);
+
+
 :export {
     black: $black;
     black2: $black2;
     black3: $black3;
+    aPriority: $aPriority;
+    bPriority: $bPriority;
+    cPriority: $cPriority;
 
     grey: $grey;
     whiteGrey: $whiteGrey;

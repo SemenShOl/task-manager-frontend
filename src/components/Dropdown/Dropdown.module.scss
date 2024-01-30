@@ -1,0 +1,36 @@
+@import '../../styles/colors.module.scss';
+
+
+.wrapper {
+  // background-color: red;
+  border: 1px solid $lightGrey;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.controlClassName {
+  // border: 1px solid $lightGrey;
+  margin-bottom: 5px;
+
+}
+
+.placeholderClassName {}
+
+.menuClassName {
+  >div {
+    // border: 1px solid $lightGrey;
+    padding: 5px 5px;
+
+    &:hover {
+      background-color: $lightback;
+      color: white;
+    }
+  }
+
+}
+
+.arrowClassName {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+}

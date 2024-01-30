@@ -1,6 +1,12 @@
 import cl from "./Input.module.scss";
 
-export const Input = ({ style, value, setValue, onKeyDownClick }) => {
+export const Input = ({
+  style,
+  value,
+  setValue,
+  onKeyDownClick,
+  placeholder,
+}) => {
   const onInputChange = (e) => {
     setValue(e.target.value);
   };
@@ -11,9 +17,8 @@ export const Input = ({ style, value, setValue, onKeyDownClick }) => {
       onChange={onInputChange}
       onKeyDown={onKeyDown}
       style={style}
-      className={cl.input}
       value={value}
-      placeholder="Название задачи"
+      placeholder={placeholder}
       type="text"
     />
   );

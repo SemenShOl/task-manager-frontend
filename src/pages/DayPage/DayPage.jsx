@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PriorityList } from "../../components/PriorityList/PriorityList";
 import cl from "./DayPage.module.scss";
 import Task from "../../components/TaskListComponents/Task/Task";
+import { Modal } from "../../components/UI/Modal/Modal";
 import { TaskInput } from "./../../components/TaskListComponents/TaskInput/TaskInput";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -13,12 +14,13 @@ import {
 import { addNumberFrontNull } from "../../utilites/dateUtilites";
 import { IoMdAdd } from "react-icons/io";
 import { FaCircle } from "react-icons/fa";
+import { TaskSettings } from "../../components/TaskListComponents/TaskSettings/TaskSettings";
 
 export const DayPage = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchGetTasksForDeadline("2024-02-08"));
+    dispatch(fetchGetTasksForDeadline("2023-02-28"));
   }, []);
   const daysOfWeek = [
     "Воскресенье",
@@ -44,7 +46,7 @@ export const DayPage = () => {
     "Ноябрь",
     "Декабрь",
   ];
-  const stringDate = "2024-02-08";
+  const stringDate = "2023-02-28";
   const dateDate = new Date(stringDate);
   const dayOfWeek = shortDaysOfWeek[dateDate.getDay()];
   const month = months[dateDate.getMonth()];
@@ -58,7 +60,7 @@ export const DayPage = () => {
     const newTask = {
       title,
       description: "dsfsfsd",
-      deadline: "2024-02-08",
+      deadline: "2023-02-28",
       userID: 1,
       priority: 2,
     };
@@ -68,7 +70,11 @@ export const DayPage = () => {
   const toggleTaskHandler = (id) => {
     dispatch(fetchToggleTask(id));
   };
+  const [isActiveModal, setIsActiveModal] = useState(false);
 
+  const openChangeTaskModalHandler = (id) => {
+    setIsActiveModal(true);
+  };
   return (
     <div className={cl.wrapper}>
       <div className={cl.sidePart}></div>
@@ -91,17 +97,14 @@ export const DayPage = () => {
               title={task.title}
               id={task.id}
               isCompleted={task.is_completed}
+              prioirty={task.priority}
               onDeleteTask={deleteTaskHandler}
               onToggleTask={toggleTaskHandler}
+              onChangeTask={openChangeTaskModalHandler}
             />
           ))}
         </div>
         <div className={cl.addNewTaskPart}>
-          {/* <TaskInput addTask={addTaskHandler} /> */}
-          {/* <Button className={cl.addTaskButton}> */}
-
-          {/* </Button> */}
-
           <div className={cl.addIcon}>
             <IoMdAdd size={20} className={cl.plus} />
             <FaCircle size={26} className={cl.circle} />
@@ -110,6 +113,15 @@ export const DayPage = () => {
           <p>Добавить задачу</p>
         </div>
       </div>
+
+      <Modal
+        widthPercent={40}
+        heightPercent={80}
+        isActive={isActiveModal}
+        onClose={() => setIsActiveModal(false)}
+      >
+        <TaskSettings />
+      </Modal>
     </div>
   );
 };

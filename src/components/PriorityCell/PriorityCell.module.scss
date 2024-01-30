@@ -1,38 +1,40 @@
 @import '../../styles/colors.module.scss';
 
 .priority {
-    &:nth-child(3) {
-        .circle {
-            color: rgb(147, 62, 62);
-        }
+    color: $whiteGrey;
 
-        // color: rgb(226, 139, 139);
-        color: $whiteGrey;
+    // &:nth-child(3) {
+    //     .circle {
+    //         color: rgb(147, 62, 62);
+    //     }
 
-    }
+    //     // color: rgb(226, 139, 139);
+    //     color: $whiteGrey;
 
-    &:nth-child(2) {
-        .circle {
-            color: rgb(165, 146, 47);
-        }
+    // }
 
-        color: rgb(216, 201, 124);
-        color: $whiteGrey;
-    }
+    // &:nth-child(2) {
+    //     .circle {
+    //         color: rgb(165, 146, 47);
+    //     }
 
-    &:nth-child(1) {
-        .circle {
-            color: rgb(50, 141, 67);
-        }
+    //     color: rgb(216, 201, 124);
+    //     color: $whiteGrey;
+    // }
 
-        color: rgb(153, 240, 169);
-        color: $whiteGrey;
-    }
+    // &:nth-child(1) {
+    //     .circle {
+    //         color: rgb(50, 141, 67);
+    //     }
 
-    .circle {
-        margin-bottom: 5px;
+    //     color: rgb(153, 240, 169);
+    //     color: $whiteGrey;
+    // }
 
-    }
+    // .circle {
+    //     margin-bottom: 5px;
+
+    // }
 
     span {
         display: block;
