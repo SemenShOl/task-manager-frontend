@@ -14,7 +14,7 @@ import {
 import { addNumberFrontNull } from "../../utilites/dateUtilites";
 import { IoMdAdd } from "react-icons/io";
 import { FaCircle } from "react-icons/fa";
-import { TaskSettings } from "../../components/TaskListComponents/TaskSettings/TaskSettings";
+import { TaskParameters } from "../../components/TaskListComponents/TaskParameters/TaskParameters";
 
 export const DayPage = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
@@ -51,11 +51,9 @@ export const DayPage = () => {
   const dayOfWeek = shortDaysOfWeek[dateDate.getDay()];
   const month = months[dateDate.getMonth()];
   const dayOfMonth = dateDate.getDay();
-  console.log(dayOfWeek, month);
   const deleteTaskHandler = (id) => {
     dispatch(fetchDeleteTask(id));
   };
-
   const addTaskHandler = (title) => {
     const newTask = {
       title,
@@ -75,6 +73,8 @@ export const DayPage = () => {
   const openChangeTaskModalHandler = (id) => {
     setIsActiveModal(true);
   };
+
+  console.log(isActiveModal);
   return (
     <div className={cl.wrapper}>
       <div className={cl.sidePart}></div>
@@ -113,15 +113,13 @@ export const DayPage = () => {
           <p>Добавить задачу</p>
         </div>
       </div>
-
       <Modal
         widthPercent={40}
         heightPercent={80}
         isActive={isActiveModal}
         onClose={() => setIsActiveModal(false)}
-      >
-        <TaskSettings />
-      </Modal>
+        typeOfModal={"TaskParametrs"}
+      ></Modal>
     </div>
   );
 };

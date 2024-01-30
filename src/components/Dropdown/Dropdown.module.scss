@@ -1,36 +1,77 @@
 @import '../../styles/colors.module.scss';
 
-
-.wrapper {
-  // background-color: red;
-  border: 1px solid $lightGrey;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.controlClassName {
-  // border: 1px solid $lightGrey;
-  margin-bottom: 5px;
+.dropdown {
+  width: 200px;
+  position: relative;
 
 }
 
-.placeholderClassName {}
+.select {
+  background: $left;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.5em;
+  padding: 8px 10px;
+  transition: background-color 0.3s;
+  margin-bottom: 6px;
 
-.menuClassName {
-  >div {
-    // border: 1px solid $lightGrey;
-    padding: 5px 5px;
-
-    &:hover {
-      background-color: $lightback;
-      color: white;
-    }
+  &:hover {
+    background: $lightLeft;
   }
 
+  .caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s ease-in-out;
+
+    &.rotate {
+      transform: rotate(180deg);
+    }
+  }
 }
 
-.arrowClassName {
-  width: 10px;
-  height: 10px;
-  background-color: black;
+.menu {
+  display: block;
+  padding: 0.2em 0.5em;
+  background: $left;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  color: white;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+
+  &.open {
+    opacity: 1;
+    transform: translateY(1);
+    pointer-events: all;
+
+  }
+}
+
+.option {
+  padding: 0.7em 0.5em;
+  margin: 0.3em 0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background: $lightLeft;
+  }
+
+  &.active {
+    background: $right
+  }
 }

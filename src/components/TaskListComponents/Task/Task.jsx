@@ -21,7 +21,6 @@ const Task = ({
     2: colors.bPriority,
     3: colors.cPriority,
   };
-  console.log(priorityColor[prioirty]);
   return (
     <div className={isCompleted ? cn(cl.wrapper, cl.active) : cl.wrapper}>
       <div className={cl.checkAndPWrapper}>
