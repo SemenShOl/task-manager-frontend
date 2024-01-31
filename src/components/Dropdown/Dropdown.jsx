@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
 import cl from "./Dropdown.module.scss";
 import cn from "classnames";
-import { FaCircle } from "react-icons/fa";
-import colors from "../../styles/colors.module.scss";
-
-export const DropdownUI = ({ isOpen, setIsOpen }) => {
-  const options = [
-    { title: "Высокая важность", color: colors.aPriority },
-    { title: "Среднея важность", color: colors.bPriority },
-    { title: "Низкая важность", color: colors.cPriority },
-  ];
-  const [chosenOption, setChosenOption] = useState(options[0]);
-
-  // useEffect(() => {
-  //   if (!dropDownCanBeOpen) setIsOpen(false);
-  // }, [dropDownCanBeOpen]);
-
+// import colors from "../../styles/colors.module.scss";
+import { DropdownOption } from "../DropdownOption/DropdownOption";
+import { MdDone } from "react-icons/md";
+import { FaCaretDown } from "react-icons/fa6";
+export const Dropdown = ({
+  isOpen,
+  setIsOpen,
+  options,
+  chosenOption,
+  setChosenOption,
+}) => {
   const selectClickHandler = (e) => {
     setIsOpen((previousState) => !previousState);
     e.stopPropagation();
@@ -23,8 +19,9 @@ export const DropdownUI = ({ isOpen, setIsOpen }) => {
   return (
     <div class={cl.dropdown}>
       <div class={cl.select} onClick={selectClickHandler}>
-        <div class={cl.selected}>{chosenOption}</div>
-        <div class={isOpen ? cn(cl.caret, cl.rotate) : cl.caret}></div>
+        <DropdownOption option={chosenOption} />
+
+        <FaCaretDown className={isOpen ? cn(cl.caret, cl.rotate) : cl.caret} />
       </div>
       <ul class={isOpen ? cn(cl.menu, cl.open) : cl.menu}>
         {options.map((option) => (
@@ -36,8 +33,8 @@ export const DropdownUI = ({ isOpen, setIsOpen }) => {
             }
             onClick={() => setChosenOption(option)}
           >
-            {/* <p>{option.title}</p> */}
-            <FaCircle color={option.color} size={18} />
+            <DropdownOption option={option} />
+            <MdDone className={cl.done} />
           </li>
         ))}
       </ul>

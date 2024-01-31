@@ -3,30 +3,27 @@
 .dropdown {
   width: 200px;
   position: relative;
-
+  font-size: 15px;
+  color: $middleGrey;
 }
 
 .select {
-  background: $left;
-  color: white;
+  // background: $left;
+  color: $middleGrey;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 0.5em;
-  padding: 8px 10px;
+  padding: 8px 13px;
   transition: background-color 0.3s;
   margin-bottom: 6px;
 
   &:hover {
-    background: $lightLeft;
+    background: $lightback;
   }
 
   .caret {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
+    color: $middleGrey;
     transition: 0.3s ease-in-out;
 
     &.rotate {
@@ -37,8 +34,8 @@
 
 .menu {
   display: block;
-  padding: 0.2em 0.5em;
-  background: $left;
+  padding: 0.2em 5px;
+  // background: $left;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   color: white;
@@ -60,18 +57,29 @@
 }
 
 .option {
-  padding: 0.7em 0.5em;
+  color: $middleGrey;
+  padding: 0.7em 8px;
   margin: 0.3em 0;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   &:hover {
-    background: $lightLeft;
+    background: $lightback;
+    color: white;
+  }
+
+  .done {
+    display: none;
+
   }
 
   &.active {
-    background: $right
+    .done {
+      display: block;
+      color: $right;
+    }
   }
 }

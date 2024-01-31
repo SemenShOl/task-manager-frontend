@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { PriorityList } from "../../components/PriorityList/PriorityList";
 import cl from "./DayPage.module.scss";
 import Task from "../../components/TaskListComponents/Task/Task";
-import { Modal } from "../../components/UI/Modal/Modal";
-import { TaskInput } from "./../../components/TaskListComponents/TaskInput/TaskInput";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchAddTask,
@@ -12,9 +10,8 @@ import {
   fetchToggleTask,
 } from "../../redux/slices/tasks";
 import { addNumberFrontNull } from "../../utilites/dateUtilites";
-import { IoMdAdd } from "react-icons/io";
-import { FaCircle } from "react-icons/fa";
-import { TaskParameters } from "../../components/TaskListComponents/TaskParameters/TaskParameters";
+import { AddTask } from "../../components/AddTask/AddTask";
+import { TaskParametrs } from "../../components/TaskListComponents/TaskParameters/TaskParameters";
 
 export const DayPage = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
@@ -68,13 +65,45 @@ export const DayPage = () => {
   const toggleTaskHandler = (id) => {
     dispatch(fetchToggleTask(id));
   };
-  const [isActiveModal, setIsActiveModal] = useState(false);
+  // const [modalParams, setModalParams] = useState({
+  //   isActive: false,
+  //   isNewTask: true,
+  //   taskId: 0,
+  // });
 
-  const openChangeTaskModalHandler = (id) => {
-    setIsActiveModal(true);
+  const [modalParams, setModalParams] = useState({
+    isActive: false,
+    taskObject: undefined,
+  });
+
+  // const openTaskParametrsHandler = (id) => {
+  //   setModalParams((previous) => ({
+  //     ...previous,
+  //     isActive: true,
+  //   }));
+  // };
+
+  const closeModalParamsHandler = () => {
+    setModalParams((previous) => ({
+      ...previous,
+      isActive: false,
+    }));
   };
 
-  console.log(isActiveModal);
+  const openModalToCreateNewTaskHandler = () => {
+    setModalParams({
+      isActive: true,
+      taskObject: undefined,
+    });
+  };
+
+  const openModalToChangeTaskHandler = (task) => {
+    setModalParams({
+      isActive: true,
+      taskObject: task,
+    });
+  };
+
   return (
     <div className={cl.wrapper}>
       <div className={cl.sidePart}></div>
@@ -94,32 +123,33 @@ export const DayPage = () => {
         <div className={cl.taskList}>
           {tasks.items.map((task) => (
             <Task
-              title={task.title}
+              task={task}
               id={task.id}
-              isCompleted={task.is_completed}
-              prioirty={task.priority}
               onDeleteTask={deleteTaskHandler}
               onToggleTask={toggleTaskHandler}
-              onChangeTask={openChangeTaskModalHandler}
+              onChangeTask={openModalToChangeTaskHandler}
             />
           ))}
         </div>
-        <div className={cl.addNewTaskPart}>
+        {/* <div className={cl.addNewTaskPart}>
           <div className={cl.addIcon}>
             <IoMdAdd size={20} className={cl.plus} />
             <FaCircle size={26} className={cl.circle} />
           </div>
 
           <p>Добавить задачу</p>
-        </div>
+        </div> */}
+        <AddTask
+          title={"Добавить задачу"}
+          fontSize={15}
+          onAddTask={openModalToCreateNewTaskHandler}
+        />
       </div>
-      <Modal
-        widthPercent={40}
-        heightPercent={80}
-        isActive={isActiveModal}
-        onClose={() => setIsActiveModal(false)}
-        typeOfModal={"TaskParametrs"}
-      ></Modal>
+      <TaskParametrs
+        task={modalParams.taskObject}
+        isActive={modalParams.isActive}
+        onClose={closeModalParamsHandler}
+      />
     </div>
   );
 };

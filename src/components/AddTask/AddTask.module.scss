@@ -1,0 +1,62 @@
+@import "../../styles/colors.module.scss";
+
+
+.addNewTaskPart {
+    width: 860px;
+    display: flex;
+    align-items: center;
+    box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
+    cursor: pointer;
+    padding: 20px 12px;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 100px;
+
+    &:hover {
+        >p {
+            margin-top: 4.9px;
+            color: $right;
+        }
+
+        .addIcon {
+            .plus {
+                color: white;
+            }
+
+            .circle {
+                color: $right;
+            }
+        }
+    }
+
+    .addIcon {
+        position: relative;
+        width: 30px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+
+        .plus {
+            position: relative;
+            margin-top: 2.9px;
+            margin-left: 0.8px;
+            z-index: 20;
+            transition: all 0.4s ease-in-out;
+            color: $left;
+        }
+
+        .circle {
+            position: absolute;
+            color: white;
+            transition: all 0.4s ease-in-out;
+        }
+
+    }
+
+    >p {
+        margin-top: 4.9px;
+        color: $left;
+    }
+}

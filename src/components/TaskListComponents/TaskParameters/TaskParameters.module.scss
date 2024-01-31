@@ -1,6 +1,10 @@
-.wrapper {
+@import "../../../styles/colors.module.scss";
+
+.main {
+    position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
+
 }

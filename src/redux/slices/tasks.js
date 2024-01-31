@@ -44,6 +44,14 @@ export const fetchAddTask = createAsyncThunk(
   }
 );
 
+export const fetchChangeTask = createAsyncThunk(
+  "tasks/fetchChangeTask",
+  async (id, updatedTask) => {
+    await axios.put(`/calendar/task/${id}`, updatedTask);
+    return id;
+  }
+);
+
 const initialState = {
   tasks: {
     items: [],
@@ -58,7 +66,15 @@ const initialState = {
 const tasksSlice = createSlice({
   name: "tasks",
   initialState,
-  reducers: {},
+  reducers: {
+    addTaskToStore(state, action) {
+      console.log("action.payload: ", action.payload);
+      state.tasks.items = state.tasks.items.filter(
+        (task) => task.id !== action.payload.id
+      );
+      state.tasks.items.push(action.payload.updatedTask);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchGetBusyDays.pending, (state) => {
@@ -102,10 +118,16 @@ const tasksSlice = createSlice({
         );
         taskToBeToggled.is_completed = !taskToBeToggled.is_completed;
         console.log(taskToBeToggled);
+      })
+      .addCase(fetchChangeTask.pending, (state) => {
+        state.tasks.isLoading = true;
+      })
+      .addCase(fetchChangeTask.fulfilled, (state, action) => {
+        state.tasks.isLoading = false;
       });
   },
 });
 
-// export const { getBusyDays } = tasksSlice.actions;
+export const { addTaskToStore } = tasksSlice.actions;
 
 export const tasksReducer = tasksSlice.reducer;

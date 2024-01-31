@@ -1,0 +1,30 @@
+@import "../../styles/colors.module.scss";
+
+.addIcon {
+    width: 30px;
+    height: 30px;
+    color: $right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.4s ease-in-out;
+    background-color: white;
+    cursor: pointer;
+    background-color: $right;
+    background-color: $left;
+
+    &:hover {
+        background-color: $left;
+        background-color: $right;
+
+    }
+
+    .plus {
+        z-index: 20;
+        transition: all 0.4s ease-in-out;
+        color: $right;
+        color: white;
+
+    }
+}

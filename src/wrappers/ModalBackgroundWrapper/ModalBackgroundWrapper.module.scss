@@ -1,0 +1,28 @@
+.modalBackground {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease-in-out;
+    pointer-events: all;
+    backdrop-filter: blur(2px);
+}
+
+.unActiveBackground {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0);
+    pointer-events: none;
+    backdrop-filter: unset;
+
+    .unActiveContent {
+        transform: translateY(-70%);
+        transform: scaleY(0.8);
+        opacity: 0;
+
+    }
+}

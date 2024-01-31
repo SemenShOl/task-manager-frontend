@@ -1,0 +1,15 @@
+.contentWindow {
+    position: relative;
+    transform: translateY(1);
+    border-radius: 20px;
+    padding: 20px 20px;
+    background-color: white;
+    transition: transform .2s ease-in-out;
+}
+
+.unActiveContentWindow {
+    transform: translateY(-70%);
+    transform: scaleY(0.8);
+    opacity: 0;
+
+}
