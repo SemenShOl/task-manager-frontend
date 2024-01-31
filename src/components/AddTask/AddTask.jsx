@@ -2,7 +2,6 @@ import React from "react";
 import cl from "./AddTask.module.scss";
 import { IoMdAdd } from "react-icons/io";
 import { FaCircle } from "react-icons/fa";
-import { AddButton } from "../AddButton/AddButton";
 export const AddTask = ({ title, fontSize, onAddTask }) => {
   return (
     <div className={cl.addNewTaskPart} onClick={onAddTask}>

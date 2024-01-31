@@ -67,7 +67,7 @@ const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    addTaskToStore(state, action) {
+    addUpdatedTaskToStore(state, action) {
       console.log("action.payload: ", action.payload);
       state.tasks.items = state.tasks.items.filter(
         (task) => task.id !== action.payload.id
@@ -105,6 +105,7 @@ const tasksSlice = createSlice({
         state.tasks.isLoading = true;
       })
       .addCase(fetchAddTask.fulfilled, (state, action) => {
+        console.log("action.payload: ", action.payload);
         state.tasks.isLoading = true;
         state.tasks.items = action.payload;
       })
@@ -128,6 +129,6 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { addTaskToStore } = tasksSlice.actions;
+export const { addUpdatedTaskToStore } = tasksSlice.actions;
 
 export const tasksReducer = tasksSlice.reducer;

@@ -1,11 +1,7 @@
 @import "../../styles/colors.module.scss";
 
 .wrapper {
-    // background-color: $backgroundBlack;
-    height: 100%;
-    // padding: 60px 0px;
     position: relative;
-
     display: flex;
 
     .sidePart {
@@ -27,7 +23,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
 
             .date {
                 display: flex;

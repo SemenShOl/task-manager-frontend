@@ -1,12 +1,8 @@
 @import '../../../styles/colors.module.scss';
 
-
-
 .wrapper {
-    // background-color: $white;
     display: flex;
     flex-direction: row;
-    // gap: 10px;   
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -26,8 +22,6 @@
             transform: scale(1.05);
             background-color: #f8f8f8;
         }
-
-
 
         .checkMark {
             font-size: 15px;

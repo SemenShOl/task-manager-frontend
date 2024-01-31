@@ -2,18 +2,14 @@
 
 
 input {
-       // border: 2px solid $right;
-       // background-color: $lightGrey;
        width: 350px;
        height: 40px;
-       // color: $white;
-       // border-radius: 15px;
+       overflow: hidden;
        font-size: 30px;
        padding: 10px;
 
        &:focus,
        :active {
-              // border: 2px solid $right;
               outline: none;
        }
 

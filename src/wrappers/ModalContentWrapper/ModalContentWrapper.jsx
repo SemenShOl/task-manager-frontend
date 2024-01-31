@@ -1,10 +1,10 @@
 import React from "react";
 import cl from "./ModalContentWrapper.module.scss";
-export const ModalContentWrapper = ({ children, isActive }) => {
+export const ModalContentWrapper = ({ children, isActive, style }) => {
   return (
     <div
       className={isActive ? cl.contentWindow : cl.unActiveContentWindow}
-      style={{ width: "40%", height: "80%" }}
+      style={style}
       onClick={(e) => e.stopPropagation()}
     >
       {children}

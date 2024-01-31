@@ -1,0 +1,8 @@
+@import "../../../styles/colors.module.scss";
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: $lightGrey;
+    margin: 5px 0;
+}
