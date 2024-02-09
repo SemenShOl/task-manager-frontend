@@ -5,9 +5,15 @@ import cn from "classnames";
 import { RxCross2 } from "react-icons/rx";
 import { IoMdMore } from "react-icons/io";
 import { FaCircle } from "react-icons/fa";
-import { appInfo } from "../../../utilites/appInfo";
+import { priorities } from "../../../utilites/appInfo";
 import { Line } from "../../UI/Line/Line";
-const Task = ({ task, id, onToggleTask, onDeleteTask, onChangeTask }) => {
+export const Task = ({
+  task,
+  id,
+  onToggleTask,
+  onDeleteTask,
+  onChangeTask,
+}) => {
   const deleteTaskHandler = (e) => {
     e.stopPropagation();
     onDeleteTask(id);
@@ -39,7 +45,7 @@ const Task = ({ task, id, onToggleTask, onDeleteTask, onChangeTask }) => {
           <FaCircle
             className={cl.circle}
             size={16}
-            color={appInfo.priorities[task.priority].color}
+            color={priorities[task.priority].color}
           />
           <IoMdMore className={cl.more} onClick={() => onChangeTask(task)} />
           <RxCross2 className={cl.cross} onClick={deleteTaskHandler} />
@@ -48,5 +54,3 @@ const Task = ({ task, id, onToggleTask, onDeleteTask, onChangeTask }) => {
     </div>
   );
 };
-
-export default Task;

@@ -1,12 +1,5 @@
 import cl from "./Input.module.scss";
-
-export const Input = ({
-  style,
-  value,
-  setValue,
-  onKeyDownClick,
-  placeholder,
-}) => {
+export const Input = ({ params, setValue, onKeyDownClick }) => {
   const onInputChange = (e) => {
     setValue(e.target.value);
   };
@@ -16,9 +9,7 @@ export const Input = ({
     <input
       onChange={onInputChange}
       onKeyDown={onKeyDown}
-      style={style}
-      value={value}
-      placeholder={placeholder}
+      {...params}
       type="text"
     />
   );

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
-import cl from "./Calendar.module.scss";
-import { CalendarHeader } from "../CalendarHeader/CalendarHeader";
-import { CalendarField } from "../CalendarField/CalendarField";
-export const Calendar = () => {
+import cl from "./CalendarPage.module.scss";
+import { CalendarHeader, CalendarField } from "../../components";
+import { useCheckAuth } from "../../hooks/useCheckAuth";
+export const CalendarPage = () => {
+  console.log("CalendarPage rerenders");
+  useCheckAuth();
   const today = moment();
   const [activeDay, setActiveDay] = useState(today);
   const dayToStart = activeDay

@@ -1,25 +1,24 @@
 import React from "react";
 import cl from "./PriorityList.module.scss";
 import { PriorityCell } from "../PriorityCell/PriorityCell";
-import colors from "../../styles/colors.module.scss";
-
-export const PriorityList = ({ tasksForDay, size }) => {
+import { priorities } from "../../utilites/appInfo";
+export const PriorityList = ({ priorityList, size }) => {
   return (
     <div className={cl.priorityList} style={{ width: size }}>
       <PriorityCell
         size={size}
-        numberOfTasks={tasksForDay.a}
-        color={colors.aPriority}
+        numberOfTasks={priorityList[2]}
+        color={priorities[2].color}
       />
       <PriorityCell
         size={size}
-        numberOfTasks={tasksForDay.b}
-        color={colors.bPriority}
+        numberOfTasks={priorityList[1]}
+        color={priorities[1].color}
       />
       <PriorityCell
         size={size}
-        numberOfTasks={tasksForDay.c}
-        color={colors.cPriority}
+        numberOfTasks={priorityList[0]}
+        color={priorities[0].color}
       />
     </div>
   );

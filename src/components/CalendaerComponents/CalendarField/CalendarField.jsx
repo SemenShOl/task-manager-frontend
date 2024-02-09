@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import cl from "./CalendarField.module.scss";
 import { CalendarCell } from "../Cell/CalendarCell";
 import { fetchGetBusyDays } from "../../../redux/slices/tasks";
 import { useDispatch, useSelector } from "react-redux";
+import { createCalendar } from "../../../utilites/dateUtilites";
+import { convertBDBusyDayInfoToPriorityList } from "../../../utilites/priorityUtilites";
 export const CalendarField = ({ startDay, activeDay }) => {
-  const day = startDay.clone();
-  const calendar = [...Array(41)].map(() => day.add(1, "day").clone());
-  calendar.unshift(startDay.clone());
+  const calendar = createCalendar(startDay);
   const dispatch = useDispatch();
   const busyDays = useSelector((state) => state.tasks.busyDays);
   useEffect(() => {
@@ -17,28 +17,20 @@ export const CalendarField = ({ startDay, activeDay }) => {
       })
     );
   }, [startDay]);
-  console.log("busyDays: ", busyDays);
   return (
     <div className={cl.wrapper}>
       <div className={cl.calendarWrapper}>
         {calendar.map((day) => {
-          const doesDayHaveTasks = busyDays.items.find(
-            (busyDay) => busyDay.deadline === day.format("YYYY-MM-DD")
+          const priorityList = convertBDBusyDayInfoToPriorityList(
+            busyDays,
+            day
           );
-
-          const tasksForDay = doesDayHaveTasks
-            ? {
-                a: doesDayHaveTasks.a,
-                b: doesDayHaveTasks.b,
-                c: doesDayHaveTasks.c,
-              }
-            : { a: 0, b: 0, c: 0 };
-
           return (
             <CalendarCell
-              day={day}
+              thisCellDay={day}
               activeDay={activeDay}
-              tasksForDay={tasksForDay}
+              priorityList={priorityList}
+              key={day}
             />
           );
         })}

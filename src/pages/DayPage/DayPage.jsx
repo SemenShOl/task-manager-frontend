@@ -1,34 +1,38 @@
 import React, { useEffect, useState } from "react";
 import cl from "./DayPage.module.scss";
-import Task from "../../components/TaskListComponents/Task/Task";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  fetchAddTask,
   fetchDeleteTask,
   fetchGetTasksForDeadline,
   fetchToggleTask,
 } from "../../redux/slices/tasks";
-import { AddTask } from "../../components/AddTask/AddTask";
-import { TaskParametrs } from "../../components/TaskListComponents/TaskParameters/TaskParameters";
-import moment from "moment";
-import { TaskPageHeader } from "../../components/TaskListComponents/TaskPageHeader/TaskPageHeader";
+import { AddTask, TaskParametrs, Task, TaskPageHeader } from "../../components";
 import colors from "../../styles/colors.module.scss";
 import {
   monthsInRussian,
   shortDaysOfWeekinRussian,
 } from "../../utilites/dateUtilites";
+import { useParams, useSearchParams } from "react-router-dom";
+import { useCheckAuth } from "../../hooks/useCheckAuth";
+
 export const DayPage = () => {
+  console.log("day page renders");
+  const activeDate = useParams().date;
+  useCheckAuth();
   const tasks = useSelector((state) => state.tasks.tasks);
+  const priorityList = [0, 0, 0];
+  tasks.items.forEach((task) => priorityList[task.priority]++);
+
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(fetchGetTasksForDeadline("2023-02-28"));
+    dispatch(fetchGetTasksForDeadline(activeDate));
   }, []);
 
-  const stringDate = "2023-02-28";
-  const dateDate = new Date(stringDate);
+  const dateDate = new Date(activeDate);
   const dayOfWeek = shortDaysOfWeekinRussian[dateDate.getDay()];
   const month = monthsInRussian[dateDate.getMonth()];
-  const dayOfMonth = dateDate.getDay();
+  const dayOfMonth = dateDate.getDate();
   const deleteTaskHandler = (id) => {
     dispatch(fetchDeleteTask(id));
   };
@@ -71,6 +75,7 @@ export const DayPage = () => {
           dayOfWeek={dayOfWeek}
           dayOfMonth={dayOfMonth}
           color={colors.right}
+          priorityList={priorityList}
         />
         <AddTask
           title={"Добавить задачу"}
@@ -85,12 +90,13 @@ export const DayPage = () => {
               onDeleteTask={deleteTaskHandler}
               onToggleTask={toggleTaskHandler}
               onChangeTask={openModalToChangeTaskHandler}
+              key={task.id}
             />
           ))}
         </div>
       </div>
       <TaskParametrs
-        activeDay={stringDate}
+        activeDay={activeDate}
         userID={1}
         task={modalParams.taskObject}
         isActive={modalParams.isActive}

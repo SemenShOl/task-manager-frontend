@@ -5,10 +5,11 @@ import { Dropdown } from "./../../Dropdown/Dropdown";
 import { useDispatch } from "react-redux";
 import { ModalContentWrapper, ModalBackgroundWrapper } from "../../../wrappers";
 import { ModalHeader } from "../../ModalHeader/ModalHeader";
-import { appInfo } from "../../../utilites/appInfo";
+import { priorities } from "../../../utilites/appInfo";
 import {
   addUpdatedTaskToStore,
   fetchAddTask,
+  fetchChangeTask,
 } from "../../../redux/slices/tasks";
 export const TaskParametrs = ({
   isActive,
@@ -38,6 +39,12 @@ export const TaskParametrs = ({
     if (task && title) {
       dispatch(
         addUpdatedTaskToStore({
+          id: task.id,
+          updatedTask: { ...task, title, description, priority },
+        })
+      );
+      dispatch(
+        fetchChangeTask({
           id: task.id,
           updatedTask: { ...task, title, description, priority },
         })
@@ -101,9 +108,9 @@ export const TaskParametrs = ({
           <Dropdown
             isOpen={isDropdownOpen}
             setIsOpen={setIsDropdownOpen}
-            options={appInfo.priorities}
+            options={priorities}
             setChosenOption={setPriority}
-            chosenOption={appInfo.priorities[priority]}
+            chosenOption={priorities[priority]}
           />
         </div>
       </ModalContentWrapper>

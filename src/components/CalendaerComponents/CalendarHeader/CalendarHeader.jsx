@@ -28,7 +28,7 @@ export const CalendarHeader = ({ activeDay, onAdd, onSubtract, onReset }) => {
       </div>
       <div className={cl.days}>
         {daysOfWeek.map((day) => (
-          <div>{day}</div>
+          <div key={day}>{day}</div>
         ))}
       </div>
     </div>

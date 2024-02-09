@@ -16,15 +16,16 @@ export const Dropdown = ({
     e.stopPropagation();
   };
   return (
-    <div class={cl.dropdown}>
-      <div class={cl.select} onClick={selectClickHandler}>
+    <div className={cl.dropdown}>
+      <div className={cl.select} onClick={selectClickHandler}>
         <DropdownOption option={chosenOption} />
 
         <FaCaretDown className={isOpen ? cn(cl.caret, cl.rotate) : cl.caret} />
       </div>
-      <ul class={isOpen ? cn(cl.menu, cl.open) : cl.menu}>
+      <ul className={isOpen ? cn(cl.menu, cl.open) : cl.menu}>
         {options.map((option, index) => (
           <li
+            key={option.title}
             className={
               chosenOption.title === option.title
                 ? cn(cl.option, cl.active)

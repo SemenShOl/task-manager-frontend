@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
+
+function changePriorityList(currentPriority, action, prioriyList) {
+  action === "add" ? (prioriyList[currentPriority] += 1) : (prioriyList -= 1);
+}
 export const fetchGetBusyDays = createAsyncThunk(
   "tasks/fetchGetDays",
   async (timeRange) => {
@@ -46,7 +50,9 @@ export const fetchAddTask = createAsyncThunk(
 
 export const fetchChangeTask = createAsyncThunk(
   "tasks/fetchChangeTask",
-  async (id, updatedTask) => {
+  async ({ id, updatedTask }) => {
+    console.log("id: ", id);
+    console.log("updatedTask: ", updatedTask);
     await axios.put(`/calendar/task/${id}`, updatedTask);
     return id;
   }
@@ -61,6 +67,10 @@ const initialState = {
     items: [],
     isLoading: true,
   },
+  taskDateInfo: {
+    activeDate: "2023-02-28",
+    priorityList: [3, 1, 2],
+  },
 };
 
 const tasksSlice = createSlice({
@@ -68,7 +78,6 @@ const tasksSlice = createSlice({
   initialState,
   reducers: {
     addUpdatedTaskToStore(state, action) {
-      console.log("action.payload: ", action.payload);
       state.tasks.items = state.tasks.items.filter(
         (task) => task.id !== action.payload.id
       );
@@ -105,7 +114,6 @@ const tasksSlice = createSlice({
         state.tasks.isLoading = true;
       })
       .addCase(fetchAddTask.fulfilled, (state, action) => {
-        console.log("action.payload: ", action.payload);
         state.tasks.isLoading = true;
         state.tasks.items = action.payload;
       })
@@ -118,7 +126,6 @@ const tasksSlice = createSlice({
           (task) => task.id === action.payload
         );
         taskToBeToggled.is_completed = !taskToBeToggled.is_completed;
-        console.log(taskToBeToggled);
       })
       .addCase(fetchChangeTask.pending, (state) => {
         state.tasks.isLoading = true;

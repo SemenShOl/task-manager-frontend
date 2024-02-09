@@ -1,7 +1,5 @@
 @import '../../../styles/colors.module.scss';
 
-
-
 .cell {
     border: 1.2px solid $middleGrey;
     background-color: $backgroundBlack;
@@ -44,4 +42,13 @@
         opacity: 0.9;
         cursor: pointer;
     }
+}
+
+.weeknd {
+    background-color: $morethanmiddleGrey;
+
+}
+
+.unActiveMonth {
+    color: $middleGrey;
 }

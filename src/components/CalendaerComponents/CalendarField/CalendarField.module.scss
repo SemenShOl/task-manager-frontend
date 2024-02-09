@@ -1,6 +1,5 @@
 @import '../../../styles/colors.module.scss';
 
-
 .wrapper {
     width: 100%;
 
@@ -9,15 +8,6 @@
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(6, 80px);
 
-
-        .weeknd {
-            background-color: $morethanmiddleGrey;
-
-        }
-
-        .unActiveMonth {
-            color: $middleGrey;
-        }
 
         div:nth-child(36) {
             border-bottom-left-radius: 20px;
