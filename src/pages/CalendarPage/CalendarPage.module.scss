@@ -1,3 +1,18 @@
 .wrapper {
-    width: 1000px;
+    width: 100%;
+    height: 100%;
+    // background-color: red;
+
+    background-image: url("../../imgs/back.jpg");
+    background-position: 0%;
+    background-size: cover;
+
+    .back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(255, 255, 255, 0.5);
+    }
 }

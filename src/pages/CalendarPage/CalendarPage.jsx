@@ -3,6 +3,7 @@ import moment from "moment";
 import cl from "./CalendarPage.module.scss";
 import { CalendarHeader, CalendarField } from "../../components";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
+
 export const CalendarPage = () => {
   console.log("CalendarPage rerenders");
   useCheckAuth();
@@ -26,13 +27,17 @@ export const CalendarPage = () => {
 
   return (
     <div className={cl.wrapper}>
-      <CalendarHeader
-        activeDay={activeDay}
-        onAdd={addActiveDayHandler}
-        onSubtract={subtractActiveDayHandler}
-        onReset={resetActiveDayHandler}
-      />
-      <CalendarField activeDay={activeDay} startDay={dayToStart} />
+      <div className={cl.back}>
+        <div>
+          <CalendarHeader
+            activeDay={activeDay}
+            onAdd={addActiveDayHandler}
+            onSubtract={subtractActiveDayHandler}
+            onReset={resetActiveDayHandler}
+          />
+          <CalendarField activeDay={activeDay} startDay={dayToStart} />
+        </div>
+      </div>
     </div>
   );
 };

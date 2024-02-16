@@ -1,11 +1,7 @@
 import React, { FC } from "react";
 import { FaCircle } from "react-icons/fa";
 import cl from "./PriorityCell.module.scss";
-type PriorityCellProps = {
-  size: number;
-  numberOfTasks: number;
-  color: string;
-};
+import { PriorityCellProps } from "./PriorityCellProps";
 export const PriorityCell: FC<PriorityCellProps> = ({
   size,
   numberOfTasks,

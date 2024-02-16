@@ -1,0 +1,24 @@
+@import '../../styles/colors.module.scss';
+
+.wrapper {
+    width: 1000px;
+
+    .calendarWrapper {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 80px);
+
+        gap: 14px;
+
+        div:nth-child(36) {
+            border-bottom-left-radius: 20px;
+
+        }
+
+        div:last-child {
+            border-bottom-right-radius: 20px;
+        }
+
+    }
+
+}

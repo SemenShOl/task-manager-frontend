@@ -1,12 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "./todoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { tasksReducer } from "./slices/tasks";
+import type { TypedUseSelectorHook } from "react-redux";
 
 const store = configureStore({
   reducer: {
-    todos: todoReducer,
+    tasks: tasksReducer,
   },
 });
 
-export default store;
-export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+export default store;
