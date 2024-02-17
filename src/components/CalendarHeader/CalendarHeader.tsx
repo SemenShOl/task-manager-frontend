@@ -1,47 +1,39 @@
 import { FC } from "react";
 import cl from "./CalendarHeader.module.scss";
-import { TMomentDay } from "../../types/globalTypes";
+import {
+  daysOfWeekInRussian,
+  monthsInRussian,
+} from "../../utilites/dateUtilites";
+import { Button } from "../UI";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { CalendarHeaderProps } from "./CalendarHeaderProps";
+import { CalendarDaysOfWeek } from "../CalendarDaysOfWeek/CalendarDaysOfWeek";
 
-export type CalendarHeaderProps = {
-  activeDay: TMomentDay;
-  onAdd: () => void;
-  onSubtract: () => void;
-  onReset: () => void;
-};
 export const CalendarHeader: FC<CalendarHeaderProps> = ({
   activeDay,
   onAdd,
   onSubtract,
   onReset,
 }) => {
-  const daysOfWeek = [
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-    "Воскресенье",
-  ];
-
   return (
     <div className={cl.wrapper}>
       <div className={cl.header}>
         <h2>
-          <span>{activeDay.format("MMMM")}</span> {activeDay.format("YYYY")}
+          <span>{monthsInRussian[+activeDay.format("M")]}</span>{" "}
+          {activeDay.format("YYYY")}
         </h2>
 
         <div className={cl.btns}>
-          <button onClick={onSubtract}>-</button>
-          <button onClick={onReset}>сегодня</button>
-          <button onClick={onAdd}>+</button>
+          <Button onClick={onSubtract}>
+            <IoIosArrowBack size={15} />
+          </Button>
+          <Button onClick={onReset}>сегодня</Button>
+          <Button onClick={onAdd}>
+            <IoIosArrowForward size={15} />
+          </Button>
         </div>
       </div>
-      <div className={cl.days}>
-        {daysOfWeek.map((day) => (
-          <div key={day}>{day}</div>
-        ))}
-      </div>
+      <CalendarDaysOfWeek days={daysOfWeekInRussian} />
     </div>
   );
 };

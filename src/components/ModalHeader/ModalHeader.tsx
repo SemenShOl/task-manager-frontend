@@ -1,8 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import cl from "./ModalHeader.module.scss";
 import { IoCloseSharp } from "react-icons/io5";
+import { ModalHeaderProps } from "./ModalHeaderProps";
 
-export const ModalHeader = ({ title, onClose, style }) => {
+export const ModalHeader: FC<ModalHeaderProps> = ({
+  title,
+  onClose,
+  style,
+}) => {
   return (
     <div className={cl.header} style={style}>
       {title}

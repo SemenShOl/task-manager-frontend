@@ -1,4 +1,4 @@
-import { TTask } from "../../../redux/slices/tasks";
+import { TTask } from "../../types/globalTypes";
 
 export type TaskParametrsProps = {
   isActive: boolean;

@@ -5,7 +5,6 @@ import { CalendarHeader, CalendarField } from "../../components";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 
 export const CalendarPage = () => {
-  console.log("CalendarPage rerenders");
   useCheckAuth();
   const today = moment();
   const [activeDay, setActiveDay] = useState(today);

@@ -1,19 +1,18 @@
-import React, { useEffect, useState, FC } from "react";
+import { useEffect, useState, FC } from "react";
 import cl from "./TaskParameters.module.scss";
-import { Input, TextArea } from "../../UI";
-import { Dropdown } from "../../Dropdown/Dropdown";
-import { ModalContentWrapper, ModalBackgroundWrapper } from "../../../wrappers";
-import { ModalHeader } from "../../ModalHeader/ModalHeader";
-import { TPriorityType, priorities } from "../../../utilites/priorityUtilites";
+import { TaskParametrsProps } from "./TaskParametrsProps";
+import { useAppDispatch } from "../../redux/store";
+import { TPriorityType, priorities } from "../../utilites/priorityUtilites";
+import { TNewTask, TTask } from "../../types/globalTypes";
 import {
-  TTask,
   addUpdatedTaskToStore,
   fetchAddTask,
   fetchChangeTask,
-} from "../../../redux/slices/tasks";
-import { useAppDispatch } from "../../../redux/store";
-import { TaskParametrsProps } from "./TaskParametrsProps";
-import { TNewTask } from "../../../redux/slices/tasks";
+} from "../../redux/slices/tasks";
+import { ModalBackgroundWrapper, ModalContentWrapper } from "../../wrappers";
+import { ModalHeader } from "../ModalHeader/ModalHeader";
+import { Input } from "../UI";
+import { Dropdown } from "../Dropdown/Dropdown";
 
 export const TaskParametrs: FC<TaskParametrsProps> = ({
   isActive,
@@ -97,12 +96,6 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
             placeholder={"Название задачи"}
             onKeyDownClick={closeModalHandler}
           />
-          {/* <TextArea
-            style={{ width: "100%", height: 20, fontSize: 15, marginLeft: 2 }}
-            value={description}
-            setValue={setDescription}
-            placeholder={"Описание"}
-          /> */}
 
           <Input
             style={{ width: "100%", height: 20, fontSize: 15 }}

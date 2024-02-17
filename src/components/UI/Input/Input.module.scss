@@ -7,10 +7,12 @@ input {
        overflow: hidden;
        font-size: 30px;
        padding: 10px;
+       outline: none;
 
        &:focus,
        :active {
               outline: none;
+              border: none;
        }
 
 }

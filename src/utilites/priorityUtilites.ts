@@ -1,5 +1,6 @@
 //Ф-ия берет массив дней с задачами из БД и проверяет, есть ли переданный день (day) в этом списке, если да, создает для этого дня  priorityList
 import colors from "../styles/colors.module.scss";
+import { TMomentDay } from "../types/globalTypes";
 
 export type TViewOfPriority = {
   key: TPriorityType;
@@ -34,7 +35,7 @@ export type TBusyDay = {
 
 export const findCertainBusyDay = (
   busyDays: TBusyDay[],
-  day: any
+  day: TMomentDay
 ): TPriorityList => {
   const tasksForDay = busyDays.find(
     (busyDay) => busyDay.deadline === day.format("YYYY-MM-DD")
@@ -45,3 +46,5 @@ export const findCertainBusyDay = (
     : { high: 0, medium: 0, low: 0 };
   return priorityList;
 };
+
+// export const;

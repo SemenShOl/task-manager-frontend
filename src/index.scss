@@ -27,4 +27,11 @@ body {
 
 input {
   border: 0px;
+  outline: none;
+
+  &:focus,
+  :active {
+    outline: none;
+    border: none;
+  }
 }

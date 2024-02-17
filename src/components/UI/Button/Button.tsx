@@ -1,7 +1,18 @@
 import cl from "./Button.module.scss";
 import cn from "classnames";
-
-export const Button = ({ children, className, onClick, disabled }) => {
+import { FC } from "react";
+type ButtonProps = {
+  children: React.ReactNode;
+  className?: string;
+  onClick: () => void;
+  disabled?: boolean;
+};
+export const Button: FC<ButtonProps> = ({
+  children,
+  className,
+  onClick,
+  disabled,
+}) => {
   return (
     <button
       className={

@@ -1,7 +1,7 @@
 import React, { useEffect, FC } from "react";
 import cl from "./CalendarField.module.scss";
 import { CalendarCell } from "../CalendarCell/CalendarCell";
-import { fetchGetBusyDays } from "../../redux/slices/tasks";
+import { fetchGetBusyDays } from "../../redux/slices/busyDays";
 import { createCalendar } from "../../utilites/dateUtilites";
 import { findCertainBusyDay } from "../../utilites/priorityUtilites";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
@@ -14,7 +14,7 @@ export const CalendarField: FC<CalendarFieldProps> = ({
   const calendar = createCalendar(startDay);
 
   const dispatch = useAppDispatch();
-  const busyDays = useAppSelector((state) => state.tasks.busyDays.items);
+  const busyDays = useAppSelector((state) => state.busyDays.items);
   useEffect(() => {
     dispatch(
       fetchGetBusyDays({

@@ -1,3 +1,5 @@
+@import '../../styles/colors.module.scss';
+
 .header {
     width: 100%;
     display: flex;
@@ -11,6 +13,8 @@
         flex-direction: column;
         align-items: center;
         margin-left: 20px;
+
+        color: $right;
 
         .dayOfWeek {
             font-size: 18px;

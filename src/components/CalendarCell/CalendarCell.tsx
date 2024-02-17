@@ -5,6 +5,8 @@ import { PriorityList } from "../PriorityList/PriorityList";
 import { useNavigate } from "react-router-dom";
 import { getCalendarCellDayInfo } from "../../utilites/dateUtilites";
 import { CalendarCellProps } from "./CalendarCellProps";
+import { useAppDispatch } from "../../redux/store";
+import { changeChosesDayInfo } from "../../redux/slices/chosenDayInfo";
 
 export const CalendarCell: FC<CalendarCellProps> = ({
   thisCellDay,
@@ -12,11 +14,19 @@ export const CalendarCell: FC<CalendarCellProps> = ({
   priorityList,
 }) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { isWeeknd, isCurrentDay, isActiveMonth } = getCalendarCellDayInfo(
     thisCellDay,
     activeDay
   );
   const clickCellHandler = () => {
+    dispatch(
+      changeChosesDayInfo({
+        activeDate: thisCellDay.format("YYYY-MM-DD"),
+        priorityList,
+      })
+    );
+    console.log("thisCellDay: ", thisCellDay.format("YYYY-MM-DD"));
     navigate(`/calendar/${thisCellDay.format("YYYY-MM-DD")}`);
   };
 

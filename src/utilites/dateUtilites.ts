@@ -4,24 +4,26 @@ export const addNumberFrontNull = (number: number) =>
   number < 10 ? "0" + number : number;
 
 export const daysOfWeekInRussian = [
-  "Воскресенье",
   "Понедельник",
   "Вторник",
   "Среда",
   "Четверг",
   "Пятница",
   "Суббота",
+  "Воскресенье",
 ];
 export const shortDaysOfWeekinRussian = [
-  "Вc",
+  "",
   "Пн",
   "Вт",
   "Ср",
   "Чт",
   "Пт",
   "Сб",
+  "Вc",
 ];
 export const monthsInRussian = [
+  "",
   "Январь",
   "Февраль",
   "Март",
@@ -61,5 +63,17 @@ export const getCalendarCellDayInfo = (
     isWeeknd,
     isCurrentDay,
     isActiveMonth,
+  };
+};
+
+export const getDayInfo = (activeDate: string) => {
+  const dateDate = new Date(activeDate);
+  const dayOfWeek = shortDaysOfWeekinRussian[dateDate.getDay()];
+  const month = monthsInRussian[dateDate.getMonth()];
+  const dayOfMonth = dateDate.getDate();
+  return {
+    dayOfMonth,
+    dayOfWeek,
+    month,
   };
 };

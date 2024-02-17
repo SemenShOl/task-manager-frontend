@@ -1,4 +1,4 @@
-import { TTask } from "../../../redux/slices/tasks";
+import { TTask } from "../../types/globalTypes";
 
 export type TaskProps = {
   task: TTask;
