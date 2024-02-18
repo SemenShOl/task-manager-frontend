@@ -5,7 +5,7 @@ import { DropdownOption } from "../DropdownOption/DropdownOption";
 import { MdDone } from "react-icons/md";
 import { FaCaretDown } from "react-icons/fa6";
 import { DropdownProps } from "./DropdownProps";
-import { TPriorityList, TPriorityType } from "../../utilites/priorityUtilites";
+// import { TPriorityList, TPriorityType } from "../../utilites/priorityUtilites";
 import {
   TPriorityType,
   TViewOfPriority,
@@ -40,6 +40,28 @@ export const Dropdown: FC<DropdownProps> = ({
   );
 };
 
-function func(obj: TPriorityList) {
-  Object.keys(obj).map((key) => <li>{obj[key as TPriorityType]}</li>);
+function getOptionsArray(
+  options: TViewOfPriorityList,
+  chosenOption: TViewOfPriority,
+  setChosenOption: (option: TPriorityType) => void
+) {
+  const optionsArray = [];
+  for (let key in options) {
+    const typeKey = key as TPriorityType;
+    optionsArray.push(
+      <li
+        className={
+          chosenOption.title === options[typeKey].title
+            ? cn(cl.option, cl.active)
+            : cl.option
+        }
+        onClick={() => setChosenOption(typeKey)}
+      >
+        <DropdownOption option={options[typeKey]} />
+        <MdDone className={cl.done} />
+      </li>
+    );
+  }
+
+  return optionsArray;
 }
