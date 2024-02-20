@@ -13,9 +13,9 @@ body,
   box-sizing: border-box;
 }
 
-li {
-  list-style: none;
-}
+// li {
+//   list-style: none;
+// }
 
 #root {
   height: 100%;
@@ -34,4 +34,22 @@ input {
     outline: none;
     border: none;
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 15px;
+  cursor: pointer;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(204, 204, 204);
+  border-radius: 6px;
+  height: 15px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
 }

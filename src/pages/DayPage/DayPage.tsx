@@ -10,6 +10,8 @@ import { getDayInfo } from "../../utilites/dateUtilites";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { TTask } from "../../types/globalTypes";
+import { useParams } from "react-router-dom";
+import { TPriorityList } from "../../utilites/priorityUtilites";
 type TModalParams = {
   isActive: boolean;
   task: TTask | undefined;
@@ -19,9 +21,11 @@ export const DayPage = () => {
   console.log("day page renders");
   useCheckAuth();
   const tasks: TTask[] = useAppSelector((state) => state.tasks.items);
+  const activeDate = useParams().date || "";
 
-  const { activeDate, priorityList } = useAppSelector(
-    (state) => state.chosenDayInfo
+  const priorityList: TPriorityList = { low: 0, medium: 0, high: 0 };
+  tasks.forEach((task) =>
+    !task.is_completed ? priorityList[task.priority]++ : null
   );
 
   const dispatch = useAppDispatch();

@@ -13,14 +13,14 @@ export const daysOfWeekInRussian = [
   "Воскресенье",
 ];
 export const shortDaysOfWeekinRussian = [
-  "",
+  "Вс",
   "Пн",
   "Вт",
   "Ср",
   "Чт",
   "Пт",
   "Сб",
-  "Вc",
+  // "Вc",
 ];
 export const monthsInRussian = [
   "",

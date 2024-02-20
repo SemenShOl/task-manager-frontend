@@ -19,7 +19,7 @@
     &:hover {
         >p {
             margin-top: 4.9px;
-            color: $left;
+            color: $right
         }
 
         .addIcon {
@@ -28,7 +28,7 @@
             }
 
             .circle {
-                color: $left;
+                color: $right;
             }
         }
     }

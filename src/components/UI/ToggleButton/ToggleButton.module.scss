@@ -1,0 +1,21 @@
+@import '../../../styles/colors.module.scss';
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    padding: 4px 10px;
+    cursor: pointer;
+    color: $right;
+    border: none;
+    transition: all .5 ease-in-out;
+
+
+    &.isActive {
+        color: white;
+        background-color: $right;
+        border-radius: 6px;
+        transition: all .5 ease-in-out;
+    }
+}

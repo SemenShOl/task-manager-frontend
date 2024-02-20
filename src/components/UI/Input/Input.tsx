@@ -5,7 +5,7 @@ import classNames from "classnames";
 type InputProps = {
   setValue: (str: string) => void;
   onKeyDownClick: () => void;
-  style: CSSProperties;
+  style?: CSSProperties;
   value: string | undefined;
   className?: string;
   placeholder?: string;

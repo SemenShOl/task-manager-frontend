@@ -11,3 +11,4 @@ export { Task } from "./Task/Task";
 export { TaskPageHeader } from "./TaskPageHeader/TaskPageHeader";
 export { TaskParametrs } from "./TaskParameters/TaskParameters";
 export { CalendarDaysOfWeek } from "./CalendarDaysOfWeek/CalendarDaysOfWeek";
+export { NoteEditor } from "./NoteEditor/NoteEditor";
