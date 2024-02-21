@@ -12,13 +12,13 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { TTask } from "../../types/globalTypes";
 import { useParams } from "react-router-dom";
 import { TPriorityList } from "../../utilites/priorityUtilites";
+import { PageWrapper } from "../../wrappers";
 type TModalParams = {
   isActive: boolean;
   task: TTask | undefined;
 };
 
 export const DayPage = () => {
-  console.log("day page renders");
   useCheckAuth();
   const tasks: TTask[] = useAppSelector((state) => state.tasks.items);
   const activeDate = useParams().date || "";
@@ -73,33 +73,33 @@ export const DayPage = () => {
   };
 
   return (
-    <div className={cl.wrapper}>
-      <div className={cl.back}>
-        <div className={cl.taskPart}>
-          <TaskPageHeader
-            month={month}
-            dayOfWeek={dayOfWeek}
-            dayOfMonth={dayOfMonth}
-            priorityList={priorityList}
-          />
-          <AddTask
-            title={"Добавить задачу"}
-            fontSize={15}
-            onAddTask={openModalToCreateNewTaskHandler}
-          />
-          <div className={cl.taskList}>
-            {tasks.map((task) => (
-              <Task
-                task={task}
-                id={task.id || 0}
-                onDeleteTask={deleteTaskHandler}
-                onToggleTask={toggleTaskHandler}
-                onChangeTask={openModalToChangeTaskHandler}
-                key={task.id}
-              />
-            ))}
-          </div>
+    <PageWrapper>
+      <div className={cl.wrapper}>
+        <TaskPageHeader
+          month={month}
+          dayOfWeek={dayOfWeek}
+          dayOfMonth={dayOfMonth}
+          priorityList={priorityList}
+        />
+        <AddTask
+          title={"Добавить задачу"}
+          fontSize={15}
+          onAddTask={openModalToCreateNewTaskHandler}
+        />
+        <div className={cl.taskList}>
+          {tasks.map((task) => (
+            <Task
+              task={task}
+              id={task.id || 0}
+              onDeleteTask={deleteTaskHandler}
+              onToggleTask={toggleTaskHandler}
+              onChangeTask={openModalToChangeTaskHandler}
+              key={task.id}
+            />
+          ))}
         </div>
+      </div>
+      <div>
         <TaskParametrs
           activeDay={activeDate}
           user_id={1}
@@ -108,6 +108,6 @@ export const DayPage = () => {
           onClose={closeModalParamsHandler}
         />
       </div>
-    </div>
+    </PageWrapper>
   );
 };

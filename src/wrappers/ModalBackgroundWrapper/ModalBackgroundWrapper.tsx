@@ -1,7 +1,12 @@
-import React from "react";
+import React, { ReactNode, FC } from "react";
 import cn from "classnames";
 import cl from "./ModalBackgroundWrapper.module.scss";
-export const ModalBackgroundWrapper = ({
+type ModalBackgroundWrapperProps = {
+  children: ReactNode;
+  isActive: boolean;
+  onBackgroundClick: () => void;
+};
+export const ModalBackgroundWrapper: FC<ModalBackgroundWrapperProps> = ({
   children,
   isActive,
   onBackgroundClick,

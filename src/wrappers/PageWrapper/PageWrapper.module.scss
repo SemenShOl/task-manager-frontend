@@ -1,0 +1,19 @@
+@import "../../styles/colors.module.scss";
+
+
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    background-image: url("../../imgs/back.jpg");
+    background-position: 0%;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+
+    .pageContent {
+        margin: 0 auto;
+        padding: 30px;
+    }
+
+
+}

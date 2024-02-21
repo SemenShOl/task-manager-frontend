@@ -1,0 +1,24 @@
+.wrapper {
+    margin: 0 auto;
+    width: 1000px;
+    padding: 0px 70px;
+    height: 100%;
+
+    .notesList {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+        >div {
+            margin-bottom: 15px;
+        }
+
+    }
+
+    .addBtn {
+        position: fixed;
+        bottom: 55px;
+        right: 55px;
+    }
+
+}

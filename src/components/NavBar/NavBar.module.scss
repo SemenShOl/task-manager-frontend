@@ -1,0 +1,43 @@
+@import '../../styles/colors.module.scss';
+
+.wrapper {
+    position: fixed;
+    z-index: 30;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 8px 20px;
+    box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
+    color: $right;
+    cursor: pointer;
+
+    .profile {
+        margin-bottom: 20px;
+    }
+
+    .pages {
+
+        div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 3px 5px;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: $ligtestback;
+            }
+
+            svg {
+                font-size: 25px;
+
+                margin-right: 15px;
+            }
+
+        }
+
+
+    }
+}

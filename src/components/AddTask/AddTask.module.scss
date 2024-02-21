@@ -1,6 +1,6 @@
 @import "../../styles/colors.module.scss";
 
-.addNewTaskPart {
+.wrapper {
     width: 860px;
     height: 50px;
     background-color: rgb(255, 255, 255);
@@ -12,16 +12,11 @@
     border-radius: 10px;
     position: sticky;
     top: 30px;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     z-index: 10;
     color: $right;
 
     &:hover {
-        >p {
-            margin-top: 4.9px;
-            color: $right
-        }
-
         .addIcon {
             .plus {
                 color: white;

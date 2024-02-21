@@ -1,0 +1,65 @@
+@import '../../styles/colors.module.scss';
+
+
+.wrapper {
+    position: relative;
+
+    &:hover {
+        p {
+            transition: transform .3s, opacity .3s ease-in;
+            transform: translateX(0px);
+            opacity: 1;
+            color: $right
+        }
+    }
+
+    p {
+        transition: transform .3s, opacity .1s ease-in;
+        position: absolute;
+        top: 7px;
+        right: 0px;
+        transform: translateX(150px);
+        opacity: 0;
+        width: 190px;
+        font-size: 17px;
+        color: transparent;
+    }
+
+    .addIcon {
+        position: relative;
+        width: 30px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+
+        .plus {
+            position: relative;
+            z-index: 20;
+            transition: all 0.4s ease-in-out;
+            color: $right;
+
+        }
+
+        .circle {
+            position: absolute;
+            color: transparent;
+            color: white;
+            box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
+            border-radius: 50%;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            .plus {
+                color: white;
+            }
+
+            .circle {
+                color: $right;
+            }
+        }
+    }
+}

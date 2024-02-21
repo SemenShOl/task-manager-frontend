@@ -4,10 +4,11 @@ import { LuHeading1, LuHeading2, LuHeading3 } from "react-icons/lu";
 import { MdFormatListBulleted } from "react-icons/md";
 import { AiOutlineOrderedList } from "react-icons/ai";
 import { ToggleButton } from "../UI";
-import { useCurrentEditor } from "@tiptap/react";
+import "./editorStyles.scss";
 import cl from "./NoteMenuButtons.module.scss";
+import { Editor } from "@tiptap/react";
 type NoteMenuButtonsProps = {
-  editor: any;
+  editor: Editor | null;
 };
 export const NoteMenuButtons: FC<NoteMenuButtonsProps> = ({ editor }) => {
   console.log(editor?.getHTML());

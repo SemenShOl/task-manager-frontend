@@ -1,0 +1,54 @@
+@import "../../styles/colors.module.scss";
+
+.wrapper {
+    width: 200px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
+    cursor: pointer;
+    padding: 0 12px;
+    border-radius: 50px;
+    margin-bottom: 25px;
+    z-index: 10;
+    color: $right;
+
+
+    .titleAndIcon {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            >p {
+                color: $right
+            }
+
+            .noteIcon {
+                svg {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .noteIcon {
+            position: relative;
+            width: 30px;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in;
+
+            svg {
+                font-size: 16px;
+            }
+        }
+
+        >p {
+            color: $right
+        }
+    }
+
+}

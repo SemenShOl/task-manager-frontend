@@ -1,4 +1,4 @@
 export { DayPage } from "./DayPage/DayPage";
-export { TextPage } from "./TextPage/TextPage";
+export { NotePage } from "./NotePage/NotePage";
 export { CalendarPage } from "./CalendarPage/CalendarPage";
 export { LoginPage } from "./LoginPage/LoginPage";

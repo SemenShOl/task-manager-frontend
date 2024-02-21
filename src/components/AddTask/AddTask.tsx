@@ -6,7 +6,7 @@ import { AddTaskProps } from "./AddTaskProps";
 
 export const AddTask: FC<AddTaskProps> = ({ title, fontSize, onAddTask }) => {
   return (
-    <div className={cl.addNewTaskPart} onClick={onAddTask}>
+    <div className={cl.wrapper} onClick={onAddTask}>
       <div className={cl.addIcon}>
         <IoMdAdd size={20} className={cl.plus} />
         <FaCircle size={26} className={cl.circle} />
