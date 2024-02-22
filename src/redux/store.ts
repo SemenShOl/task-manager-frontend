@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { tasksReducer } from "./slices/tasks";
 import type { TypedUseSelectorHook } from "react-redux";
 import { busyDaysReducer } from "./slices/busyDays";
+import { noteReducer } from "./slices/notes";
 
 const store = configureStore({
   reducer: {
     tasks: tasksReducer,
     busyDays: busyDaysReducer,
+    notes: noteReducer,
   },
 });
 

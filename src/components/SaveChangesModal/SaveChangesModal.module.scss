@@ -1,0 +1,36 @@
+@import '../../styles/colors.module.scss';
+
+.main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    p {
+        height: 100%;
+        font-size: 18px;
+        // background-color: green;
+        color: $right;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btns {
+        font-size: 25px;
+        padding: 0 10px 0 5px;
+        display: flex;
+        justify-content: space-between;
+
+        svg {
+            cursor: pointer;
+
+            &:first-child {
+                color: $attentionRed;
+            }
+
+            &:last-child {
+                color: $right
+            }
+        }
+    }
+}

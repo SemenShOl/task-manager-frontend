@@ -7,8 +7,7 @@ function App() {
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/calendar/:date" element={<DayPage />} />
       <Route path="/notes" element={<NotesPage />} />
-      <Route path="/note" element={<NotePage />} />
-
+      <Route path="/notes/:id" element={<NotePage />} />
       <Route path="/login" element={<LoginPage />} />
     </Routes>
   );

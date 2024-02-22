@@ -4,7 +4,7 @@ import cl from "./ModalBackgroundWrapper.module.scss";
 type ModalBackgroundWrapperProps = {
   children: ReactNode;
   isActive: boolean;
-  onBackgroundClick: () => void;
+  onBackgroundClick?: () => void;
 };
 export const ModalBackgroundWrapper: FC<ModalBackgroundWrapperProps> = ({
   children,

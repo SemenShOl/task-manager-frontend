@@ -2,7 +2,7 @@
 
 .wrapper {
     cursor: pointer;
-    padding: 20px 8px 0 15px;
+    padding: 20px 15px 0 15px;
     height: 100%;
     width: 700px;
     background: rgb(255, 255, 255);
@@ -11,6 +11,15 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    .saveBtn {
+        font-size: 30px;
+        color: $attentionRed;
+        padding: 0;
+        display: flex;
+        justify-content: end;
+        padding-right: 10px;
+    }
 
     ::-webkit-scrollbar-thumb {
         box-shadow: inset 0 0 18px 18px $lightGrey;

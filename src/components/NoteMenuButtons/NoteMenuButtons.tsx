@@ -11,7 +11,7 @@ type NoteMenuButtonsProps = {
   editor: Editor | null;
 };
 export const NoteMenuButtons: FC<NoteMenuButtonsProps> = ({ editor }) => {
-  console.log(editor?.getHTML());
+  // console.log(editor?.getHTML());
   return (
     <div className={cl.btns}>
       <ToggleButton
