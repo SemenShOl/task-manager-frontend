@@ -1,7 +1,7 @@
 @import '../../styles/colors.module.scss';
 
 .wrapper {
-    cursor: pointer;
+    position: relative;
     padding: 20px 15px 0 15px;
     height: 100%;
     width: 700px;
@@ -12,13 +12,34 @@
     flex-direction: column;
     gap: 15px;
 
-    .saveBtn {
-        font-size: 30px;
-        color: $attentionRed;
-        padding: 0;
+    .closeBtn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 32px;
+        color: $right;
         display: flex;
-        justify-content: end;
-        padding-right: 10px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+
+        // background-color: #db5151;
+        svg {
+            cursor: pointer;
+            animation: none;
+
+        }
+
+        &:hover {
+            color: white;
+            background-color: $right;
+            transition: all .2s ease-in;
+
+        }
+
     }
 
     ::-webkit-scrollbar-thumb {

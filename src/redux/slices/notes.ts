@@ -39,7 +39,7 @@ export const fetchChangeNote = createAsyncThunk(
   "note/fetchChangeNote",
   async (updatedNote: TNote): Promise<TNote> => {
     console.log("id: ", updatedNote.id);
-    console.log("updatedTask: ", updatedNote);
+    console.log("updatedNote: ", updatedNote);
     await axios.put(`/notes/${updatedNote.id}`, updatedNote);
     return updatedNote;
   }
@@ -54,6 +54,7 @@ type TNoteState = {
     item: TNote | undefined;
     isLoading: boolean;
   };
+  currentNote: TNote | undefined;
 };
 
 const initialState: TNoteState = {
@@ -65,12 +66,17 @@ const initialState: TNoteState = {
     item: undefined,
     isLoading: true,
   },
+  currentNote: undefined,
 };
 
 const notesSlice = createSlice({
   name: "notes",
   initialState,
-  reducers: {},
+  reducers: {
+    changeCurrentNote(state, action: PayloadAction<TNote>) {
+      state.currentNote = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchGetAllNotes.pending, (state) => {
@@ -118,20 +124,14 @@ const notesSlice = createSlice({
       })
       .addCase(fetchChangeNote.fulfilled, (state, action) => {
         state.allNotes.isLoading = false;
-        let updatedNoteIndex = 0;
-        let updatedNoteID = action.payload.id;
-        state.allNotes.items = state.allNotes.items.filter((note, index) => {
-          if (note.id === updatedNoteID) {
-            updatedNoteIndex = index;
-            return false;
-          }
-          return true;
-        });
-        state.allNotes.items.splice(updatedNoteIndex, 0, action.payload);
+        let noteToBeChanged = state.allNotes.items.find(
+          (note) => note.id === action.payload.id
+        );
+        noteToBeChanged = action.payload;
       });
   },
 });
 
-// export const { addUpdatedTaskToStore } = tasksSlice.actions;
+export const { changeCurrentNote } = notesSlice.actions;
 
 export const noteReducer = notesSlice.reducer;

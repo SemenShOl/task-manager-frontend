@@ -20,11 +20,9 @@ export type TTask = {
 export type TNewNote = {
   title: string;
   text: string;
-  user_id: number;
 };
 export type TNote = {
   id: number;
   title: string;
   text: string;
-  user_id: number;
 };

@@ -1,29 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PageWrapper } from "../../wrappers";
-import cl from "./NodePage.module.scss";
+import cl from "./NotePage.module.scss";
 import { NoteMenuButtons } from "../../components/NoteMenuButtons/NoteMenuButtons";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
 import { Input } from "../../components/UI";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { fetchChangeNote, fetchGetNoteByID } from "../../redux/slices/notes";
-import { useParams } from "react-router-dom";
-import { SaveChangesModal } from "../../components/SaveChangesModal/SaveChangesModal";
-import { TNote } from "../../types/globalTypes";
-import { IoMdCheckmark } from "react-icons/io";
+import { useNavigate, useParams } from "react-router-dom";
+import { TNewNote, TNote } from "../../types/globalTypes";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 export const NotePage = () => {
-  const noteID = +(useParams().id || 0);
+  const noteID = +(useParams().id || -1);
   const dispatch = useAppDispatch();
+  const [title, setTitle] = useState<string>("");
+  const [text, setText] = useState<string>("");
+  const titleRef = useRef<string>();
+  const textRef = useRef<string>();
+  const navigate = useNavigate();
   useEffect(() => {
-    dispatch(fetchGetNoteByID(noteID));
+    if (noteID !== -1) dispatch(fetchGetNoteByID(noteID));
+
     return () => {
-      setIsActiveModal(true);
+      saveOnCloselHandler(titleRef.current || "", textRef.current || "");
     };
   }, []);
   const activeNote = useAppSelector((state) => state.notes.activeNote.item);
-  const [title, setTitle] = useState<string>("");
-  const [text, setText] = useState<string>("");
   const editor = useEditor(
     {
       extensions: [StarterKit],
@@ -31,27 +34,36 @@ export const NotePage = () => {
     },
     [text]
   );
-  const [isActiveModal, setIsActiveModal] = useState<boolean>(false);
 
   useEffect(() => {
     setTitle(activeNote?.title || "");
     setText(activeNote?.text || "");
+    titleRef.current = activeNote?.title;
+    textRef.current = editor?.getHTML();
   }, [activeNote]);
 
-  const changedNote: TNote = {
-    id: noteID,
-    user_id: activeNote?.user_id || 0,
+  const newNote: TNewNote = {
     title,
-    text,
+    text: editor?.getHTML() || "",
   };
-  const saveOnCloselHandler = () => {
-    setIsActiveModal(false);
+
+  const saveOnCloselHandler = (title: string, text: string) => {
+    const changedNote: TNote = {
+      id: noteID,
+      title,
+      text,
+    };
     if (title) {
       dispatch(fetchChangeNote(changedNote));
     }
   };
-  // const cancelOnCloseHandler = () => setIsActiveModal(false);
+  console.log("textRef: ", textRef.current);
+  console.log("titleRef ", titleRef.current);
 
+  const handleSetTitle = (newValue: string) => {
+    setTitle(newValue);
+    titleRef.current = newValue;
+  };
   return (
     <PageWrapper>
       <div className={cl.wrapper}>
@@ -63,14 +75,14 @@ export const NotePage = () => {
             fontWeight: "bold",
           }}
           value={title}
-          setValue={setTitle}
+          setValue={handleSetTitle}
           onKeyDownClick={() => {}}
           placeholder="Название "
         />
-        <NoteMenuButtons editor={editor} />
+        <NoteMenuButtons editor={editor} reff={textRef} />
         <EditorContent editor={editor} />
-        <div className={cl.saveBtn}>
-          <IoMdCheckmark onClick={saveOnCloselHandler} />
+        <div className={cl.closeBtn}>
+          <MdKeyboardDoubleArrowRight onClick={() => navigate("/notes")} />
         </div>
       </div>
       {/* <SaveChangesModal
