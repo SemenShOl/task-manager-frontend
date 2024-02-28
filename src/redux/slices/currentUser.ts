@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { userInfo } from "os";
 
 const savePasswordAndLogin = (login: string, password: string) => {
   localStorage.setItem("password", password);
@@ -35,12 +34,16 @@ export const fetchUserRegistration = createAsyncThunk(
   async (
     userInfo: TUser
   ): Promise<{ message: string; status: number; userInfo: TUser }> => {
-    const { data, status } = await axios.post<{ message: string }>(
-      `auth/registration`,
-      userInfo
-    );
-    const { message } = data;
-    return { message, status, userInfo };
+    try {
+      const { data, status } = await axios.post<{ message: string }>(
+        `auth/registration`,
+        userInfo
+      );
+      const { message } = data;
+      return { message, status, userInfo };
+    } catch (error) {
+      return { message: "Такой логин уже существует", status: 401, userInfo };
+    }
   }
 );
 
@@ -85,6 +88,8 @@ const userSlice = createSlice({
     userLogout(state) {
       localStorage.removeItem("token");
       deletePasswordAndLogin();
+      state.authInfo.isAuth = false;
+      state.authInfo.errorMessage = "";
     },
   },
   extraReducers: (builder) => {
@@ -105,7 +110,6 @@ const userSlice = createSlice({
           state.isLoading = false;
           state.userInfo = action.payload.userInfo;
           if (action.payload.status === 200) {
-            console.log("data: ", action.payload.message);
             localStorage.setItem("token", action.payload.message);
             state.authInfo.isAuth = true;
             savePasswordAndLogin(
@@ -134,11 +138,15 @@ const userSlice = createSlice({
           state.isLoading = false;
           state.userInfo = action.payload.userInfo;
           if (action.payload.status === 201) {
-            console.log("data: ", action.payload.message);
             localStorage.setItem("token", action.payload.message);
             state.authInfo.isAuth = true;
+            savePasswordAndLogin(
+              action.payload.userInfo.login,
+              action.payload.userInfo.password
+            );
           } else {
             state.authInfo.errorMessage = action.payload.message;
+            state.authInfo.isAuth = false;
           }
         }
       )

@@ -20,13 +20,15 @@ export const RegistrationPage = () => {
   const handleRegistration = (login: string, password: string) => {
     dispatch(fetchUserRegistration({ login, password }));
   };
-  const { isAuth, errorMessage } = useAppSelector(
-    (state) => state.user.authInfo
+  const errorMessage = useAppSelector(
+    (state) => state.user.authInfo.errorMessage
   );
-  console.log("errorMessage: ", errorMessage);
+  const isAuth =
+    useAppSelector((state) => state.user.authInfo.isAuth) ||
+    localStorage.getItem("token");
 
   return isAuth ? (
-    <Navigate to="/calendar" />
+    <Navigate to="/" />
   ) : (
     <div className={cl.wrapper}>
       <div className={cl.window}>
@@ -41,7 +43,7 @@ export const RegistrationPage = () => {
               required: "Пожалуйста, введите уникальный логин",
             })}
             placeholder={"login"}
-            errorMessage={errors.login?.message}
+            errorMessage={errorMessage || errors.login?.message}
           />
           <FormInput
             className={cl.inp}

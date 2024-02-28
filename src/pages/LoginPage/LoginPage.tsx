@@ -12,16 +12,18 @@ type TFormLogin = {
 export const LoginPage = () => {
   const { register, handleSubmit } = useForm<TFormLogin>();
   const dispatch = useAppDispatch();
+  const isAuth =
+    useAppSelector((state) => state.user.authInfo.isAuth) ||
+    localStorage.getItem("token");
+  const errorMessage = useAppSelector(
+    (state) => state.user.authInfo.errorMessage
+  );
   const handleLogin = (login: string, password: string) => {
     dispatch(fetchUserLogin({ login, password }));
   };
-  const { isAuth, errorMessage } = useAppSelector(
-    (state) => state.user.authInfo
-  );
-  console.log("errorMessage: ", errorMessage);
 
   return isAuth ? (
-    <Navigate to="/calendar" />
+    <Navigate to="/" />
   ) : (
     <div className={cl.wrapper}>
       <div className={cl.window}>

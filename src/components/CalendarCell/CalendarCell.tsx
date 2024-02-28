@@ -17,7 +17,7 @@ export const CalendarCell: FC<CalendarCellProps> = ({
     activeDay
   );
   const clickCellHandler = () => {
-    navigate(`/calendar/${thisCellDay.format("YYYY-MM-DD")}`);
+    navigate(`/${thisCellDay.format("YYYY-MM-DD")}`);
   };
 
   return (

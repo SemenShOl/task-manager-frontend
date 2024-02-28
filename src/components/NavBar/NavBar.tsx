@@ -21,14 +21,14 @@ export const NavBar = () => {
         <NavLink to="/notes">
           <FaNoteSticky /> Конспекты
         </NavLink>
-        <NavLink to="/calendar">
+        <NavLink to="/">
           <IoCalendarNumber /> Календарь
         </NavLink>
 
-        <NavLink to={`/calendar/${today}`}>
+        <NavLink to={`/${today}`}>
           <MdCalendarToday /> Сегодня
         </NavLink>
-        <NavLink to={`/calendar/${tomorrow}`}>
+        <NavLink to={`/${tomorrow}`}>
           <MdOutlineCalendarToday /> Завтра
         </NavLink>
       </div>

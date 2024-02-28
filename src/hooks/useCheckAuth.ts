@@ -3,7 +3,8 @@ import { useEffect } from "react";
 export const useCheckAuth = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    const token = window.localStorage.getItem("token");
+    const token = localStorage.getItem("token");
+    console.log("is Auth token:", token);
     if (!token) {
       navigate("/login");
     }

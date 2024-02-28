@@ -20,7 +20,7 @@ export const TaskPageHeader: FC<TaskPageHeaderProps> = ({
   return (
     <div className={cl.header}>
       <div className={cl.date}>
-        <p className={cl.dayOfWeek}>{dayOfWeek.toUpperCase()}</p>
+        <p className={cl.dayOfWeek}>{dayOfWeek?.toUpperCase()}</p>
         <p className={cl.dayOfMonth}>{addNumberFrontNull(dayOfMonth)}</p>
         <p className={cl.month}>{month}</p>
       </div>

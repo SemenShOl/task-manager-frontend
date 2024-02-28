@@ -7,6 +7,7 @@ import {
   fetchUserChangeData,
   userLogout,
 } from "../../redux/slices/currentUser";
+import { useNavigate } from "react-router-dom";
 
 export const ProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -19,17 +20,17 @@ export const ProfilePage = () => {
   );
   const loginRef = useRef<string>();
   const passwordRef = useRef<string>();
-
+  const navigate = useNavigate();
   useEffect(() => {
     loginRef.current = localStorage.getItem("login") || "";
     passwordRef.current = localStorage.getItem("password") || "";
     return () => {
       if (
-        loginRef.current !== localStorage.getItem("login") ||
-        passwordRef.current !== localStorage.getItem("password")
+        (loginRef.current !== localStorage.getItem("login") ||
+          passwordRef.current !== localStorage.getItem("password")) &&
+        localStorage.getItem("token")
       ) {
         const isSave = window.confirm("Сохранить измения?");
-
         if (isSave)
           dispatch(
             fetchUserChangeData({
@@ -48,6 +49,11 @@ export const ProfilePage = () => {
   const passwordChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     passwordRef.current = e.target.value;
+  };
+
+  const logoutHandler = () => {
+    dispatch(userLogout());
+    navigate("/login");
   };
   return (
     <PageWrapper>
@@ -71,7 +77,7 @@ export const ProfilePage = () => {
               ref={passwordRef}
             />
           </div>
-          <Button onClick={() => dispatch(userLogout())} className={cl.submit}>
+          <Button onClick={logoutHandler} className={cl.submit}>
             Выйти из профиля
           </Button>
         </div>
