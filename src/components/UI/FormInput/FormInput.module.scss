@@ -1,0 +1,33 @@
+@import '../../../styles/colors.module.scss';
+
+.inputPart {
+    margin-bottom: 30px;
+
+    ::-webkit-input-placeholder {
+        color: $lightback;
+
+    }
+
+    input {
+        width: 350px;
+        height: 40px;
+        overflow: hidden;
+        font-size: 30px;
+        padding: 10px;
+        outline: none;
+
+        &:focus,
+        :active {
+            outline: none;
+            border: none;
+        }
+
+    }
+
+    .errorMessage {
+        margin-left: 10px;
+        color: $attentionRed;
+        font-size: 13px;
+
+    }
+}

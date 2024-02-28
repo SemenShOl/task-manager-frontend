@@ -3,15 +3,11 @@ import { IoMdAdd } from "react-icons/io";
 import { FaCircle } from "react-icons/fa";
 import cl from "./AddNote.module.scss";
 import cn from "classnames";
+import { AddNoteProps } from "./AddNoteProps";
 
-type AddNoteProps = {
-  size: number;
-  className?: string;
-  onClick: () => void;
-};
-export const AddNote: FC<AddNoteProps> = ({ size, className, onClick }) => {
+export const AddNote: FC<AddNoteProps> = ({ size, className, onAddNote }) => {
   return (
-    <div className={cn(cl.wrapper, className)} onClick={onClick}>
+    <div className={cn(cl.wrapper, className)} onClick={onAddNote}>
       <p>Добавить запись</p>
       <div className={cl.addIcon}>
         <IoMdAdd size={size} className={cl.plus} />

@@ -4,5 +4,5 @@ export type NoteProps = {
   fontSize: number;
   note: TNote;
   onDeleteNote: (id: number) => void;
-  onClick: () => void;
+  onChangeNote: (note: TNote) => void;
 };

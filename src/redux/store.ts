@@ -4,12 +4,14 @@ import { tasksReducer } from "./slices/tasks";
 import type { TypedUseSelectorHook } from "react-redux";
 import { busyDaysReducer } from "./slices/busyDays";
 import { noteReducer } from "./slices/notes";
+import { userReducer } from "./slices/currentUser";
 
 const store = configureStore({
   reducer: {
     tasks: tasksReducer,
     busyDays: busyDaysReducer,
     notes: noteReducer,
+    user: userReducer,
   },
 });
 

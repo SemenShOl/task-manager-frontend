@@ -87,12 +87,10 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
           <Input
             style={{
               width: "100%",
-              height: 40,
-              fontSize: 30,
               fontWeight: "bold",
             }}
             value={title}
-            setValue={setTitle}
+            onInputChange={(e) => setTitle(e.target.value)}
             placeholder={"Название задачи"}
             onKeyDownClick={closeModalHandler}
           />
@@ -100,7 +98,7 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
           <Input
             style={{ width: "100%", height: 20, fontSize: 15 }}
             value={description}
-            setValue={setDescription}
+            onInputChange={(e) => setDescription(e.target.value)}
             placeholder={"Описание"}
             onKeyDownClick={closeModalHandler}
           />

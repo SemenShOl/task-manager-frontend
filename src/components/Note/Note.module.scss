@@ -1,7 +1,7 @@
 @import "../../styles/colors.module.scss";
 
 .wrapper {
-    width: 200px;
+    // width: 230px;
     height: 40px;
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -46,8 +46,12 @@
             }
         }
 
-        >p {
-            color: $right
+        .tilte {
+            color: $right;
+            width: 130px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 

@@ -1,0 +1,26 @@
+@import '../../../styles/colors.module.scss';
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    padding: 9px 16px;
+    cursor: pointer;
+    color: $right;
+    border: none;
+    border-radius: 7px;
+    transition: all .5 ease-in-out;
+
+    &:hover {
+        color: white;
+        background-color: $right;
+        transition: all .5 ease-in-out;
+
+    }
+
+    &.disabled {
+        opacity: 0.7;
+        cursor: auto;
+    }
+}

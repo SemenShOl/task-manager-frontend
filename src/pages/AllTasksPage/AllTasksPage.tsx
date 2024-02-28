@@ -1,42 +1,27 @@
 import React, { useEffect, useState } from "react";
-// import cl from "./DayPage.module.scss";
-import {
-  fetchDeleteTask,
-  fetchGetTasksForDeadline,
-  fetchToggleTask,
-} from "../../redux/slices/tasks";
-import { AddTask, TaskParametrs, TaskPageHeader } from "../../components";
-import { getDayInfo } from "../../utilites/dateUtilites";
-import { useCheckAuth } from "../../hooks/useCheckAuth";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { TTask } from "../../types/globalTypes";
-import { useParams } from "react-router-dom";
-import { TPriorityList } from "../../utilites/priorityUtilites";
 import { PageWrapper } from "../../wrappers";
+import { AddTask, TaskPageHeader } from "../../components";
 import { TaskList } from "../../components/TaskList/TaskList";
+import { useCheckAuth } from "../../hooks";
+import { TTask } from "../../types/globalTypes";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { fetchDeleteTask, fetchToggleTask } from "../../redux/slices/tasks";
+
+type Props = {};
 type TModalParamsTask = {
   isActive: boolean;
   task: TTask | undefined;
 };
 
-export const DayPage = () => {
-  console.log("day page rerenders");
+export const AllTasksPage = (props: Props) => {
   useCheckAuth();
   const tasks: TTask[] = useAppSelector((state) => state.tasks.items);
-  const activeDate = useParams().date || "";
-
-  const priorityList: TPriorityList = { low: 0, medium: 0, high: 0 };
-  tasks.forEach((task) =>
-    !task.is_completed ? priorityList[task.priority]++ : null
-  );
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchGetTasksForDeadline(activeDate));
-  }, [activeDate]);
-
-  const { dayOfMonth, dayOfWeek, month } = getDayInfo(activeDate);
+    // dispatch();
+  }, []);
 
   const deleteTaskHandler = (id: number) => {
     dispatch(fetchDeleteTask(id));
@@ -73,16 +58,9 @@ export const DayPage = () => {
       });
     }
   };
-
   return (
     <PageWrapper>
       <div>
-        <TaskPageHeader
-          month={month}
-          dayOfWeek={dayOfWeek}
-          dayOfMonth={dayOfMonth}
-          priorityList={priorityList}
-        />
         <AddTask
           title={"Добавить задачу"}
           fontSize={15}
@@ -93,15 +71,6 @@ export const DayPage = () => {
           deleteTaskHandler={deleteTaskHandler}
           toggleTaskHandler={toggleTaskHandler}
           openModalToChangeTaskHandler={openModalToChangeTaskHandler}
-        />
-      </div>
-      <div>
-        <TaskParametrs
-          activeDay={activeDate}
-          user_id={1}
-          task={modalParams.task}
-          isActive={modalParams.isActive}
-          onClose={closeModalParamsHandler}
         />
       </div>
     </PageWrapper>

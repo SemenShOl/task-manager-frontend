@@ -9,10 +9,10 @@ import cl from "./NoteMenuButtons.module.scss";
 import { Editor } from "@tiptap/react";
 type NoteMenuButtonsProps = {
   editor: Editor | null;
-  reff: React.MutableRefObject<string | undefined>;
+  // reff: React.MutableRefObject<string | undefined>;
 };
-export const NoteMenuButtons: FC<NoteMenuButtonsProps> = ({ editor, reff }) => {
-  reff.current = editor?.getHTML();
+export const NoteMenuButtons: FC<NoteMenuButtonsProps> = ({ editor }) => {
+  // reff.current = editor?.getHTML();
   return (
     <div className={cl.btns}>
       <ToggleButton

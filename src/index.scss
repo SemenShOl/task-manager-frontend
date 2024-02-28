@@ -21,6 +21,11 @@ body,
   height: 100%;
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -34,22 +39,4 @@ input {
     outline: none;
     border: none;
   }
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 15px;
-  cursor: pointer;
-
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgb(204, 204, 204);
-  border-radius: 6px;
-  height: 15px;
-  cursor: pointer;
-}
-
-::-webkit-scrollbar-track {
-  background: none;
 }

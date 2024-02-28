@@ -2,35 +2,35 @@ import { FaNoteSticky } from "react-icons/fa6";
 import { IoCalendarNumber } from "react-icons/io5";
 import { FaTasks } from "react-icons/fa";
 import { MdOutlineTimer } from "react-icons/md";
+import { MdCalendarToday } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
+import { MdOutlineCalendarToday } from "react-icons/md";
 import cl from "./NavBar.module.scss";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import moment from "moment";
 export const NavBar = () => {
-  const navigate = useNavigate();
-
-  const toCalendar = () => navigate("/calendar");
-  const toNotes = () => navigate("/notes");
-  const toPomodoro = () => navigate("/pomdoro");
-  const toAllTasks = () => navigate("/tasks");
+  const today = moment().format("YYYY-MM-DD");
+  const tomorrow = moment().add(1, "day").format("YYYY-MM-DD");
 
   return (
     <div className={cl.wrapper}>
-      <div className={cl.profile}>
-        <CgProfile size={40} />
-      </div>
+      <NavLink className={cl.profile} to="/profile">
+        <CgProfile size={45} />
+      </NavLink>
       <div className={cl.pages}>
-        <div onClick={toNotes}>
+        <NavLink to="/notes">
           <FaNoteSticky /> Конспекты
-        </div>
-        <div onClick={toCalendar}>
+        </NavLink>
+        <NavLink to="/calendar">
           <IoCalendarNumber /> Календарь
-        </div>
-        <div onClick={toAllTasks}>
-          <FaTasks /> Задачи
-        </div>
-        <div onClick={toPomodoro}>
-          <MdOutlineTimer /> Помодоро
-        </div>
+        </NavLink>
+
+        <NavLink to={`/calendar/${today}`}>
+          <MdCalendarToday /> Сегодня
+        </NavLink>
+        <NavLink to={`/calendar/${tomorrow}`}>
+          <MdOutlineCalendarToday /> Завтра
+        </NavLink>
       </div>
     </div>
   );

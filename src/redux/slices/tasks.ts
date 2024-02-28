@@ -114,6 +114,9 @@ const tasksSlice = createSlice({
           );
           if (taskToBeToggled)
             taskToBeToggled.is_completed = !taskToBeToggled.is_completed;
+          state.items = state.items.sort(
+            (a, b) => +a.is_completed - +b.is_completed
+          );
         }
       )
       .addCase(fetchChangeTask.pending, (state) => {

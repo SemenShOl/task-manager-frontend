@@ -54,7 +54,6 @@ type TNoteState = {
     item: TNote | undefined;
     isLoading: boolean;
   };
-  currentNote: TNote | undefined;
 };
 
 const initialState: TNoteState = {
@@ -66,17 +65,12 @@ const initialState: TNoteState = {
     item: undefined,
     isLoading: true,
   },
-  currentNote: undefined,
 };
 
 const notesSlice = createSlice({
   name: "notes",
   initialState,
-  reducers: {
-    changeCurrentNote(state, action: PayloadAction<TNote>) {
-      state.currentNote = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchGetAllNotes.pending, (state) => {
@@ -124,14 +118,19 @@ const notesSlice = createSlice({
       })
       .addCase(fetchChangeNote.fulfilled, (state, action) => {
         state.allNotes.isLoading = false;
-        let noteToBeChanged = state.allNotes.items.find(
-          (note) => note.id === action.payload.id
-        );
-        noteToBeChanged = action.payload;
+        let updatedNoteIndex = 0;
+        state.allNotes.items = state.allNotes.items.filter((task, index) => {
+          if (task.id === action.payload.id) {
+            updatedNoteIndex = index;
+            return false;
+          }
+          return true;
+        });
+        state.allNotes.items.splice(updatedNoteIndex, 0, action.payload);
       });
   },
 });
 
-export const { changeCurrentNote } = notesSlice.actions;
+// export const { changeCurrentNote } = notesSlice.actions;
 
 export const noteReducer = notesSlice.reducer;

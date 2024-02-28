@@ -13,3 +13,6 @@ export { TaskParametrs } from "./TaskParameters/TaskParameters";
 export { CalendarDaysOfWeek } from "./CalendarDaysOfWeek/CalendarDaysOfWeek";
 export { NavBar } from "./NavBar/NavBar";
 export { AddNote } from "./AddNote/AddNote";
+export { Note } from "./Note/Note";
+export { NotesParametrs } from "./NotesParametrs/NotesParametrs";
+export { NoteMenuButtons } from "./NoteMenuButtons/NoteMenuButtons";
