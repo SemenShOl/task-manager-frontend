@@ -58,7 +58,7 @@ export const RegistrationPage = () => {
             errorMessage={errors.password?.message}
           />
 
-          <SubmitButton stringValue="register" className={cl.submit} />
+          <SubmitButton stringValue="Register" className={cl.submit} />
         </form>
         <NavLink to="/login" className={cl.notRegisterLink}>
           Уже есть аккаунт?

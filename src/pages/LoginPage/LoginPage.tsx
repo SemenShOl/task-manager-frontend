@@ -49,7 +49,7 @@ export const LoginPage = () => {
           <SubmitButton stringValue="Login" className={cl.submit} />
         </form>
         <NavLink to="/register" className={cl.notRegisterLink}>
-          Еще не зарегестрированы?
+          Еще не зарегистрированы?
         </NavLink>
       </div>
     </div>
