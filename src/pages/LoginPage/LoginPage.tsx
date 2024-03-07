@@ -4,6 +4,7 @@ import { FormInput, SubmitButton } from "./../../components/UI";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { fetchUserLogin } from "./../../redux/slices/currentUser";
 import { NavLink, Navigate } from "react-router-dom";
+import { AuthPageWrapper } from "../../wrappers";
 
 type TFormLogin = {
   login: string;
@@ -25,9 +26,8 @@ export const LoginPage = () => {
   return isAuth ? (
     <Navigate to="/" />
   ) : (
-    <div className={cl.wrapper}>
-      <div className={cl.window}>
-        <form
+    <AuthPageWrapper>
+      <form
           onSubmit={handleSubmit((data) =>
             handleLogin(data.login, data.password)
           )}
@@ -51,7 +51,8 @@ export const LoginPage = () => {
         <NavLink to="/register" className={cl.notRegisterLink}>
           Еще не зарегистрированы?
         </NavLink>
-      </div>
-    </div>
+    </AuthPageWrapper>
+      
+ 
   );
 };

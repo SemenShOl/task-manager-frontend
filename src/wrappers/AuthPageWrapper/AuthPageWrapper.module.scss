@@ -1,0 +1,25 @@
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    background-image: url("../../imgs/back2.jpg");
+    background-position: 0%;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .window {
+        margin: auto 0;
+        width: 500px;
+        height: 400px;
+        box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px 50px 20px 50px;
+        background-color: white;
+    }
+
+
+}

@@ -75,7 +75,7 @@ export const DayPage = () => {
   };
 
   return (
-    <PageWrapper>
+    <PageWrapper >
       <div>
         <TaskPageHeader
           month={month}

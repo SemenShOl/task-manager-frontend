@@ -26,7 +26,7 @@ export const CalendarPage = () => {
   };
 
   return (
-    <PageWrapper>
+    <PageWrapper >
       <div>
         <CalendarHeader
           activeDay={activeDay}

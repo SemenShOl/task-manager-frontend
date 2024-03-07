@@ -9,8 +9,8 @@ export const PageWrapper: FC<PageWrapperProps> = ({ children }) => {
   useCheckAuth();
   return (
     <div className={cl.wrapper}>
-      <NavBar />
-      <div className={cl.pageContent}>{children}</div>
+     <NavBar />
+      <div className={cl.pageContent} >{children}</div>
     </div>
   );
 };

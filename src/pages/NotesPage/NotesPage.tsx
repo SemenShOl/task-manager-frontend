@@ -52,7 +52,7 @@ export const NotesPage = () => {
     }
   };
   return (
-    <PageWrapper>
+    <PageWrapper >
       <div className={cl.wrapper}>
         <div className={cl.notesList}>
           {notes.map((note) => (

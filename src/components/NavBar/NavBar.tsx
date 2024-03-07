@@ -1,7 +1,5 @@
 import { FaNoteSticky } from "react-icons/fa6";
 import { IoCalendarNumber } from "react-icons/io5";
-import { FaTasks } from "react-icons/fa";
-import { MdOutlineTimer } from "react-icons/md";
 import { MdCalendarToday } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineCalendarToday } from "react-icons/md";

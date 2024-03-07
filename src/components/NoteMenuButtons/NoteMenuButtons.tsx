@@ -6,13 +6,9 @@ import { AiOutlineOrderedList } from "react-icons/ai";
 import { ToggleButton } from "../UI";
 import "./editorStyles.scss";
 import cl from "./NoteMenuButtons.module.scss";
-import { Editor } from "@tiptap/react";
-type NoteMenuButtonsProps = {
-  editor: Editor | null;
-  // reff: React.MutableRefObject<string | undefined>;
-};
+import { NoteMenuButtonsProps } from "./NoteMenuButtonsProps";
+
 export const NoteMenuButtons: FC<NoteMenuButtonsProps> = ({ editor }) => {
-  // reff.current = editor?.getHTML();
   return (
     <div className={cl.btns}>
       <ToggleButton

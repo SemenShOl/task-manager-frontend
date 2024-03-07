@@ -56,7 +56,7 @@ export const ProfilePage = () => {
     navigate("/login");
   };
   return (
-    <PageWrapper>
+    <PageWrapper >
       <div className={cl.wrapper}>
         <div className={cl.window}>
           <div>

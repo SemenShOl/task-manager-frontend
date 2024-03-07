@@ -45,7 +45,6 @@ export const NotesParametrs: FC<NotesParametrsProps> = ({
 
   const closeModalHandler = () => {
     onClose();
-
     if (activeNote && title) {
       dispatch(fetchChangeNote(changedNote));
     } else if (title) {
