@@ -1,0 +1,29 @@
+@import "../../styles/colors.module.scss";
+.lesson {
+  display: flex;
+  font-size: 15px;
+  align-items: start;
+  margin-bottom: 20px;
+  .time {
+    font-size: 18px;
+    line-height: 25px;
+    margin-right: 20px;
+  }
+  .info {
+    line-height: 25px;
+    span {
+      margin-right: 15px;
+    }
+    .type {
+      background-color: $left;
+      color: white;
+      padding: 2px 8px;
+    }
+    .audience {
+      color: white;
+      background-color: $right;
+
+      padding: 2px 8px;
+    }
+  }
+}

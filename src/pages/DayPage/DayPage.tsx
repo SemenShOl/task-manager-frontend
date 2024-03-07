@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import cl from "./DayPage.module.scss";
+import cl from "./DayPage.module.scss";
 import {
   fetchDeleteTask,
   fetchGetTasksForDeadline,
@@ -9,11 +9,12 @@ import { AddTask, TaskParametrs, TaskPageHeader } from "../../components";
 import { getDayInfo } from "../../utilites/dateUtilites";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { TTask } from "../../types/globalTypes";
+import { TLesson, TTask } from "../../types/globalTypes";
 import { useParams } from "react-router-dom";
 import { TPriorityList } from "../../utilites/priorityUtilites";
 import { PageWrapper } from "../../wrappers";
 import { TaskList } from "../../components/TaskList/TaskList";
+import { Lesson } from "../../components/Lesson/Lesson";
 type TModalParamsTask = {
   isActive: boolean;
   task: TTask | undefined;
@@ -74,36 +75,77 @@ export const DayPage = () => {
     }
   };
 
+  const lessons: TLesson[] = [
+    {
+      name: "Системы управления базами данных (2 пары)",
+      time: "09:00",
+      audience: 1201,
+      type: "Лаб",
+    },
+    {
+      name: "Проектирование и архитектура программных систем (2 пары)",
+      time: "09:00",
+      audience: 1201,
+      type: "Лаб",
+    },
+    {
+      name: "База данных",
+      time: "09:00",
+      audience: 1201,
+      type: "Лаб",
+    },
+    {
+      name: "База данных",
+      time: "09:00",
+      audience: 1201,
+      type: "Лаб",
+    },
+    {
+      name: "База данных",
+      time: "09:00",
+      audience: 1201,
+      type: "Лаб",
+    },
+  ];
   return (
-    <PageWrapper >
-      <div>
-        <TaskPageHeader
-          month={month}
-          dayOfWeek={dayOfWeek}
-          dayOfMonth={dayOfMonth}
-          priorityList={priorityList}
-        />
-        <AddTask
-          title={"Добавить задачу"}
-          fontSize={15}
-          onAddTask={openModalToCreateNewTaskHandler}
-        />
-        <TaskList
-          tasks={tasks}
-          deleteTaskHandler={deleteTaskHandler}
-          toggleTaskHandler={toggleTaskHandler}
-          openModalToChangeTaskHandler={openModalToChangeTaskHandler}
-        />
+    <PageWrapper>
+      <div className={cl.wrapper}>
+        <div className={cl.header}>
+          <TaskPageHeader
+            month={month}
+            dayOfWeek={dayOfWeek}
+            dayOfMonth={dayOfMonth}
+            priorityList={priorityList}
+          />
+        </div>
+        <div className={cl.tasksAndLessons}>
+          <div className={cl.taskPart}>
+            <AddTask
+              title={"Добавить задачу"}
+              fontSize={15}
+              onAddTask={openModalToCreateNewTaskHandler}
+            />
+            <TaskList
+              tasks={tasks}
+              deleteTaskHandler={deleteTaskHandler}
+              toggleTaskHandler={toggleTaskHandler}
+              openModalToChangeTaskHandler={openModalToChangeTaskHandler}
+            />
+          </div>
+          <div className={cl.schedulePart}>
+            {lessons.map((lesson) => (
+              <Lesson lesson={lesson} />
+            ))}
+          </div>
+        </div>
       </div>
-      <div>
-        <TaskParametrs
-          activeDay={activeDate}
-          user_id={1}
-          task={modalParams.task}
-          isActive={modalParams.isActive}
-          onClose={closeModalParamsHandler}
-        />
-      </div>
+      <TaskParametrs
+        activeDay={activeDate}
+        user_id={1}
+        task={modalParams.task}
+        isActive={modalParams.isActive}
+        onClose={closeModalParamsHandler}
+      />
     </PageWrapper>
   );
 };

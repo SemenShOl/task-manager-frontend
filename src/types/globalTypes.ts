@@ -17,6 +17,13 @@ export type TTask = {
   priority: "low" | "medium" | "high";
 };
 
+export type TLesson = {
+  time: string;
+  name: string;
+  audience: number;
+  type: string;
+};
+
 export type TNewNote = {
   title: string;
   text: string;
