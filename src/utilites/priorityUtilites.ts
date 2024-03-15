@@ -1,10 +1,10 @@
 //Ф-ия берет массив дней с задачами из БД и проверяет, есть ли переданный день (day) в этом списке, если да, создает для этого дня  priorityList
 import colors from "../styles/colors.module.scss";
-import { TMomentDay } from "../types/globalTypes";
+import { TMomentDay, TOption } from "../types/globalTypes";
 
-export type TViewOfPriority = {
+export type TViewOfPriority = TOption & {
   key: TPriorityType;
-  title: string;
+  // title: string;
   color: string;
 };
 export type TViewOfPriorityList = {
@@ -15,11 +15,11 @@ export type TViewOfPriorityList = {
 
 export type TPriorityType = "low" | "medium" | "high";
 
-export const priorities: TViewOfPriorityList = {
-  low: { key: "low", title: "Низкий", color: colors.cPriority },
-  medium: { key: "medium", title: "Средний", color: colors.bPriority },
-  high: { key: "high", title: "Высокий", color: colors.aPriority },
-};
+export const priorities: TViewOfPriority[] = [
+  { key: "low", title: "Низкий", color: colors.cPriority },
+  { key: "medium", title: "Средний", color: colors.bPriority },
+  { key: "high", title: "Высокий", color: colors.aPriority },
+];
 
 export type TPriorityList = {
   high: number;

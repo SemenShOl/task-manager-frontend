@@ -8,6 +8,7 @@ import {
   userLogout,
 } from "../../redux/slices/currentUser";
 import { useNavigate } from "react-router-dom";
+import { Dropdown } from "../../components";
 
 export const ProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -56,17 +57,12 @@ export const ProfilePage = () => {
     navigate("/login");
   };
   return (
-    <PageWrapper >
+    <PageWrapper>
       <div className={cl.wrapper}>
         <div className={cl.window}>
           <div>
-            <p>Ваш логин:</p>
-            <Input
-              value={login}
-              onInputChange={loginChangeHandler}
-              placeholder="login"
-              ref={loginRef}
-            />
+            <p>Ваш логин: </p>
+            {login}
           </div>
           <div>
             <p>Ваш пароль:</p>
@@ -77,6 +73,7 @@ export const ProfilePage = () => {
               ref={passwordRef}
             />
           </div>
+
           <Button onClick={logoutHandler} className={cl.submit}>
             Выйти из профиля
           </Button>

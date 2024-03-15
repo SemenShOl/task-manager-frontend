@@ -15,6 +15,7 @@ import { TPriorityList } from "../../utilites/priorityUtilites";
 import { PageWrapper } from "../../wrappers";
 import { TaskList } from "../../components/TaskList/TaskList";
 import { Lesson } from "../../components/Lesson/Lesson";
+import { TStudySchedule, fetchStudySchedule } from "../../redux/slices/study";
 type TModalParamsTask = {
   isActive: boolean;
   task: TTask | undefined;
@@ -24,6 +25,9 @@ export const DayPage = () => {
   console.log("day page rerenders");
   useCheckAuth();
   const tasks: TTask[] = useAppSelector((state) => state.tasks.items);
+  const schedule: TStudySchedule[] = useAppSelector(
+    (state) => state.study.studySchedule
+  );
   const activeDate = useParams().date || "";
 
   const priorityList: TPriorityList = { low: 0, medium: 0, high: 0 };
@@ -35,6 +39,7 @@ export const DayPage = () => {
 
   useEffect(() => {
     dispatch(fetchGetTasksForDeadline(activeDate));
+    dispatch(fetchStudySchedule({ groupName: "ПИН-36", activeDate }));
   }, [activeDate]);
 
   const { dayOfMonth, dayOfWeek, month } = getDayInfo(activeDate);
@@ -82,6 +87,7 @@ export const DayPage = () => {
       audience: 1201,
       type: "Лаб",
     },
+
     {
       name: "Проектирование и архитектура программных систем (2 пары)",
       time: "09:00",
@@ -107,6 +113,7 @@ export const DayPage = () => {
       type: "Лаб",
     },
   ];
+  console.log(schedule);
   return (
     <PageWrapper>
       <div className={cl.wrapper}>
@@ -132,11 +139,13 @@ export const DayPage = () => {
               openModalToChangeTaskHandler={openModalToChangeTaskHandler}
             />
           </div>
-          <div className={cl.schedulePart}>
-            {lessons.map((lesson) => (
-              <Lesson lesson={lesson} />
-            ))}
-          </div>
+          {!!schedule.length ? (
+            <div className={cl.schedulePart}>
+              {schedule.map((lesson) => (
+                <Lesson lesson={lesson} />
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
       <TaskParametrs

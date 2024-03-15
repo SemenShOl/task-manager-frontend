@@ -33,3 +33,7 @@ export type TNote = {
   title: string;
   text: string;
 };
+
+export type TOption = {
+  title: string;
+};

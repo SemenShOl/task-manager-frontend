@@ -8,6 +8,10 @@
     font-size: 18px;
     line-height: 25px;
     margin-right: 20px;
+    width: 60px;
+    height: auto;
+    white-space: wrap;
+    word-wrap: break-word;
   }
   .info {
     line-height: 25px;
@@ -22,7 +26,7 @@
     .audience {
       color: white;
       background-color: $right;
-
+      white-space: nowrap;
       padding: 2px 8px;
     }
   }

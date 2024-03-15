@@ -2,9 +2,10 @@ import React, { FC } from "react";
 import cl from "./LessonList.module.scss";
 import { TLesson } from "../../types/globalTypes";
 import { Lesson } from "../Lesson/Lesson";
+import { TStudySchedule } from "../../redux/slices/study";
 
 type LessonListProps = {
-  lessons: TLesson[];
+  lessons: TStudySchedule[];
 };
 
 const LessonList: FC<LessonListProps> = ({ lessons }) => {

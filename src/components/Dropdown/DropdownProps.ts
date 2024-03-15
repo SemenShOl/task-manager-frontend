@@ -8,7 +8,7 @@ import {
 export type DropdownProps = {
   isOpen: boolean;
   setIsOpen: Function;
-  options: TViewOfPriorityList;
+  options: TViewOfPriority[];
   chosenOption: TViewOfPriority;
   setChosenOption: (option: TPriorityType) => void;
 };
