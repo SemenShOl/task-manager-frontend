@@ -15,12 +15,23 @@ export type TViewOfPriorityList = {
 
 export type TPriorityType = "low" | "medium" | "high";
 
-export const priorities: TViewOfPriority[] = [
-  { key: "low", title: "Низкий", color: colors.cPriority },
-  { key: "medium", title: "Средний", color: colors.bPriority },
-  { key: "high", title: "Высокий", color: colors.aPriority },
-];
+// export const priorities: TViewOfPriorityList = {
+//   low: { key: "low", title: "Низкий", color: colors.cPriority },
+//   medium: { key: "medium", title: "Средний", color: colors.bPriority },
+//   high: { key: "high", title: "Высокий", color: colors.aPriority },
+// };
 
+// export const priorities: TPriorityOption = [
+//   { key: "low", title: "Низкий", color: colors.cPriority },
+//   { key: "medium", title: "Средний", color: colors.bPriority },
+//   { key: "high", title: "Высокий", color: colors.aPriority },
+// ];
+
+export const priorities = new Map<TPriorityType, TPriorityOption>([
+  ["low", { key: "low", title: "Низкий", color: colors.cPriority }],
+  ["medium", { key: "medium", title: "Средний", color: colors.bPriority }],
+  ["high", { key: "high", title: "Высокий", color: colors.aPriority }],
+]);
 export type TPriorityList = {
   high: number;
   medium: number;
@@ -48,3 +59,7 @@ export const findCertainBusyDay = (
 };
 
 // export const;
+export interface TPriorityOption extends TOption {
+  color: string;
+  key: TPriorityType;
+}

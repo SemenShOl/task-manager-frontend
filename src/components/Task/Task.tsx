@@ -48,7 +48,7 @@ export const Task: FC<TaskProps> = ({
           <FaCircle
             className={cl.circle}
             size={16}
-            color={priorities[task.priority].color}
+            color={priorities.get(task.priority)?.color}
           />
           <IoMdMore className={cl.more} onClick={changeTaskHandler} />
           <RxCross2 className={cl.cross} onClick={deleteTaskHandler} />

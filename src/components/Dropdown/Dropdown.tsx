@@ -1,24 +1,20 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import cl from "./Dropdown.module.scss";
 import cn from "classnames";
 import { DropdownOption } from "../DropdownOption/DropdownOption";
 import { MdDone } from "react-icons/md";
 import { FaCaretDown } from "react-icons/fa6";
 import { DropdownProps } from "./DropdownProps";
-// import { TPriorityList, TPriorityType } from "../../utilites/priorityUtilites";
-import {
-  TPriorityType,
-  TViewOfPriority,
-  TViewOfPriorityList,
-} from "../../utilites/priorityUtilites";
 
-export const Dropdown: FC<DropdownProps> = ({
+import { TOption } from "../../types/globalTypes";
+
+export const Dropdown = <T extends string>({
   isOpen,
   setIsOpen,
   options,
   chosenOption,
   setChosenOption,
-}) => {
+}: DropdownProps<T>) => {
   const selectClickHandler = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -26,11 +22,27 @@ export const Dropdown: FC<DropdownProps> = ({
     e.stopPropagation();
   };
 
-  const optionsArray = getOptionsArray(options, chosenOption, setChosenOption);
+  const optionsArray: ReactNode[] = [];
+  options.forEach((value, key) => {
+    optionsArray.push(
+      <li
+        className={
+          chosenOption?.title === value.title
+            ? cn(cl.option, cl.active)
+            : cl.option
+        }
+        onClick={() => setChosenOption(key)}
+      >
+        <DropdownOption option={value as TOption} />
+        <MdDone className={cl.done} />
+      </li>
+    );
+  });
+
   return (
     <div className={cl.dropdown}>
       <div className={cl.select} onClick={selectClickHandler}>
-        <DropdownOption option={chosenOption} />
+        <DropdownOption option={chosenOption as TOption} />
         <FaCaretDown className={isOpen ? cn(cl.caret, cl.rotate) : cl.caret} />
       </div>
       <ul className={isOpen ? cn(cl.menu, cl.open) : cl.menu}>
@@ -39,29 +51,3 @@ export const Dropdown: FC<DropdownProps> = ({
     </div>
   );
 };
-
-function getOptionsArray(
-  options: TViewOfPriorityList,
-  chosenOption: TViewOfPriority,
-  setChosenOption: (option: TPriorityType) => void
-) {
-  const optionsArray = [];
-  for (let key in options) {
-    const typeKey = key as TPriorityType;
-    optionsArray.push(
-      <li
-        className={
-          chosenOption.title === options[typeKey].title
-            ? cn(cl.option, cl.active)
-            : cl.option
-        }
-        onClick={() => setChosenOption(typeKey)}
-      >
-        <DropdownOption option={options[typeKey]} />
-        <MdDone className={cl.done} />
-      </li>
-    );
-  }
-
-  return optionsArray;
-}

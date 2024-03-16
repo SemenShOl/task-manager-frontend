@@ -2,7 +2,11 @@ import { useEffect, useState, FC } from "react";
 import cl from "./TaskParameters.module.scss";
 import { TaskParametrsProps } from "./TaskParametrsProps";
 import { useAppDispatch } from "../../redux/store";
-import { TPriorityType, priorities } from "../../utilites/priorityUtilites";
+import {
+  TPriorityType,
+  TViewOfPriority,
+  priorities,
+} from "../../utilites/priorityUtilites";
 import { TNewTask, TTask } from "../../types/globalTypes";
 import {
   addUpdatedTaskToStore,
@@ -68,6 +72,8 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
     }
   };
 
+  const optionsArray = [];
+
   const headerTitle = task ? "Изменить задачу" : "Создать задачу";
   return (
     <ModalBackgroundWrapper
@@ -103,12 +109,14 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
             onKeyDownClick={closeModalHandler}
           />
 
-          <Dropdown
+          <Dropdown<TPriorityType>
             isOpen={isDropdownOpen}
             setIsOpen={setIsDropdownOpen}
             options={priorities}
-            setChosenOption={setPriority}
-            chosenOption={priorities[priority]}
+            setChosenOption={(optionKey: string) =>
+              setPriority(optionKey as TPriorityType)
+            }
+            chosenOption={priorities.get(priority)}
           />
         </div>
       </ModalContentWrapper>

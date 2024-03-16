@@ -34,6 +34,6 @@ export type TNote = {
   text: string;
 };
 
-export type TOption = {
+export interface TOption {
   title: string;
-};
+}
