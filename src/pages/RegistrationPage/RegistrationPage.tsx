@@ -4,7 +4,7 @@ import { FormInput, SubmitButton } from "../../components/UI";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { fetchUserRegistration } from "../../redux/slices/currentUser";
 import { NavLink, Navigate } from "react-router-dom";
-import { AuthPageWrapper} from "../../wrappers";
+import { AuthPageWrapper } from "../../wrappers";
 
 type TFormLogin = {
   login: string;
@@ -19,7 +19,7 @@ export const RegistrationPage = () => {
 
   const dispatch = useAppDispatch();
   const handleRegistration = (login: string, password: string) => {
-    dispatch(fetchUserRegistration({ login, password }));
+    dispatch(fetchUserRegistration({ login, password, groupName: "ПИН-36" }));
   };
   const errorMessage = useAppSelector(
     (state) => state.user.authInfo.errorMessage
@@ -33,38 +33,36 @@ export const RegistrationPage = () => {
   ) : (
     <AuthPageWrapper>
       <form
-          onSubmit={handleSubmit((data) =>
-            handleRegistration(data.login, data.password)
-          )}
-        >
-          <FormInput
-            className={cl.inp}
-            formObject={register("login", {
-              required: "Пожалуйста, введите уникальный логин",
-            })}
-            placeholder={"login"}
-            errorMessage={errorMessage || errors.login?.message}
-          />
-          <FormInput
-            className={cl.inp}
-            formObject={register("password", {
-              required: "Пожалуйста, введите пароль",
-              minLength: {
-                value: 5,
-                message: "Пароль должен быть больше 4-х символов",
-              },
-            })}
-            placeholder={"password"}
-            errorMessage={errors.password?.message}
-          />
+        onSubmit={handleSubmit((data) =>
+          handleRegistration(data.login, data.password)
+        )}
+      >
+        <FormInput
+          className={cl.inp}
+          formObject={register("login", {
+            required: "Пожалуйста, введите уникальный логин",
+          })}
+          placeholder={"login"}
+          errorMessage={errorMessage || errors.login?.message}
+        />
+        <FormInput
+          className={cl.inp}
+          formObject={register("password", {
+            required: "Пожалуйста, введите пароль",
+            minLength: {
+              value: 5,
+              message: "Пароль должен быть больше 4-х символов",
+            },
+          })}
+          placeholder={"password"}
+          errorMessage={errors.password?.message}
+        />
 
-          <SubmitButton stringValue="Register" className={cl.submit} />
-        </form>
-        <NavLink to="/login" className={cl.notRegisterLink}>
-          Уже есть аккаунт?
-        </NavLink>
+        <SubmitButton stringValue="Register" className={cl.submit} />
+      </form>
+      <NavLink to="/login" className={cl.notRegisterLink}>
+        Уже есть аккаунт?
+      </NavLink>
     </AuthPageWrapper>
-    
-     
   );
 };

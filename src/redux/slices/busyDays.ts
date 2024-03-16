@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "../../axios";
-import { TBusyDay } from "../../utilites/priorityUtilites";
+import { TBusyDay } from "../../types/globalTypes";
 type TTimeRange = {
   from: string;
   to: string;

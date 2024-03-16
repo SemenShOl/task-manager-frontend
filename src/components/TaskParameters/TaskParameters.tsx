@@ -72,8 +72,6 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
     }
   };
 
-  const optionsArray = [];
-
   const headerTitle = task ? "Изменить задачу" : "Создать задачу";
   return (
     <ModalBackgroundWrapper

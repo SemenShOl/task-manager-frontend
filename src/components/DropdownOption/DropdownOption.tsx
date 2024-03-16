@@ -10,7 +10,7 @@ export const DropdownOption: FC<DropDownOptionProps> = ({ option }) => {
       {"color" in option ? (
         <FaCircle color={option?.color as string} size={15} />
       ) : null}
-      <p>{option?.title}</p>
+      <p>{option?.name}</p>
     </div>
   );
 };

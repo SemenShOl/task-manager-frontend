@@ -28,31 +28,29 @@ export const LoginPage = () => {
   ) : (
     <AuthPageWrapper>
       <form
-          onSubmit={handleSubmit((data) =>
-            handleLogin(data.login, data.password)
-          )}
-        >
-          <FormInput
-            formObject={register("login", {
-              required: "Пожалуйста, введите логин",
-            })}
-            placeholder={"login"}
-          />
-          <FormInput
-            formObject={register("password", {
-              required: "Пожалуйста, введите пароль",
-            })}
-            placeholder={"password"}
-            errorMessage={errorMessage}
-          />
+        onSubmit={handleSubmit((data) =>
+          handleLogin(data.login, data.password)
+        )}
+      >
+        <FormInput
+          formObject={register("login", {
+            required: "Пожалуйста, введите логин",
+          })}
+          placeholder={"login"}
+        />
+        <FormInput
+          formObject={register("password", {
+            required: "Пожалуйста, введите пароль",
+          })}
+          placeholder={"password"}
+          errorMessage={errorMessage}
+        />
 
-          <SubmitButton stringValue="Login" className={cl.submit} />
-        </form>
-        <NavLink to="/register" className={cl.notRegisterLink}>
-          Еще не зарегистрированы?
-        </NavLink>
+        <SubmitButton stringValue="Login" className={cl.submit} />
+      </form>
+      <NavLink to="/register" className={cl.notRegisterLink}>
+        Еще не зарегистрированы?
+      </NavLink>
     </AuthPageWrapper>
-      
- 
   );
 };

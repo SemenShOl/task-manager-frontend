@@ -27,7 +27,7 @@ export const Dropdown = <T extends string>({
     optionsArray.push(
       <li
         className={
-          chosenOption?.title === value.title
+          chosenOption?.name === value.name
             ? cn(cl.option, cl.active)
             : cl.option
         }

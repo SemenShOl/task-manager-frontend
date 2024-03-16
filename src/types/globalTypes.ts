@@ -34,6 +34,12 @@ export type TNote = {
   text: string;
 };
 
+export type TBusyDay = {
+  deadline: string;
+  high: number;
+  medium: number;
+  low: number;
+};
 export interface TOption {
-  title: string;
+  name: string;
 }
