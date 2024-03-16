@@ -1,4 +1,4 @@
-@import '../../styles/colors.module.scss';
+@import "../../styles/colors.module.scss";
 
 .dropdown {
   width: 200px;
@@ -49,7 +49,6 @@
       opacity: 1;
       transform: translateY(1);
       pointer-events: all;
-
     }
   }
 
@@ -70,7 +69,6 @@
 
     .done {
       display: none;
-
     }
 
     &.active {

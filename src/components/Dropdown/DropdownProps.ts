@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import {
   TPriorityList,
   TPriorityType,
@@ -8,7 +9,7 @@ import {
 export type DropdownProps = {
   isOpen: boolean;
   setIsOpen: Function;
-  options: TViewOfPriorityList;
-  chosenOption: TViewOfPriority;
+  options: ReactNode[];
+  chosenOption: ReactNode;
   setChosenOption: (option: TPriorityType) => void;
 };

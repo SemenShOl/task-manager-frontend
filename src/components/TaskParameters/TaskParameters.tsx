@@ -2,7 +2,11 @@ import { useEffect, useState, FC } from "react";
 import cl from "./TaskParameters.module.scss";
 import { TaskParametrsProps } from "./TaskParametrsProps";
 import { useAppDispatch } from "../../redux/store";
-import { TPriorityType, priorities } from "../../utilites/priorityUtilites";
+import {
+  TPriorityType,
+  TViewOfPriority,
+  priorities,
+} from "../../utilites/priorityUtilites";
 import { TNewTask, TTask } from "../../types/globalTypes";
 import {
   addUpdatedTaskToStore,
@@ -13,6 +17,7 @@ import { ModalBackgroundWrapper, ModalContentWrapper } from "../../wrappers";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
 import { Input } from "../UI";
 import { Dropdown } from "../Dropdown/Dropdown";
+import { FaCircle } from "react-icons/fa";
 
 export const TaskParametrs: FC<TaskParametrsProps> = ({
   isActive,
@@ -69,6 +74,31 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
   };
 
   const headerTitle = task ? "Изменить задачу" : "Создать задачу";
+
+  const viewOptions: any = [];
+  const [chosenOption, setChosenOption] = useState<TViewOfPriority>(
+    priorities.medium
+  );
+  function changeChosenOption(key: TPriorityType) {
+    setChosenOption(priorities[key]);
+    // setPriority(key);
+  }
+  for (let key in priorities) {
+    const typeKey = key as TPriorityType;
+    viewOptions.push(
+      <li onClick={() => changeChosenOption(typeKey)}>
+        <FaCircle color={priorities[typeKey].color} size={15} />
+        <p>{priorities[typeKey].title}</p>
+      </li>
+    );
+  }
+
+  const viewChosenOption = (
+    <div>
+      <FaCircle color={chosenOption.color} size={15} />
+      // <p>{chosenOption.title}</p>
+    </div>
+  );
   return (
     <ModalBackgroundWrapper
       isActive={isActive}
@@ -106,9 +136,9 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
           <Dropdown
             isOpen={isDropdownOpen}
             setIsOpen={setIsDropdownOpen}
-            options={priorities}
+            options={viewOptions}
             setChosenOption={setPriority}
-            chosenOption={priorities[priority]}
+            chosenOption={viewChosenOption}
           />
         </div>
       </ModalContentWrapper>
