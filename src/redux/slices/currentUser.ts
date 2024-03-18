@@ -19,11 +19,12 @@ export const fetchUserLogin = createAsyncThunk(
     userInfo: TUser
   ): Promise<{ message: string; status: number; userInfo: TUser }> => {
     try {
-      const { data, status } = await axios.post<{ message: string }>(
-        `auth/login`,
-        userInfo
-      );
-      const { message } = data;
+      const { data, status } = await axios.post<{
+        message: string;
+        groupName: string;
+      }>(`auth/login`, userInfo);
+      const { message, groupName } = data;
+      userInfo.groupName = groupName;
       return { message, status, userInfo };
     } catch (error) {
       return { message: "Неверный логин или пароль", status: 401, userInfo };
@@ -77,7 +78,6 @@ const initialState: TUserState = {
     password: "",
     login: "",
     theme: "light",
-    groupName: "ПИН-36",
   },
   isLoading: true,
   authInfo: {

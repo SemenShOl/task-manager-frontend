@@ -21,7 +21,7 @@ export const Dropdown = <T extends string>({
     setIsOpen((previousState: boolean) => !previousState);
     e.stopPropagation();
   };
-
+  // console.log("options: ", options);
   const optionsArray: ReactNode[] = [];
   options.forEach((value, key) => {
     optionsArray.push(
@@ -42,7 +42,9 @@ export const Dropdown = <T extends string>({
   return (
     <div className={cl.dropdown}>
       <div className={cl.select} onClick={selectClickHandler}>
-        <DropdownOption option={chosenOption as TOption} />
+        {chosenOption ? (
+          <DropdownOption option={chosenOption as TOption} />
+        ) : null}
         <FaCaretDown className={isOpen ? cn(cl.caret, cl.rotate) : cl.caret} />
       </div>
       <ul className={isOpen ? cn(cl.menu, cl.open) : cl.menu}>

@@ -9,13 +9,13 @@ import { AddTask, TaskParametrs, TaskPageHeader } from "../../components";
 import { getDayInfo } from "../../utilites/dateUtilites";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { TLesson, TTask } from "../../types/globalTypes";
+import { TTask } from "../../types/globalTypes";
 import { useParams } from "react-router-dom";
 import { TPriorityList } from "../../utilites/priorityUtilites";
 import { PageWrapper } from "../../wrappers";
 import { TaskList } from "../../components/TaskList/TaskList";
 import { Lesson } from "../../components/Lesson/Lesson";
-import { TStudySchedule, fetchStudySchedule } from "../../redux/slices/study";
+import { TLesson, fetchStudyScheduleByDate } from "../../redux/slices/study";
 type TModalParamsTask = {
   isActive: boolean;
   task: TTask | undefined;
@@ -25,8 +25,8 @@ export const DayPage = () => {
   console.log("day page rerenders");
   useCheckAuth();
   const tasks: TTask[] = useAppSelector((state) => state.tasks.items);
-  const schedule: TStudySchedule[] = useAppSelector(
-    (state) => state.study.studySchedule
+  const schedule: TLesson[] = useAppSelector(
+    (state) => state.study.studyScheduleDay
   );
   const activeDate = useParams().date || "";
 
@@ -39,7 +39,12 @@ export const DayPage = () => {
 
   useEffect(() => {
     dispatch(fetchGetTasksForDeadline(activeDate));
-    dispatch(fetchStudySchedule({ groupName: "ПИН-36", activeDate }));
+    dispatch(
+      fetchStudyScheduleByDate({
+        groupName: localStorage.getItem("groupName") || "",
+        activeDate,
+      })
+    );
   }, [activeDate]);
 
   const { dayOfMonth, dayOfWeek, month } = getDayInfo(activeDate);
@@ -80,39 +85,6 @@ export const DayPage = () => {
     }
   };
 
-  const lessons: TLesson[] = [
-    {
-      name: "Системы управления базами данных (2 пары)",
-      time: "09:00",
-      audience: 1201,
-      type: "Лаб",
-    },
-
-    {
-      name: "Проектирование и архитектура программных систем (2 пары)",
-      time: "09:00",
-      audience: 1201,
-      type: "Лаб",
-    },
-    {
-      name: "База данных",
-      time: "09:00",
-      audience: 1201,
-      type: "Лаб",
-    },
-    {
-      name: "База данных",
-      time: "09:00",
-      audience: 1201,
-      type: "Лаб",
-    },
-    {
-      name: "База данных",
-      time: "09:00",
-      audience: 1201,
-      type: "Лаб",
-    },
-  ];
   console.log(schedule);
   return (
     <PageWrapper>
@@ -139,7 +111,7 @@ export const DayPage = () => {
               openModalToChangeTaskHandler={openModalToChangeTaskHandler}
             />
           </div>
-          {!!schedule.length ? (
+          {schedule.length ? (
             <div className={cl.schedulePart}>
               {schedule.map((lesson) => (
                 <Lesson lesson={lesson} />

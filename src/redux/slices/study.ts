@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
 
 type TStudyScheduleParamsForBackend = {
   groupName: string;
@@ -12,12 +11,10 @@ type TStudyGroups = {
   id: string;
   name: string;
 };
-export const fetchStudySchedule = createAsyncThunk(
+export const fetchStudyScheduleByDate = createAsyncThunk(
   "study/fetchStudySchedule",
-  async (
-    groupAndData: TStudyScheduleParamsForBackend
-  ): Promise<TStudySchedule[]> => {
-    const { data } = await axios.get<TStudySchedule[]>(
+  async (groupAndData: TStudyScheduleParamsForBackend): Promise<TLesson[]> => {
+    const { data } = await axios.get<TLesson[]>(
       `http://localhost:3001/study/schedule`,
       {
         params: {
@@ -42,7 +39,24 @@ export const fetchStudyGroups = createAsyncThunk(
   }
 );
 
-export type TStudySchedule = {
+export const fetchStudyWholeSchedule = createAsyncThunk(
+  "study/fetchStudyWholeSchedule",
+  async (from: string): Promise<boolean[]> => {
+    const { data } = await axios.get<boolean[]>(
+      `http://localhost:3001/study/schedule/all`,
+      {
+        params: {
+          groupName: localStorage.getItem("groupName") || "",
+          from,
+        },
+      }
+    );
+
+    return data;
+  }
+);
+
+export type TLesson = {
   day: number;
   name: string;
   type: "Лаб" | "Лек" | "Пр" | "";
@@ -56,36 +70,30 @@ export type TStudySchedule = {
 
 const initialState: {
   isLoading: boolean;
-  studySchedule: TStudySchedule[];
+  studyScheduleDay: TLesson[];
+  studyScheduleWhole: boolean[];
   groups: TStudyGroups[];
-  chosenGroup: TStudyGroups | undefined;
 } = {
   isLoading: true,
-  studySchedule: [],
+  studyScheduleDay: [],
+  studyScheduleWhole: [],
   groups: [],
-  chosenGroup: { id: "1243", name: "ПИН-36" },
 };
 
 const studySlice = createSlice({
   name: "notes",
   initialState,
-  reducers: {
-    changeGroup(state, action: PayloadAction<string>) {
-      state.chosenGroup = state.groups.find(
-        (group) => group.name === action.payload
-      );
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchStudySchedule.pending, (state) => {
+      .addCase(fetchStudyScheduleByDate.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(
-        fetchStudySchedule.fulfilled,
-        (state, action: PayloadAction<TStudySchedule[]>) => {
+        fetchStudyScheduleByDate.fulfilled,
+        (state, action: PayloadAction<TLesson[]>) => {
           state.isLoading = false;
-          state.studySchedule = action.payload;
+          state.studyScheduleDay = action.payload;
         }
       )
       .addCase(fetchStudyGroups.pending, (state) => {
@@ -96,10 +104,20 @@ const studySlice = createSlice({
         state.groups = action.payload.sort((a, b) =>
           a.name > b.name ? 1 : -1
         );
-      });
+      })
+      .addCase(fetchStudyWholeSchedule.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(
+        fetchStudyWholeSchedule.fulfilled,
+        (state, action: PayloadAction<boolean[]>) => {
+          state.isLoading = false;
+          state.studyScheduleWhole = action.payload;
+        }
+      );
   },
 });
 
-export const { changeGroup } = studySlice.actions;
-
+// export const { changeGroup } = studySlice.actions;
+//
 export const studyReducer = studySlice.reducer;

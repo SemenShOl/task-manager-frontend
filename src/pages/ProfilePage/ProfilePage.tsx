@@ -9,7 +9,7 @@ import {
 } from "../../redux/slices/currentUser";
 import { useNavigate } from "react-router-dom";
 import { Dropdown } from "../../components";
-import { changeGroup, fetchStudyGroups } from "../../redux/slices/study";
+import { fetchStudyGroups } from "../../redux/slices/study";
 import { TOption } from "../../types/globalTypes";
 
 export const ProfilePage = () => {
@@ -23,7 +23,10 @@ export const ProfilePage = () => {
   );
 
   const { groups } = useAppSelector((state) => state.study);
-  const groupName = useAppSelector((state) => state.user.userInfo.groupName);
+  // const groupName = useAppSelector((state) => state.user.userInfo.groupName);
+  const [groupName, setGroupName] = useState<string>(
+    localStorage.getItem("groupName") || ""
+  );
   const loginRef = useRef<string>();
   const passwordRef = useRef<string>();
   const navigate = useNavigate();
@@ -43,7 +46,7 @@ export const ProfilePage = () => {
             fetchUserChangeData({
               login: loginRef.current || "",
               password: passwordRef.current || "",
-              groupName: groupName || "ПИН-36",
+              // groupName: localStorage.getItem("groupName") || "ПИН-36",
             })
           );
       }
@@ -65,16 +68,18 @@ export const ProfilePage = () => {
     dispatch(userLogout());
     navigate("/login");
   };
-
   const groupOptions = new Map(groups.map(({ id, name }) => [id, { name }]));
-  let chosenOption;
-  for (let key in groupOptions) {
-    if (groupName === groupOptions.get(key)?.name) {
-      chosenOption = groupOptions.get(key);
-      break;
-    }
-  }
+  const [chosenOption, setChosenOption] = useState<TOption>();
 
+  useEffect(() => {
+    groupOptions.forEach((value, key) => {
+      if (groupName === value.name) {
+        setChosenOption(value);
+      }
+    });
+  }, [groups]);
+
+  console.log("profile page rerenders: ", chosenOption);
   return (
     <PageWrapper onClick={() => setIsDropdownOpen(false)}>
       <div className={cl.wrapper}>
@@ -102,15 +107,21 @@ export const ProfilePage = () => {
                 options={groupOptions}
                 setIsOpen={setIsDropdownOpen}
                 chosenOption={chosenOption}
-                setChosenOption={(optionKey: string) =>
+                setChosenOption={(optionKey: string) => {
+                  console.log(optionKey);
                   dispatch(
                     fetchUserChangeData({
                       login: login,
                       password: password,
                       groupName: groupOptions.get(optionKey)?.name || "",
                     })
-                  )
-                }
+                  );
+                  localStorage.setItem(
+                    "groupName",
+                    groupOptions.get(optionKey)?.name || ""
+                  );
+                  setChosenOption(groupOptions.get(optionKey));
+                }}
               />
             </div>
           </div>
