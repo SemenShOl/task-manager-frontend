@@ -15,7 +15,8 @@ import { TPriorityList } from "../../utilites/priorityUtilites";
 import { PageWrapper } from "../../wrappers";
 import { TaskList } from "../../components/TaskList/TaskList";
 import { Lesson } from "../../components/Lesson/Lesson";
-import { TLesson, fetchStudyScheduleByDate } from "../../redux/slices/study";
+import { TLesson, fetchGetLessonsForDate } from "../../redux/slices/study";
+import { useTheme } from "../../hooks/useTheme";
 type TModalParamsTask = {
   isActive: boolean;
   task: TTask | undefined;
@@ -23,6 +24,8 @@ type TModalParamsTask = {
 
 export const DayPage = () => {
   console.log("day page rerenders");
+  const { theme, setTheme } = useTheme();
+
   useCheckAuth();
   const tasks: TTask[] = useAppSelector((state) => state.tasks.items);
   const schedule: TLesson[] = useAppSelector(
@@ -39,12 +42,7 @@ export const DayPage = () => {
 
   useEffect(() => {
     dispatch(fetchGetTasksForDeadline(activeDate));
-    dispatch(
-      fetchStudyScheduleByDate({
-        groupName: localStorage.getItem("groupName") || "",
-        activeDate,
-      })
-    );
+    dispatch(fetchGetLessonsForDate(activeDate));
   }, [activeDate]);
 
   const { dayOfMonth, dayOfWeek, month } = getDayInfo(activeDate);
@@ -55,6 +53,7 @@ export const DayPage = () => {
 
   const toggleTaskHandler = (id: number) => {
     dispatch(fetchToggleTask(id));
+    setTheme("light");
   };
 
   const [modalParams, setModalParams] = useState({

@@ -37,6 +37,14 @@ $cPriority: rgb(50, 141, 67);
 
 $attentionRed: rgb(205, 60, 60);
 
+body[data-theme="light"] {
+  $left: #6aa0a2;
+
+  $lightLeft: rgb(156, 194, 198);
+
+  $right: #ff00aa;
+}
+
 :export {
   black: $black;
   black2: $black2;

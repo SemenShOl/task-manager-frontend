@@ -34,7 +34,6 @@ export const CalendarCell: FC<CalendarCellProps> = ({
     >
       <PriorityList priorityList={priorityList} size={60} />
       <div className={cl.dayNumber}>{thisCellDay.date()}</div>
-      {/* <div className={cl.info}>Нет пар</div> */}
       {isStudyDay ? (
         <LuBookMarked className={cl.workIcon} />
       ) : (

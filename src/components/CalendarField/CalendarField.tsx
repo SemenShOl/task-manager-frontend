@@ -6,8 +6,7 @@ import { createCalendar } from "../../utilites/dateUtilites";
 import { findCertainBusyDay } from "../../utilites/priorityUtilites";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { CalendarFieldProps } from "./CalendarFieldProps";
-import { fetchStudyWholeSchedule } from "../../redux/slices/study";
-// import {  } from "../../redux/slices/study";
+import { fetchGetScheduleForCurrent42Days } from "../../redux/slices/study";
 
 export const CalendarField: FC<CalendarFieldProps> = ({
   startDay,
@@ -17,7 +16,9 @@ export const CalendarField: FC<CalendarFieldProps> = ({
 
   const dispatch = useAppDispatch();
   const busyDays = useAppSelector((state) => state.busyDays.items);
-  const studyDays = useAppSelector((state) => state.study.studyScheduleWhole);
+  const studyDays = useAppSelector(
+    (state) => state.study.scheduleForCurrent42Days
+  );
   console.log(studyDays);
   useEffect(() => {
     dispatch(
@@ -26,8 +27,7 @@ export const CalendarField: FC<CalendarFieldProps> = ({
         to: calendar[41].format("YYYY-MM-DD"),
       })
     );
-    dispatch(fetchStudyWholeSchedule(startDay.format("YYYY-MM-DD")));
-    // dispatch();
+    dispatch(fetchGetScheduleForCurrent42Days(startDay.format("YYYY-MM-DD")));
   }, [startDay]);
 
   return (

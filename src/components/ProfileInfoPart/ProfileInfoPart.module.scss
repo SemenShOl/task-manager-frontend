@@ -1,0 +1,17 @@
+.infoPart {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  .info {
+    font-size: 30px;
+    width: 150px;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    width: 150px;
+  }
+}

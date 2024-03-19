@@ -1,4 +1,4 @@
-@import "../../styles/colors.module.scss";
+@import "../../../styles/colors.module.scss";
 
 .dropdown {
   width: 100%;
@@ -38,8 +38,8 @@
   }
 
   .menu {
-    overflow-y: scroll;
-    height: 200px;
+    overflow-y: auto;
+    max-height: 200px;
     display: block;
     padding: 0.2em 3px;
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
@@ -59,33 +59,42 @@
       transform: translateY(1);
       pointer-events: all;
     }
+    .optionWrapper {
+      color: $middleGrey;
+      padding: 0.7em 5px;
+      margin: 0.3em 0;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: white;
+      &:hover {
+        background: $lightback;
+        color: white;
+      }
+
+      .done {
+        display: none;
+      }
+
+      &.active {
+        .done {
+          display: block;
+          color: $right;
+          font-size: 15px;
+        }
+      }
+    }
   }
 
   .option {
-    color: $middleGrey;
-    padding: 0.7em 5px;
-    margin: 0.3em 0;
-    border-radius: 8px;
-    cursor: pointer;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    &:hover {
-      background: $lightback;
-      color: white;
-    }
-
-    .done {
-      display: none;
-    }
-
-    &.active {
-      .done {
-        display: block;
-        color: $right;
-        font-size: 15px;
-      }
+    justify-content: start;
+    p {
+      margin-left: 10px;
     }
   }
 }

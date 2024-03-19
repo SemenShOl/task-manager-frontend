@@ -1,14 +1,14 @@
 import { FC, ReactNode } from "react";
 import cl from "./Dropdown.module.scss";
 import cn from "classnames";
-import { DropdownOption } from "../DropdownOption/DropdownOption";
 import { MdDone } from "react-icons/md";
-import { FaCaretDown } from "react-icons/fa6";
+import { FaCaretDown, FaCircle } from "react-icons/fa6";
 import { DropdownProps } from "./DropdownProps";
-
-import { TOption } from "../../types/globalTypes";
+import { TOption } from "../../../types/globalTypes";
+// import { DropdownOption } from "../DropdownOption/DropdownOption";
 
 export const Dropdown = <T extends string>({
+  style,
   isOpen,
   setIsOpen,
   options,
@@ -21,15 +21,14 @@ export const Dropdown = <T extends string>({
     setIsOpen((previousState: boolean) => !previousState);
     e.stopPropagation();
   };
-  // console.log("options: ", options);
   const optionsArray: ReactNode[] = [];
   options.forEach((value, key) => {
     optionsArray.push(
       <li
         className={
           chosenOption?.name === value.name
-            ? cn(cl.option, cl.active)
-            : cl.option
+            ? cn(cl.optionWrapper, cl.active)
+            : cl.optionWrapper
         }
         onClick={() => setChosenOption(key)}
       >
@@ -40,7 +39,7 @@ export const Dropdown = <T extends string>({
   });
 
   return (
-    <div className={cl.dropdown}>
+    <div className={cl.dropdown} style={style}>
       <div className={cl.select} onClick={selectClickHandler}>
         {chosenOption ? (
           <DropdownOption option={chosenOption as TOption} />
@@ -50,6 +49,17 @@ export const Dropdown = <T extends string>({
       <ul className={isOpen ? cn(cl.menu, cl.open) : cl.menu}>
         {optionsArray}
       </ul>
+    </div>
+  );
+};
+
+const DropdownOption = ({ option }: { option: TOption }) => {
+  return (
+    <div className={cl.option}>
+      {"color" in option ? (
+        <FaCircle color={option?.color as string} size={15} />
+      ) : null}
+      <p>{option?.name}</p>
     </div>
   );
 };

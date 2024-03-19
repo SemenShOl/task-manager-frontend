@@ -1,6 +1,8 @@
-import { TOption } from "../../types/globalTypes";
+import { CSSProperties } from "react";
+import { TOption } from "../../../types/globalTypes";
 
 export type DropdownProps<T> = {
+  style?: CSSProperties;
   isOpen: boolean;
   setIsOpen: Function;
   options: Map<T, TOption>;

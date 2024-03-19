@@ -1,5 +1,5 @@
 @import "../../styles/colors.module.scss";
-
+@import "../../styles/theme.css";
 .wrapper {
   position: relative;
   overflow-y: hidden;
@@ -20,7 +20,7 @@
       flex: 3;
 
       box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
-      color: $right;
+      color: var(--right);
       position: sticky;
       top: 30px;
       right: 0px;

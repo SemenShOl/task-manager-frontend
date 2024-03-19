@@ -2,24 +2,19 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-type TStudyScheduleParamsForBackend = {
-  groupName: string;
-  activeDate: string;
-};
-
 type TStudyGroups = {
   id: string;
   name: string;
 };
-export const fetchStudyScheduleByDate = createAsyncThunk(
-  "study/fetchStudySchedule",
-  async (groupAndData: TStudyScheduleParamsForBackend): Promise<TLesson[]> => {
+export const fetchGetLessonsForDate = createAsyncThunk(
+  "study/fetchGetLessonsForDate",
+  async (activeDate: string): Promise<TLesson[]> => {
     const { data } = await axios.get<TLesson[]>(
       `http://localhost:3001/study/schedule`,
       {
         params: {
-          groupName: groupAndData.groupName,
-          activeDate: groupAndData.activeDate,
+          groupName: localStorage.getItem("groupName") || "",
+          activeDate,
         },
       }
     );
@@ -28,8 +23,8 @@ export const fetchStudyScheduleByDate = createAsyncThunk(
   }
 );
 
-export const fetchStudyGroups = createAsyncThunk(
-  "study/fetchStudyGroups",
+export const fetchGetStudyGroups = createAsyncThunk(
+  "study/fetchGetStudyGroups",
   async (): Promise<TStudyGroups[]> => {
     const { data } = await axios.get<TStudyGroups[]>(
       `http://localhost:3001/study/groups`
@@ -39,8 +34,8 @@ export const fetchStudyGroups = createAsyncThunk(
   }
 );
 
-export const fetchStudyWholeSchedule = createAsyncThunk(
-  "study/fetchStudyWholeSchedule",
+export const fetchGetScheduleForCurrent42Days = createAsyncThunk(
+  "study/fetchGetScheduleForCurrent42Days",
   async (from: string): Promise<boolean[]> => {
     const { data } = await axios.get<boolean[]>(
       `http://localhost:3001/study/schedule/all`,
@@ -71,12 +66,12 @@ export type TLesson = {
 const initialState: {
   isLoading: boolean;
   studyScheduleDay: TLesson[];
-  studyScheduleWhole: boolean[];
+  scheduleForCurrent42Days: boolean[];
   groups: TStudyGroups[];
 } = {
   isLoading: true,
   studyScheduleDay: [],
-  studyScheduleWhole: [],
+  scheduleForCurrent42Days: [],
   groups: [],
 };
 
@@ -86,33 +81,33 @@ const studySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchStudyScheduleByDate.pending, (state) => {
+      .addCase(fetchGetLessonsForDate.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(
-        fetchStudyScheduleByDate.fulfilled,
+        fetchGetLessonsForDate.fulfilled,
         (state, action: PayloadAction<TLesson[]>) => {
           state.isLoading = false;
           state.studyScheduleDay = action.payload;
         }
       )
-      .addCase(fetchStudyGroups.pending, (state) => {
+      .addCase(fetchGetStudyGroups.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchStudyGroups.fulfilled, (state, action) => {
+      .addCase(fetchGetStudyGroups.fulfilled, (state, action) => {
         state.isLoading = false;
         state.groups = action.payload.sort((a, b) =>
           a.name > b.name ? 1 : -1
         );
       })
-      .addCase(fetchStudyWholeSchedule.pending, (state) => {
+      .addCase(fetchGetScheduleForCurrent42Days.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(
-        fetchStudyWholeSchedule.fulfilled,
+        fetchGetScheduleForCurrent42Days.fulfilled,
         (state, action: PayloadAction<boolean[]>) => {
           state.isLoading = false;
-          state.studyScheduleWhole = action.payload;
+          state.scheduleForCurrent42Days = action.payload;
         }
       );
   },

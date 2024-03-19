@@ -2,11 +2,7 @@ import { useEffect, useState, FC } from "react";
 import cl from "./TaskParameters.module.scss";
 import { TaskParametrsProps } from "./TaskParametrsProps";
 import { useAppDispatch } from "../../redux/store";
-import {
-  TPriorityType,
-  TViewOfPriority,
-  priorities,
-} from "../../utilites/priorityUtilites";
+import { TPriorityType, priorities } from "../../utilites/priorityUtilites";
 import { TNewTask, TTask } from "../../types/globalTypes";
 import {
   addUpdatedTaskToStore,
@@ -15,8 +11,7 @@ import {
 } from "../../redux/slices/tasks";
 import { ModalBackgroundWrapper, ModalContentWrapper } from "../../wrappers";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
-import { Input } from "../UI";
-import { Dropdown } from "../Dropdown/Dropdown";
+import { Input, Dropdown } from "../UI";
 
 export const TaskParametrs: FC<TaskParametrsProps> = ({
   isActive,
@@ -106,8 +101,8 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
             placeholder={"Описание"}
             onKeyDownClick={closeModalHandler}
           />
-
           <Dropdown<TPriorityType>
+            style={{ width: "200px" }}
             isOpen={isDropdownOpen}
             setIsOpen={setIsDropdownOpen}
             options={priorities}
