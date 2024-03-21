@@ -2,7 +2,6 @@
 @import "../../styles/theme.css";
 @import "../../styles/media.module.scss";
 .wrapper {
-  // background-color: red;
   position: relative;
   overflow-y: hidden;
   width: 100%;
@@ -68,7 +67,7 @@
     width: 90%;
     .header {
       margin-bottom: 20px;
-      background-color: rgb(140, 199, 46);
+      // background-color: rgb(140, 199, 46);
     }
     .tasksAndLessons {
       width: 100%;
@@ -98,7 +97,6 @@
       .schedulePart {
         width: 100%;
         right: 0px;
-
         > div {
           margin-bottom: 10px;
         }

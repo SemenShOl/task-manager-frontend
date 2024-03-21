@@ -1,4 +1,5 @@
 @import "../../../styles/colors.module.scss";
+@import "../../../styles/media.module.scss";
 
 .input {
   width: 100%;
@@ -12,5 +13,12 @@
   :active {
     outline: none;
     border: none;
+  }
+}
+
+@media (max-width: 470px) {
+  .input {
+    width: 100%;
+    font-size: 20px;
   }
 }

@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { PageWrapper } from "../../wrappers";
 import { fetchDeleteNote, fetchGetAllNotes } from "../../redux/slices/notes";
 import { TNote } from "../../types/globalTypes";
-import { useTheme } from "../../hooks/useTheme";
 export const NotesPage = () => {
   type TModalParamsNote = {
     isActive: boolean;

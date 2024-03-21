@@ -27,10 +27,15 @@
 
 @include sm {
   .wrapper {
-    padding: 0px 10px;
-    padding-top: 100px;
+    padding: 100px 0 0 20px;
     .notesList {
       // background-color: blue;
+    }
+
+    .addBtn {
+      margin: 0;
+      bottom: 30px;
+      right: 20px;
     }
   }
 }
