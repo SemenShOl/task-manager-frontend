@@ -1,9 +1,10 @@
 @import "../../styles/colors.module.scss";
+@import "../../styles/media.module.scss";
+
 .lesson {
   display: flex;
   font-size: 15px;
   align-items: start;
-  margin-bottom: 20px;
   .time {
     font-size: 18px;
     line-height: 25px;
@@ -28,6 +29,24 @@
       background-color: $right;
       white-space: nowrap;
       padding: 2px 8px;
+    }
+  }
+}
+
+@include md {
+  .lesson {
+    .time {
+      margin-right: 10px;
+    }
+  }
+}
+@include xsm {
+  .lesson {
+    font-size: 12px;
+
+    .time {
+      font-size: 14px;
+      margin-right: 5px;
     }
   }
 }

@@ -46,7 +46,6 @@ export const fetchGetScheduleForCurrent42Days = createAsyncThunk(
         },
       }
     );
-
     return data;
   }
 );
@@ -96,6 +95,11 @@ const studySlice = createSlice({
       })
       .addCase(fetchGetStudyGroups.fulfilled, (state, action) => {
         state.isLoading = false;
+        console.log("что блять");
+        console.log(
+          "fsdfsdfsdf:",
+          action.payload.find((el) => el.name == "ПИН-44")
+        );
         state.groups = action.payload.sort((a, b) =>
           a.name > b.name ? 1 : -1
         );

@@ -1,26 +1,38 @@
+@import "../../styles/media.module.scss";
 .modalBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .3s ease-in-out;
-    pointer-events: all;
-    backdrop-filter: blur(2px);
-    z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  padding-left: 18%;
+  background-color: rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  pointer-events: all;
+  backdrop-filter: blur(2px);
+  z-index: 20;
 }
 
 .unActiveBackground {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(0, 0, 0, 0);
-    pointer-events: none;
-    backdrop-filter: unset;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0);
+  pointer-events: none;
+  backdrop-filter: unset;
+}
 
+@include md {
+  .modalBackground {
+    padding-left: 5%;
+  }
+}
 
+@include sm {
+  .modalBackground {
+    padding: 60px 0 0 0;
+  }
 }

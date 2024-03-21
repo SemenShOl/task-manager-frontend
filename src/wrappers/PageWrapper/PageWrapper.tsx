@@ -10,7 +10,9 @@ export const PageWrapper: FC<PageWrapperProps> = ({ children, onClick }) => {
   useCheckAuth();
   return (
     <div className={cl.wrapper} onClick={onClick}>
-      <NavBar />
+      <div className={cl.navBarBody}>
+        <NavBar />
+      </div>
       <div className={cl.pageContent}>{children}</div>
     </div>
   );

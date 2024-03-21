@@ -1,58 +1,96 @@
 @import "../../styles/colors.module.scss";
+@import "../../styles/media.module.scss";
 
+// @use "../../styles/media.module.scss" as m;
 .wrapper {
-    // width: 230px;
-    height: 40px;
-    background-color: rgb(255, 255, 255);
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
+  cursor: pointer;
+  padding: 0 12px;
+  border-radius: 50px;
+  margin-bottom: 25px;
+  z-index: 10;
+  color: $right;
+
+  .titleAndIcon {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
-    cursor: pointer;
-    padding: 0 12px;
-    border-radius: 50px;
-    margin-bottom: 25px;
-    z-index: 10;
-    color: $right;
 
+    &:hover {
+      > p {
+        color: $right;
+      }
 
-    .titleAndIcon {
-        display: flex;
-        align-items: center;
-
-        &:hover {
-            >p {
-                color: $right
-            }
-
-            .noteIcon {
-                svg {
-                    font-size: 18px;
-                }
-            }
+      .noteIcon {
+        svg {
+          font-size: 18px;
         }
-
-        .noteIcon {
-            position: relative;
-            width: 30px;
-            margin-right: 10px;
-            display: flex;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease-in;
-
-            svg {
-                font-size: 16px;
-            }
-        }
-
-        .tilte {
-            color: $right;
-            width: 130px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+      }
     }
 
+    .noteIcon {
+      position: relative;
+      width: 30px;
+      margin-right: 10px;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease-in;
+
+      svg {
+        font-size: 16px;
+      }
+    }
+
+    .tilte {
+      color: $right;
+      width: 130px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+@include xl {
+  .wrapper {
+    width: 190px;
+    .titleAndIcon {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        > p {
+          color: $right;
+        }
+      }
+
+      .tilte {
+        width: 100px;
+      }
+    }
+  }
+}
+@include sm {
+  .wrapper {
+    width: 180px;
+    .titleAndIcon {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        > p {
+          color: $right;
+        }
+      }
+
+      .tilte {
+        width: 80px;
+      }
+    }
+  }
 }

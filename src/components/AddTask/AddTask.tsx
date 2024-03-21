@@ -8,8 +8,8 @@ export const AddTask: FC<AddTaskProps> = ({ title, fontSize, onAddTask }) => {
   return (
     <div className={cl.wrapper} onClick={onAddTask}>
       <div className={cl.addIcon}>
-        <IoMdAdd size={20} className={cl.plus} />
-        <FaCircle size={26} className={cl.circle} />
+        <IoMdAdd className={cl.plus} />
+        <FaCircle className={cl.circle} />
       </div>
 
       <p style={{ fontSize: fontSize }}>{title}</p>

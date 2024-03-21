@@ -16,3 +16,5 @@ export { Note } from "./Note/Note";
 export { NotesParametrs } from "./NotesParametrs/NotesParametrs";
 export { NoteMenuButtons } from "./NoteMenuButtons/NoteMenuButtons";
 export { ProfileInfoPart } from "./ProfileInfoPart/ProfileInfoPart";
+export { Lesson } from "./Lesson/Lesson";
+export { TaskList } from "./TaskList/TaskList";

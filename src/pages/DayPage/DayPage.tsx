@@ -5,7 +5,13 @@ import {
   fetchGetTasksForDeadline,
   fetchToggleTask,
 } from "../../redux/slices/tasks";
-import { AddTask, TaskParametrs, TaskPageHeader } from "../../components";
+import {
+  AddTask,
+  TaskParametrs,
+  TaskPageHeader,
+  Lesson,
+  TaskList,
+} from "../../components";
 import { getDayInfo } from "../../utilites/dateUtilites";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
@@ -13,10 +19,7 @@ import { TTask } from "../../types/globalTypes";
 import { useParams } from "react-router-dom";
 import { TPriorityList } from "../../utilites/priorityUtilites";
 import { PageWrapper } from "../../wrappers";
-import { TaskList } from "../../components/TaskList/TaskList";
-import { Lesson } from "../../components/Lesson/Lesson";
 import { TLesson, fetchGetLessonsForDate } from "../../redux/slices/study";
-import { useTheme } from "../../hooks/useTheme";
 type TModalParamsTask = {
   isActive: boolean;
   task: TTask | undefined;
@@ -24,7 +27,6 @@ type TModalParamsTask = {
 
 export const DayPage = () => {
   console.log("day page rerenders");
-  const { theme, setTheme } = useTheme();
 
   useCheckAuth();
   const tasks: TTask[] = useAppSelector((state) => state.tasks.items);
@@ -53,7 +55,6 @@ export const DayPage = () => {
 
   const toggleTaskHandler = (id: number) => {
     dispatch(fetchToggleTask(id));
-    setTheme("light");
   };
 
   const [modalParams, setModalParams] = useState({
