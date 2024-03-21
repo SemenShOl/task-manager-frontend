@@ -1,8 +1,9 @@
-.priorityList {
-    padding-top: 2px;
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: space-between;
+@import "../../styles/media.module.scss";
 
+.priorityList {
+  padding-top: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
 }

@@ -2,7 +2,7 @@
 @import "../../styles/theme.css";
 @import "../../styles/media.module.scss";
 .wrapper {
-  background-color: red;
+  // background-color: red;
   position: relative;
   overflow-y: hidden;
   width: 100%;
@@ -19,7 +19,7 @@
     .taskPart {
       flex: 4;
       // width: 57%;
-      background-color: aqua;
+      // background-color: aqua;
     }
     .schedulePart {
       flex: 3;
@@ -59,13 +59,12 @@
 @include xl {
   .wrapper {
     width: 100%;
-    // margin: 0 auto;
-    // margin-left: -10%;
   }
 }
 
 @include md2 {
   .wrapper {
+    overflow-x: hidden;
     width: 90%;
     .header {
       margin-bottom: 20px;
@@ -83,6 +82,18 @@
 
         flex: 4;
         order: 2;
+
+        .addButton {
+          position: fixed;
+          bottom: 30px;
+          z-index: 20;
+          right: 20px;
+          background-color: red;
+          height: 0px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
       .schedulePart {
         width: 100%;
@@ -92,6 +103,15 @@
           margin-bottom: 10px;
         }
       }
+    }
+  }
+}
+
+@include sm {
+  .wrapper {
+    .header {
+      margin-top: 70px;
+      margin-bottom: 20px;
     }
   }
 }

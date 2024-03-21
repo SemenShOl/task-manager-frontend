@@ -8,6 +8,7 @@
   align-items: center;
   width: 100%;
   cursor: pointer;
+  // background-color: aquamarine;
   overflow: hidden;
 
   .checkAndTitle {
@@ -18,7 +19,7 @@
     gap: 15px;
 
     .title {
-      background-color: green;
+      // background-color: green;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 15px;
       color: $right;
@@ -75,5 +76,11 @@
         width: 150px;
       }
     }
+  }
+}
+
+@include sm {
+  .taskBody {
+    padding: 10px 20px 10px 0;
   }
 }

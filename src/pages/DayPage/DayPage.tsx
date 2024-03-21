@@ -99,11 +99,13 @@ export const DayPage = () => {
         </div>
         <div className={cl.tasksAndLessons}>
           <div className={cl.taskPart}>
-            <AddTask
-              title={"Добавить задачу"}
-              fontSize={15}
-              onAddTask={openModalToCreateNewTaskHandler}
-            />
+            <div className={cl.addButton}>
+              <AddTask
+                title={"Добавить задачу"}
+                fontSize={15}
+                onAddTask={openModalToCreateNewTaskHandler}
+              />
+            </div>
             <TaskList
               tasks={tasks}
               deleteTaskHandler={deleteTaskHandler}
