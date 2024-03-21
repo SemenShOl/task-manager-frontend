@@ -9,15 +9,12 @@ type TStudyGroups = {
 export const fetchGetLessonsForDate = createAsyncThunk(
   "study/fetchGetLessonsForDate",
   async (activeDate: string): Promise<TLesson[]> => {
-    const { data } = await axios.get<TLesson[]>(
-      `http://localhost:3001/study/schedule`,
-      {
-        params: {
-          groupName: localStorage.getItem("groupName") || "",
-          activeDate,
-        },
-      }
-    );
+    const { data } = await axios.get<TLesson[]>(`/study/schedule`, {
+      params: {
+        groupName: localStorage.getItem("groupName") || "",
+        activeDate,
+      },
+    });
 
     return data;
   }
@@ -26,9 +23,7 @@ export const fetchGetLessonsForDate = createAsyncThunk(
 export const fetchGetStudyGroups = createAsyncThunk(
   "study/fetchGetStudyGroups",
   async (): Promise<TStudyGroups[]> => {
-    const { data } = await axios.get<TStudyGroups[]>(
-      `http://localhost:3001/study/groups`
-    );
+    const { data } = await axios.get<TStudyGroups[]>(`/study/groups`);
 
     return data;
   }
@@ -37,15 +32,12 @@ export const fetchGetStudyGroups = createAsyncThunk(
 export const fetchGetScheduleForCurrent42Days = createAsyncThunk(
   "study/fetchGetScheduleForCurrent42Days",
   async (from: string): Promise<boolean[]> => {
-    const { data } = await axios.get<boolean[]>(
-      `http://localhost:3001/study/schedule/all`,
-      {
-        params: {
-          groupName: localStorage.getItem("groupName") || "",
-          from,
-        },
-      }
-    );
+    const { data } = await axios.get<boolean[]>(`/study/schedule/all`, {
+      params: {
+        groupName: localStorage.getItem("groupName") || "",
+        from,
+      },
+    });
     return data;
   }
 );
@@ -95,11 +87,7 @@ const studySlice = createSlice({
       })
       .addCase(fetchGetStudyGroups.fulfilled, (state, action) => {
         state.isLoading = false;
-        console.log("что блять");
-        console.log(
-          "fsdfsdfsdf:",
-          action.payload.find((el) => el.name == "ПИН-44")
-        );
+
         state.groups = action.payload.sort((a, b) =>
           a.name > b.name ? 1 : -1
         );
