@@ -1,61 +1,96 @@
 @import "../../styles/colors.module.scss";
+@import "../../styles/media.module.scss";
 
 .wrapper {
-    width: 860px;
-    height: 50px;
-    background-color: rgb(255, 255, 255);
+  position: sticky;
+  top: 10px;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
+  cursor: pointer;
+  padding: 20px 12px;
+  border-radius: 10px;
+  position: sticky;
+  top: 30px;
+  margin-bottom: 25px;
+  z-index: 10;
+  color: $right;
+
+  &:hover {
+    .addIcon {
+      .plus {
+        color: white;
+      }
+
+      .circle {
+        color: $right;
+      }
+    }
+  }
+
+  .addIcon {
+    position: relative;
+    width: 30px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+
+    .plus {
+      font-size: 20px;
+      position: relative;
+      margin-top: 2.9px;
+      margin-left: 0.8px;
+      z-index: 20;
+      transition: all 0.4s ease-in-out;
+      color: $right;
+    }
+
+    .circle {
+      font-size: 26px;
+
+      position: absolute;
+      color: white;
+      transition: all 0.4s ease-in-out;
+    }
+  }
+
+  > p {
+    margin-top: 4.9px;
+    color: $right;
+  }
+}
+
+@include sm {
+  .wrapper {
+    position: static;
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    padding: 0;
     display: flex;
     align-items: center;
-    box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
-    cursor: pointer;
-    padding: 20px 12px;
-    border-radius: 10px;
-    position: sticky;
-    top: 30px;
-    margin-bottom: 25px;
-    z-index: 10;
-    color: $right;
-
-    &:hover {
-        .addIcon {
-            .plus {
-                color: white;
-            }
-
-            .circle {
-                color: $right;
-            }
-        }
-    }
+    justify-content: center;
 
     .addIcon {
-        position: relative;
-        width: 30px;
-        margin-right: 10px;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.4s ease-in-out;
-
-        .plus {
-            position: relative;
-            margin-top: 2.9px;
-            margin-left: 0.8px;
-            z-index: 20;
-            transition: all 0.4s ease-in-out;
-            color: $right;
+      margin: 0;
+      .circle {
+        display: none;
+      }
+      .plus {
+        margin: 0;
+        font-size: 35px;
+        &:hover {
+          color: $right;
         }
-
-        .circle {
-            position: absolute;
-            color: white;
-            transition: all 0.4s ease-in-out;
-        }
-
+      }
     }
-
-    >p {
-        margin-top: 4.9px;
-        color: $right
+    > p {
+      display: none;
     }
+  }
 }

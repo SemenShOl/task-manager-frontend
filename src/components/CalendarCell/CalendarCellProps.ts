@@ -4,4 +4,5 @@ export type CalendarCellProps = {
   priorityList: TPriorityList;
   thisCellDay: TMomentDay;
   activeDay: TMomentDay;
+  isStudyDay: boolean;
 };

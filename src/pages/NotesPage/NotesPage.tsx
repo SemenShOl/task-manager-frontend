@@ -11,6 +11,7 @@ export const NotesPage = () => {
     isActive: boolean;
     note: TNote | undefined;
   };
+
   useCheckAuth();
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -40,6 +41,7 @@ export const NotesPage = () => {
       isActive: true,
       note: undefined,
     });
+    // setTheme('')
   };
 
   const openModalToChangeNoteHandler = (note: TNote) => {
@@ -52,7 +54,7 @@ export const NotesPage = () => {
     }
   };
   return (
-    <PageWrapper >
+    <PageWrapper>
       <div className={cl.wrapper}>
         <div className={cl.notesList}>
           {notes.map((note) => (

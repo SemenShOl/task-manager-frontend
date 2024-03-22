@@ -47,7 +47,8 @@ export const createCalendar = (startDay: TMomentDay): TMomentDay[] => {
 
 export const getCalendarCellDayInfo = (
   thisCellDay: TMomentDay,
-  activeDay: TMomentDay
+  activeDay: TMomentDay,
+  isStudyDay: boolean
 ) => {
   const isWeeknd =
     thisCellDay.day() === 6 || thisCellDay.day() === 0 ? "weeknd" : "";
@@ -59,10 +60,12 @@ export const getCalendarCellDayInfo = (
     activeDay.format("MMMM") === thisCellDay.format("MMMM")
       ? ""
       : "unActiveMonth";
+  const isFreeFromStudy = isStudyDay ? " " : "freeFromStudy";
   return {
     isWeeknd,
     isCurrentDay,
     isActiveMonth,
+    isFreeFromStudy,
   };
 };
 

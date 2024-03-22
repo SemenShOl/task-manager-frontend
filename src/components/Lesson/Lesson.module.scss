@@ -1,0 +1,52 @@
+@import "../../styles/colors.module.scss";
+@import "../../styles/media.module.scss";
+
+.lesson {
+  display: flex;
+  font-size: 15px;
+  align-items: start;
+  .time {
+    font-size: 18px;
+    line-height: 25px;
+    margin-right: 20px;
+    width: 60px;
+    height: auto;
+    white-space: wrap;
+    word-wrap: break-word;
+  }
+  .info {
+    line-height: 25px;
+    span {
+      margin-right: 15px;
+    }
+    .type {
+      // background-color: $left;
+      color: white;
+      padding: 2px 8px;
+    }
+    .audience {
+      color: white;
+      background-color: $right;
+      white-space: nowrap;
+      padding: 2px 8px;
+    }
+  }
+}
+
+@include md {
+  .lesson {
+    .time {
+      margin-right: 10px;
+    }
+  }
+}
+@include xsm {
+  .lesson {
+    font-size: 12px;
+
+    .time {
+      font-size: 14px;
+      margin-right: 5px;
+    }
+  }
+}

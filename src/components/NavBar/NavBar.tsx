@@ -17,17 +17,16 @@ export const NavBar = () => {
       </NavLink>
       <div className={cl.pages}>
         <NavLink to="/notes">
-          <FaNoteSticky /> Конспекты
+          <FaNoteSticky /> <p>Конспекты</p>
         </NavLink>
         <NavLink to="/">
-          <IoCalendarNumber /> Календарь
+          <IoCalendarNumber /> <p>Календарь</p>
         </NavLink>
-
         <NavLink to={`/${today}`}>
-          <MdCalendarToday /> Сегодня
+          <MdCalendarToday /> <p>Сегодня</p>
         </NavLink>
         <NavLink to={`/${tomorrow}`}>
-          <MdOutlineCalendarToday /> Завтра
+          <MdOutlineCalendarToday /> <p>Завтра</p>
         </NavLink>
       </div>
     </div>

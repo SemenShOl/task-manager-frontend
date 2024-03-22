@@ -1,10 +1,10 @@
 //Ф-ия берет массив дней с задачами из БД и проверяет, есть ли переданный день (day) в этом списке, если да, создает для этого дня  priorityList
 import colors from "../styles/colors.module.scss";
-import { TMomentDay } from "../types/globalTypes";
+import { TBusyDay, TMomentDay, TOption } from "../types/globalTypes";
 
-export type TViewOfPriority = {
+export type TViewOfPriority = TOption & {
   key: TPriorityType;
-  title: string;
+  // title: string;
   color: string;
 };
 export type TViewOfPriorityList = {
@@ -15,19 +15,12 @@ export type TViewOfPriorityList = {
 
 export type TPriorityType = "low" | "medium" | "high";
 
-export const priorities: TViewOfPriorityList = {
-  low: { key: "low", title: "Низкий", color: colors.cPriority },
-  medium: { key: "medium", title: "Средний", color: colors.bPriority },
-  high: { key: "high", title: "Высокий", color: colors.aPriority },
-};
-
+export const priorities = new Map<TPriorityType, TPriorityOption>([
+  ["low", { key: "low", name: "Низкий", color: colors.cPriority }],
+  ["medium", { key: "medium", name: "Средний", color: colors.bPriority }],
+  ["high", { key: "high", name: "Высокий", color: colors.aPriority }],
+]);
 export type TPriorityList = {
-  high: number;
-  medium: number;
-  low: number;
-};
-export type TBusyDay = {
-  deadline: string;
   high: number;
   medium: number;
   low: number;
@@ -48,3 +41,7 @@ export const findCertainBusyDay = (
 };
 
 // export const;
+export interface TPriorityOption extends TOption {
+  color: string;
+  key: TPriorityType;
+}

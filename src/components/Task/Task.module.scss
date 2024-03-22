@@ -1,76 +1,86 @@
 @import "../../styles/colors.module.scss";
-
+@import "../../styles/media.module.scss";
 .taskBody {
-    padding: 10px 20px;
-    position: relative;
+  padding: 10px 20px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  // background-color: aquamarine;
+  overflow: hidden;
+
+  .checkAndTitle {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-    width: 100%;
-    cursor: pointer;
-    overflow: hidden;
+    justify-content: center;
+    gap: 15px;
 
+    .title {
+      // background-color: green;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      color: $right;
+      padding: 0;
+      width: 220px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &.completed {
+    opacity: 0.45;
+  }
+
+  .changeAndDelete {
+    display: flex;
+    gap: 10px;
+
+    .cross {
+      color: $right;
+      font-size: 18px;
+      transition: all 0.1s ease-in-out;
+      text-align: center;
+      transform: scale(1);
+
+      &:hover {
+        transition: all 0.1s ease-in-out;
+        color: $left;
+        transform: scale(1.15);
+      }
+    }
+
+    .more {
+      color: $right;
+      font-size: 18px;
+      transition: all 0.1s ease-in-out;
+      text-align: center;
+      transform: scale(1);
+
+      &:hover {
+        transition: all 0.1s ease-in-out;
+        color: $left;
+        transform: scale(1.15);
+      }
+    }
+  }
+}
+
+@include xxl {
+  .taskBody {
     .checkAndTitle {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-
-        .title {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 15px;
-            color: $right;
-            padding: 0;
-            width: 250px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+      .title {
+        width: 150px;
+      }
     }
+  }
+}
 
-    &.completed {
-        opacity: 0.45;
-
-    }
-
-    .changeAndDelete {
-        display: flex;
-        gap: 10px;
-
-        .cross {
-            color: $right;
-            font-size: 18px;
-            transition: all .1s ease-in-out;
-            text-align: center;
-            transform: scale(1);
-
-            &:hover {
-                transition: all .1s ease-in-out;
-                color: $left;
-                transform: scale(1.15);
-
-            }
-        }
-
-        .more {
-            color: $right;
-            font-size: 18px;
-            transition: all .1s ease-in-out;
-            text-align: center;
-            transform: scale(1);
-
-            &:hover {
-                transition: all .1s ease-in-out;
-                color: $left;
-                transform: scale(1.15);
-
-            }
-        }
-
-
-    }
-
-
-
+@include sm {
+  .taskBody {
+    padding: 10px 20px 10px 0;
+  }
 }

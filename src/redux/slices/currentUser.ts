@@ -2,14 +2,16 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-const savePasswordAndLogin = (login: string, password: string) => {
+const saveUserInfo = (login: string, password: string, groupName: string) => {
   localStorage.setItem("password", password);
   localStorage.setItem("login", login);
+  localStorage.setItem("groupName", groupName);
 };
 
-const deletePasswordAndLogin = () => {
+const deleteUserInfo = () => {
   localStorage.removeItem("password");
   localStorage.removeItem("login");
+  localStorage.removeItem("groupName");
 };
 export const fetchUserLogin = createAsyncThunk(
   "user/fetchUserLogin",
@@ -17,11 +19,12 @@ export const fetchUserLogin = createAsyncThunk(
     userInfo: TUser
   ): Promise<{ message: string; status: number; userInfo: TUser }> => {
     try {
-      const { data, status } = await axios.post<{ message: string }>(
-        `auth/login`,
-        userInfo
-      );
-      const { message } = data;
+      const { data, status } = await axios.post<{
+        message: string;
+        groupName: string;
+      }>(`auth/login`, userInfo);
+      const { message, groupName } = data;
+      userInfo.groupName = groupName;
       return { message, status, userInfo };
     } catch (error) {
       return { message: "Неверный логин или пароль", status: 401, userInfo };
@@ -50,6 +53,7 @@ export const fetchUserRegistration = createAsyncThunk(
 export const fetchUserChangeData = createAsyncThunk(
   "user/fetchUserChangeData",
   async (userInfo: TUser): Promise<TUser> => {
+    console.log(userInfo);
     await axios.put(`auth/new_data`, userInfo);
     return userInfo;
   }
@@ -58,6 +62,7 @@ type TUser = {
   password: string;
   login: string;
   theme?: "light" | "dark";
+  groupName?: string;
 };
 type TUserState = {
   userInfo: TUser;
@@ -87,7 +92,7 @@ const userSlice = createSlice({
   reducers: {
     userLogout(state) {
       localStorage.removeItem("token");
-      deletePasswordAndLogin();
+      deleteUserInfo();
       state.authInfo.isAuth = false;
       state.authInfo.errorMessage = "";
     },
@@ -112,9 +117,10 @@ const userSlice = createSlice({
           if (action.payload.status === 200) {
             localStorage.setItem("token", action.payload.message);
             state.authInfo.isAuth = true;
-            savePasswordAndLogin(
+            saveUserInfo(
               action.payload.userInfo.login,
-              action.payload.userInfo.password
+              action.payload.userInfo.password,
+              action.payload.userInfo.groupName as string
             );
           } else {
             state.authInfo.errorMessage = action.payload.message;
@@ -140,9 +146,10 @@ const userSlice = createSlice({
           if (action.payload.status === 201) {
             localStorage.setItem("token", action.payload.message);
             state.authInfo.isAuth = true;
-            savePasswordAndLogin(
+            saveUserInfo(
               action.payload.userInfo.login,
-              action.payload.userInfo.password
+              action.payload.userInfo.password,
+              "ПИН-36"
             );
           } else {
             state.authInfo.errorMessage = action.payload.message;
@@ -159,7 +166,11 @@ const userSlice = createSlice({
           state.isLoading = false;
           state.userInfo = action.payload;
           console.log("action.payload: ", action.payload);
-          savePasswordAndLogin(action.payload.login, action.payload.password);
+          saveUserInfo(
+            action.payload.login,
+            action.payload.password,
+            action.payload.groupName as string
+          );
         }
       );
   },

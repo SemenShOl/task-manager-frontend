@@ -1,25 +1,41 @@
+@import "../../styles/colors.module.scss";
+@import "../../styles/media.module.scss";
+
 .wrapper {
-    margin: 0 auto;
-    width: 1000px;
-    padding: 0px 70px;
-    height: 100%;
+  margin: 0 auto;
+  width: 1000px;
+  padding: 0px 70px;
+  height: 100%;
 
+  .notesList {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 230px));
+    gap: 10px;
+
+    > div {
+      margin-bottom: 15px;
+    }
+  }
+
+  .addBtn {
+    position: fixed;
+    bottom: 55px;
+    right: 55px;
+  }
+}
+
+@include sm {
+  .wrapper {
+    padding: 100px 0 0 20px;
     .notesList {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 230px));
-        gap: 10px;
-
-        >div {
-            margin-bottom: 15px;
-        }
-
+      // background-color: blue;
     }
 
     .addBtn {
-        position: fixed;
-        bottom: 55px;
-        right: 55px;
+      margin: 0;
+      bottom: 30px;
+      right: 20px;
     }
-
+  }
 }

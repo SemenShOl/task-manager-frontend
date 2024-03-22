@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
-// import cl from "./DayPage.module.scss";
+import cl from "./DayPage.module.scss";
 import {
   fetchDeleteTask,
   fetchGetTasksForDeadline,
   fetchToggleTask,
 } from "../../redux/slices/tasks";
-import { AddTask, TaskParametrs, TaskPageHeader } from "../../components";
+import {
+  AddTask,
+  TaskParametrs,
+  TaskPageHeader,
+  Lesson,
+  TaskList,
+} from "../../components";
 import { getDayInfo } from "../../utilites/dateUtilites";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
@@ -13,7 +19,7 @@ import { TTask } from "../../types/globalTypes";
 import { useParams } from "react-router-dom";
 import { TPriorityList } from "../../utilites/priorityUtilites";
 import { PageWrapper } from "../../wrappers";
-import { TaskList } from "../../components/TaskList/TaskList";
+import { TLesson, fetchGetLessonsForDate } from "../../redux/slices/study";
 type TModalParamsTask = {
   isActive: boolean;
   task: TTask | undefined;
@@ -21,8 +27,12 @@ type TModalParamsTask = {
 
 export const DayPage = () => {
   console.log("day page rerenders");
+
   useCheckAuth();
   const tasks: TTask[] = useAppSelector((state) => state.tasks.items);
+  const schedule: TLesson[] = useAppSelector(
+    (state) => state.study.studyScheduleDay
+  );
   const activeDate = useParams().date || "";
 
   const priorityList: TPriorityList = { low: 0, medium: 0, high: 0 };
@@ -34,6 +44,7 @@ export const DayPage = () => {
 
   useEffect(() => {
     dispatch(fetchGetTasksForDeadline(activeDate));
+    dispatch(fetchGetLessonsForDate(activeDate));
   }, [activeDate]);
 
   const { dayOfMonth, dayOfWeek, month } = getDayInfo(activeDate);
@@ -74,36 +85,50 @@ export const DayPage = () => {
     }
   };
 
+  console.log(schedule);
   return (
-    <PageWrapper >
-      <div>
-        <TaskPageHeader
-          month={month}
-          dayOfWeek={dayOfWeek}
-          dayOfMonth={dayOfMonth}
-          priorityList={priorityList}
-        />
-        <AddTask
-          title={"Добавить задачу"}
-          fontSize={15}
-          onAddTask={openModalToCreateNewTaskHandler}
-        />
-        <TaskList
-          tasks={tasks}
-          deleteTaskHandler={deleteTaskHandler}
-          toggleTaskHandler={toggleTaskHandler}
-          openModalToChangeTaskHandler={openModalToChangeTaskHandler}
-        />
+    <PageWrapper>
+      <div className={cl.wrapper}>
+        <div className={cl.header}>
+          <TaskPageHeader
+            month={month}
+            dayOfWeek={dayOfWeek}
+            dayOfMonth={dayOfMonth}
+            priorityList={priorityList}
+          />
+        </div>
+        <div className={cl.tasksAndLessons}>
+          <div className={cl.taskPart}>
+            <div className={cl.addButton}>
+              <AddTask
+                title={"Добавить задачу"}
+                fontSize={15}
+                onAddTask={openModalToCreateNewTaskHandler}
+              />
+            </div>
+            <TaskList
+              tasks={tasks}
+              deleteTaskHandler={deleteTaskHandler}
+              toggleTaskHandler={toggleTaskHandler}
+              openModalToChangeTaskHandler={openModalToChangeTaskHandler}
+            />
+          </div>
+          {schedule.length ? (
+            <div className={cl.schedulePart}>
+              {schedule.map((lesson) => (
+                <Lesson lesson={lesson} />
+              ))}
+            </div>
+          ) : null}
+        </div>
       </div>
-      <div>
-        <TaskParametrs
-          activeDay={activeDate}
-          user_id={1}
-          task={modalParams.task}
-          isActive={modalParams.isActive}
-          onClose={closeModalParamsHandler}
-        />
-      </div>
+      <TaskParametrs
+        activeDay={activeDate}
+        user_id={1}
+        task={modalParams.task}
+        isActive={modalParams.isActive}
+        onClose={closeModalParamsHandler}
+      />
     </PageWrapper>
   );
 };

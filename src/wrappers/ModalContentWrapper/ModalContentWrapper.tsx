@@ -13,7 +13,7 @@ export const ModalContentWrapper: FC<ModalContentWrapperProps> = ({
   return (
     <div
       className={isActive ? cl.contentWindow : cl.unActiveContentWindow}
-      style={style}
+      // style={style}
       onClick={(e) => e.stopPropagation()}
     >
       {children}

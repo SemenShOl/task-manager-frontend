@@ -1,0 +1,123 @@
+@import "../../../styles/colors.module.scss";
+@import "../../../styles/media.module.scss";
+
+.dropdown {
+  width: 100%;
+  position: relative;
+  font-size: 15px;
+  color: $middleGrey;
+
+  .select {
+    box-shadow: 2px 5px 10px -2px rgba(34, 60, 80, 0.1);
+    position: relative;
+    width: 100%;
+    color: $middleGrey;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 0.5em;
+    padding: 8px 4%;
+    transition: background-color 0.3s;
+    margin-bottom: 6px;
+
+    &:hover {
+      background: $lightback;
+    }
+
+    .caret {
+      position: absolute;
+      right: 4%;
+      font-size: 18px;
+      color: $middleGrey;
+      transition: 0.3s ease-in-out;
+
+      &.rotate {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .menu {
+    overflow-y: auto;
+    max-height: 200px;
+    display: block;
+    padding: 0.2em 3px;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    z-index: 1;
+    pointer-events: none;
+
+    &.open {
+      opacity: 1;
+      transform: translateY(1);
+      pointer-events: all;
+    }
+    .optionWrapper {
+      color: $middleGrey;
+      padding: 0.7em 5px;
+      margin: 0.3em 0;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: white;
+      &:hover {
+        background: $lightback;
+        color: white;
+      }
+
+      .done {
+        display: none;
+      }
+
+      &.active {
+        .done {
+          display: block;
+          color: $right;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  .option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    p {
+      margin-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 470px) {
+  .dropdown {
+    font-size: 14px;
+  }
+
+  .select {
+    .catet {
+      font-size: 10px;
+    }
+  }
+
+  .menu {
+    .optionWrapper {
+      &.active {
+        .done {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

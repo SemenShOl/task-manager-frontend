@@ -10,17 +10,17 @@ export const PriorityList: FC<PriorityListProps> = ({ priorityList, size }) => {
       <PriorityCell
         size={size}
         numberOfTasks={priorityList.high}
-        color={priorities.high.color}
+        color={priorities.get("high")?.color || ""}
       />
       <PriorityCell
         size={size}
         numberOfTasks={priorityList.medium}
-        color={priorities.medium.color}
+        color={priorities.get("medium")?.color || ""}
       />
       <PriorityCell
         size={size}
         numberOfTasks={priorityList.low}
-        color={priorities.low.color}
+        color={priorities.get("low")?.color || ""}
       />
     </div>
   );

@@ -1,23 +1,63 @@
 @import "../../styles/colors.module.scss";
-
+@import "../../styles/media.module.scss";
 
 .wrapper {
+  overflow-y: auto;
+  // background-color: aqua;
+  width: 100%;
+  min-height: 100%;
+  background-image: url("../../imgs/back.jpg");
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  .navBarBody {
+    position: static;
+    min-width: 200px;
+    width: 15%;
+    height: 100vh;
+    // background-color: yellow;
+    margin-right: 0;
+  }
+  .pageContent {
+    // background-color: blue;
+    position: static;
     width: 100%;
-    min-height: 100%;
-    background-image: url("../../imgs/back2.jpg");
-    background-position: 0%;
-    background-size: cover;
     display: flex;
-    justify-content: space-between;
-
+    justify-content: center;
+    align-items: center;
+    padding: 30px 100px;
+    height: 100%;
+    overflow-x: hidden;
+  }
+}
+@include xxl {
+  .wrapper {
     .pageContent {
-        // margin: 0 auto;
-        margin-left: 200px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        padding: 30px;
+      // margin-left: 150px;
+      padding: 30px 80px;
     }
+  }
+}
+@include xl {
+  .wrapper {
+    .pageContent {
+      // margin-left: 150px;
+      padding: 30px 40px;
+    }
+  }
+}
 
-
+@include sm {
+  .wrapper {
+    .navBarBody {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+    }
+    .pageContent {
+      padding: 10px 5px 10px 5px;
+    }
+  }
 }

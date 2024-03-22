@@ -13,19 +13,17 @@ $green: #55ff7f;
 $greenHover: #359f4e;
 
 $blue: #3030ad;
-$purple: #9578d3;
-$purple2: #8466c5;
-$white: #fbfbfb;
+$purple: #bdb8c9;
+$purple2: #ff7260;
+$white: #ffffff;
 $maindark: #353535;
 $left: #6aa0a2;
 
 $lightLeft: rgb(156, 194, 198);
 
+$right: #284b63;
 
-$right: #284B63;
-
-
-$lightback: #D9D9D9;
+$lightback: #d9d9d9;
 $ligtestback: rgb(245, 245, 245);
 
 $backgroundBlack: rgb(43, 43, 43);
@@ -33,32 +31,39 @@ $morethanmiddleGrey: rgb(57, 57, 57);
 $middleGrey: rgb(106, 106, 106);
 $lightGrey: rgb(217, 217, 217);
 
-
 $aPriority: rgb(147, 62, 62);
 $bPriority: rgb(165, 146, 47);
 $cPriority: rgb(50, 141, 67);
 
 $attentionRed: rgb(205, 60, 60);
 
+body[data-theme="light"] {
+  $left: #6aa0a2;
+
+  $lightLeft: rgb(156, 194, 198);
+
+  $right: #ff00aa;
+}
+
 :export {
-    black: $black;
-    black2: $black2;
-    black3: $black3;
-    aPriority: $aPriority;
-    bPriority: $bPriority;
-    cPriority: $cPriority;
-    right: $right;
-    grey: $grey;
-    whiteGrey: $whiteGrey;
-    white: $white;
+  black: $black;
+  black2: $black2;
+  black3: $black3;
+  aPriority: $aPriority;
+  bPriority: $bPriority;
+  cPriority: $cPriority;
+  right: $right;
+  grey: $grey;
+  whiteGrey: $whiteGrey;
+  white: $white;
 
-    red: $red;
-    redHover: $redHover;
+  red: $red;
+  redHover: $redHover;
 
-    green: $green;
-    greenHover: $greenHover;
+  green: $green;
+  greenHover: $greenHover;
 
-    blue: $blue;
-    purple: $purple;
-    purple2: $purple2;
+  blue: $blue;
+  purple: $purple;
+  purple2: $purple2;
 }

@@ -11,8 +11,7 @@ import {
 } from "../../redux/slices/tasks";
 import { ModalBackgroundWrapper, ModalContentWrapper } from "../../wrappers";
 import { ModalHeader } from "../ModalHeader/ModalHeader";
-import { Input } from "../UI";
-import { Dropdown } from "../Dropdown/Dropdown";
+import { Input, Dropdown } from "../UI";
 
 export const TaskParametrs: FC<TaskParametrsProps> = ({
   isActive,
@@ -102,13 +101,15 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
             placeholder={"Описание"}
             onKeyDownClick={closeModalHandler}
           />
-
-          <Dropdown
+          <Dropdown<TPriorityType>
+            style={{ width: "200px" }}
             isOpen={isDropdownOpen}
             setIsOpen={setIsDropdownOpen}
             options={priorities}
-            setChosenOption={setPriority}
-            chosenOption={priorities[priority]}
+            setChosenOption={(optionKey: string) =>
+              setPriority(optionKey as TPriorityType)
+            }
+            chosenOption={priorities.get(priority)}
           />
         </div>
       </ModalContentWrapper>

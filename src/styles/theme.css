@@ -1,0 +1,9 @@
+body[data-theme="light"] {
+  --left: #6aa0a2;
+  --right: #ff00aa;
+}
+
+body[data-theme="dark"] {
+  --left: #00f7ff;
+  --right: #51ff00;
+}

@@ -1,7 +1,6 @@
 export { PriorityList } from "./PriorityList/PriorityList";
 export { DropdownOption } from "./DropdownOption/DropdownOption";
 export { AddTask } from "./AddTask/AddTask";
-export { Dropdown } from "./Dropdown/Dropdown";
 export { ModalHeader } from "./ModalHeader/ModalHeader";
 export { CalendarField } from "./CalendarField/CalendarField";
 export { CalendarHeader } from "./CalendarHeader/CalendarHeader";
@@ -16,3 +15,6 @@ export { AddNote } from "./AddNote/AddNote";
 export { Note } from "./Note/Note";
 export { NotesParametrs } from "./NotesParametrs/NotesParametrs";
 export { NoteMenuButtons } from "./NoteMenuButtons/NoteMenuButtons";
+export { ProfileInfoPart } from "./ProfileInfoPart/ProfileInfoPart";
+export { Lesson } from "./Lesson/Lesson";
+export { TaskList } from "./TaskList/TaskList";

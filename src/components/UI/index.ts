@@ -4,3 +4,4 @@ export { Input } from "./Input/Input";
 export { ToggleButton } from "./ToggleButton/ToggleButton";
 export { FormInput } from "./FormInput/FormInput";
 export { SubmitButton } from "./SubmitButton/SubmitButton";
+export { Dropdown } from "./Dropdown/Dropdown";
