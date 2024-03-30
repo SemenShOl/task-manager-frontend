@@ -72,7 +72,7 @@ export const getCalendarCellDayInfo = (
 export const getDayInfo = (activeDate: string) => {
   const dateDate = new Date(activeDate);
   const dayOfWeek = shortDaysOfWeekinRussian[dateDate.getDay()];
-  const month = monthsInRussian[dateDate.getMonth()];
+  const month = monthsInRussian[(dateDate.getMonth() + 1) % 12];
   const dayOfMonth = dateDate.getDate();
   return {
     dayOfMonth,
