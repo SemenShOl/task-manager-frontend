@@ -3,7 +3,7 @@ import cl from "./ModalContentWrapper.module.scss";
 type ModalContentWrapperProps = {
   children: ReactNode;
   isActive: boolean;
-  style: CSSProperties;
+  style?: CSSProperties;
 };
 export const ModalContentWrapper: FC<ModalContentWrapperProps> = ({
   children,

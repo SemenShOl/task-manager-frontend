@@ -75,7 +75,7 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
     >
       <ModalContentWrapper
         isActive={isActive}
-        style={{ width: "35%", height: "55%" }}
+        // style={{ width: "35%", height: "55%" }}
       >
         <ModalHeader
           title={headerTitle}
