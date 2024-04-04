@@ -7,13 +7,15 @@ import { IoMdMore } from "react-icons/io";
 import { FaCircle } from "react-icons/fa";
 import { priorities } from "../../utilites/priorityUtilites";
 import { TaskProps } from "./TaskProps";
-
+import { motion } from "framer-motion";
+import { listVariants } from "../../styles/animations";
 export const Task: FC<TaskProps> = ({
   task,
   id,
   onToggleTask,
   onDeleteTask,
   onChangeTask,
+  index,
 }) => {
   const deleteTaskHandler = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     e.stopPropagation();
@@ -28,7 +30,13 @@ export const Task: FC<TaskProps> = ({
     onToggleTask(id);
   };
   return (
-    <div className={cl.wrapper}>
+    <motion.div
+      className={cl.wrapper}
+      variants={listVariants}
+      initial="hidden"
+      animate="visible"
+      custom={index}
+    >
       <div
         className={
           task.is_completed ? cn(cl.taskBody, cl.completed) : cl.taskBody
@@ -54,6 +62,6 @@ export const Task: FC<TaskProps> = ({
           <RxCross2 className={cl.cross} onClick={deleteTaskHandler} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

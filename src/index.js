@@ -17,6 +17,7 @@ import {
   RegistrationPage,
   LoginPage,
   NotFoundPage,
+  PomodoroPage,
 } from "./pages";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/pomodoro",
+    element: <PomodoroPage />,
     errorElement: <NotFoundPage />,
   },
 ]);

@@ -5,4 +5,5 @@ export type CalendarCellProps = {
   thisCellDay: TMomentDay;
   activeDay: TMomentDay;
   isStudyDay: boolean;
+  index: number;
 };

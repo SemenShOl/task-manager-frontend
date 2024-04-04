@@ -1,4 +1,5 @@
 import React, { ReactNode, FC } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import cn from "classnames";
 import cl from "./ModalBackgroundWrapper.module.scss";
 type ModalBackgroundWrapperProps = {
@@ -11,8 +12,10 @@ export const ModalBackgroundWrapper: FC<ModalBackgroundWrapperProps> = ({
   isActive,
   onBackgroundClick,
 }) => {
+  const [parent] = useAutoAnimate();
   return (
     <div
+      ref={parent}
       className={
         isActive
           ? cl.modalBackground

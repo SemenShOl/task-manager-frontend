@@ -1,0 +1,52 @@
+@import "../../styles/colors.module.scss";
+.wrapper {
+  width: 600px;
+  //   background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  .pomodoro {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .timeBtns {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      //   background-color: red;
+      margin-bottom: 35px;
+    }
+
+    .timer {
+      color: white;
+      color: $right;
+      font-size: 120px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .manageBtns {
+      width: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .btn {
+        border: none;
+        cursor: pointer;
+        color: $right;
+        font-size: 35px;
+        &:active,
+        :focus,
+        :hover {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import cl from "./NotesPage.module.scss";
 import { AddNote, Note, NotesParametrs } from "../../components";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
@@ -7,6 +8,8 @@ import { PageWrapper } from "../../wrappers";
 import { fetchDeleteNote, fetchGetAllNotes } from "../../redux/slices/notes";
 import { TNote } from "../../types/globalTypes";
 export const NotesPage = () => {
+  const [parent] = useAutoAnimate();
+
   type TModalParamsNote = {
     isActive: boolean;
     note: TNote | undefined;
@@ -56,7 +59,7 @@ export const NotesPage = () => {
   return (
     <PageWrapper>
       <div className={cl.wrapper}>
-        <div className={cl.notesList}>
+        <div className={cl.notesList} ref={parent}>
           {notes.map((note) => (
             <Note
               key={note.id}

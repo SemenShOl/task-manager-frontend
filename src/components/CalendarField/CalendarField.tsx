@@ -1,4 +1,5 @@
 import React, { useEffect, FC } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import cl from "./CalendarField.module.scss";
 import { CalendarCell } from "../CalendarCell/CalendarCell";
 import { fetchGetBusyDays } from "../../redux/slices/busyDays";
@@ -13,6 +14,7 @@ export const CalendarField: FC<CalendarFieldProps> = ({
   activeDay,
 }) => {
   const calendar = createCalendar(startDay);
+  const [parent] = useAutoAnimate();
 
   const dispatch = useAppDispatch();
   const busyDays = useAppSelector((state) => state.busyDays.items);
@@ -32,7 +34,7 @@ export const CalendarField: FC<CalendarFieldProps> = ({
 
   return (
     <div className={cl.wrapper}>
-      <div className={cl.calendarWrapper}>
+      <div className={cl.calendarWrapper} ref={parent}>
         {calendar.map((day, index) => {
           const priorityList = findCertainBusyDay(busyDays, day);
           return (
@@ -42,6 +44,7 @@ export const CalendarField: FC<CalendarFieldProps> = ({
               activeDay={activeDay}
               priorityList={priorityList}
               key={day.format("YYYY-MM-DD")}
+              index={index}
             />
           );
         })}

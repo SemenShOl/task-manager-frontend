@@ -6,4 +6,5 @@ export type TaskProps = {
   onToggleTask: (id: number) => void;
   onDeleteTask: (id: number) => void;
   onChangeTask: (task: TTask) => void;
+  index: number;
 };

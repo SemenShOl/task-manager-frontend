@@ -3,7 +3,7 @@ import { RxCross2 } from "react-icons/rx";
 import { MdOutlineNotes } from "react-icons/md";
 import cl from "./Note.module.scss";
 import { NoteProps } from "./NoteProps";
-
+import { motion } from "framer-motion";
 export const Note: FC<NoteProps> = ({
   fontSize,
   note,
@@ -17,7 +17,13 @@ export const Note: FC<NoteProps> = ({
 
   const changeNoteHandler = () => onChangeNote(note);
   return (
-    <div className={cl.wrapper} onClick={changeNoteHandler}>
+    <motion.div
+      className={cl.wrapper}
+      onClick={changeNoteHandler}
+      initial={{ opacity: 0, scaleX: 0.4 }}
+      animate={{ opacity: 1, scaleX: 1 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className={cl.titleAndIcon}>
         <MdOutlineNotes className={cl.noteIcon} />
         <p className={cl.tilte} style={{ fontSize: fontSize }}>
@@ -25,6 +31,6 @@ export const Note: FC<NoteProps> = ({
         </p>
       </div>
       <RxCross2 onClick={deleteNoteHandler} />
-    </div>
+    </motion.div>
   );
 };

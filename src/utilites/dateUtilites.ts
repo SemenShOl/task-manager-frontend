@@ -3,6 +3,11 @@ import moment from "moment";
 export const addNumberFrontNull = (number: number) =>
   number < 10 ? "0" + number : number;
 
+export const secondsToMinutes = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60);
+  const secondsLeft = seconds - minutes * 60;
+  return `${addNumberFrontNull(minutes)}:${addNumberFrontNull(secondsLeft)}`;
+};
 export const daysOfWeekInRussian = [
   "Понедельник",
   "Вторник",

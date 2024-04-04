@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import cl from "./DayPage.module.scss";
+import { listVariants } from "../../styles/animations";
 import {
   fetchDeleteTask,
   fetchGetTasksForDeadline,
@@ -20,14 +22,14 @@ import { useParams } from "react-router-dom";
 import { TPriorityList } from "../../utilites/priorityUtilites";
 import { PageWrapper } from "../../wrappers";
 import { TLesson, fetchGetLessonsForDate } from "../../redux/slices/study";
+import { motion } from "framer-motion";
 type TModalParamsTask = {
   isActive: boolean;
   task: TTask | undefined;
 };
 
 export const DayPage = () => {
-  console.log("day page rerenders");
-
+  const [parent] = useAutoAnimate();
   useCheckAuth();
   const tasks: TTask[] = useAppSelector((state) => state.tasks.items);
   const schedule: TLesson[] = useAppSelector(
@@ -114,9 +116,17 @@ export const DayPage = () => {
             />
           </div>
           {schedule.length ? (
-            <div className={cl.schedulePart}>
-              {schedule.map((lesson) => (
-                <Lesson lesson={lesson} />
+            <div className={cl.schedulePart} ref={parent}>
+              {schedule.map((lesson, i) => (
+                <motion.div
+                  variants={listVariants}
+                  key={lesson.startOfLesson}
+                  initial="hidden"
+                  animate="visible"
+                  custom={i}
+                >
+                  <Lesson lesson={lesson} />
+                </motion.div>
               ))}
             </div>
           ) : null}

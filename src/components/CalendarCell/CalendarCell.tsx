@@ -7,11 +7,14 @@ import { getCalendarCellDayInfo } from "../../utilites/dateUtilites";
 import { CalendarCellProps } from "./CalendarCellProps";
 import { MdOutlineWeekend } from "react-icons/md";
 import { LuBookMarked } from "react-icons/lu";
+import { motion } from "framer-motion";
+import { cellVariants } from "../../styles/animations";
 export const CalendarCell: FC<CalendarCellProps> = ({
   thisCellDay,
   activeDay,
   priorityList,
   isStudyDay,
+  index,
 }) => {
   const navigate = useNavigate();
   const { isWeeknd, isCurrentDay, isActiveMonth, isFreeFromStudy } =
@@ -21,7 +24,11 @@ export const CalendarCell: FC<CalendarCellProps> = ({
   };
 
   return (
-    <div
+    <motion.div
+      variants={cellVariants}
+      initial="hidden"
+      animate="visible"
+      custom={index}
       key={thisCellDay.format("DD.MM.YYYY")}
       className={cn(
         cl.cell,
@@ -39,6 +46,6 @@ export const CalendarCell: FC<CalendarCellProps> = ({
       ) : (
         <MdOutlineWeekend className={cl.restIcon} />
       )}
-    </div>
+    </motion.div>
   );
 };

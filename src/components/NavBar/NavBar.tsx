@@ -1,11 +1,16 @@
 import { FaNoteSticky } from "react-icons/fa6";
 import { IoCalendarNumber } from "react-icons/io5";
-import { MdCalendarToday } from "react-icons/md";
+import {
+  MdCalendarToday,
+  MdOutlineCalendarToday,
+  MdAvTimer,
+} from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import { MdOutlineCalendarToday } from "react-icons/md";
 import cl from "./NavBar.module.scss";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
+import { motion } from "framer-motion";
+
 export const NavBar = () => {
   const today = moment().format("YYYY-MM-DD");
   const tomorrow = moment().add(1, "day").format("YYYY-MM-DD");
@@ -21,6 +26,9 @@ export const NavBar = () => {
         </NavLink>
         <NavLink to="/">
           <IoCalendarNumber /> <p>Календарь</p>
+        </NavLink>
+        <NavLink to="/pomodoro">
+          <MdAvTimer /> <p>Помодоро-таймер</p>
         </NavLink>
         <NavLink to={`/${today}`}>
           <MdCalendarToday /> <p>Сегодня</p>

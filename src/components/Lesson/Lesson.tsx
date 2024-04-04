@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import cl from "./Lesson.module.scss";
-// import { TLesson } from "../../types/globalTypes";
 import { TLesson } from "../../redux/slices/study";
 import Color from "../../styles/colors.module.scss";
 type LessonProps = {

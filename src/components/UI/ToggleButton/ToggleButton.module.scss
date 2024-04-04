@@ -1,21 +1,23 @@
-@import '../../../styles/colors.module.scss';
+@import "../../../styles/colors.module.scss";
 
 .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    padding: 4px 10px;
-    cursor: pointer;
-    color: $right;
-    border: none;
-    transition: all .5 ease-in-out;
+  padding: 8px 22px;
+  border-radius: 20px;
+  font-size: 22px;
+  background: none;
+  border: 2px solid $right;
+  color: $right;
+  transition: all 0.2s ease-in-out;
+  &.isActive {
+    background: $right;
+    color: white;
 
+    border: 2px solid $right;
+  }
+  &:hover {
+    background: $right;
+    color: white;
 
-    &.isActive {
-        color: white;
-        background-color: $right;
-        border-radius: 6px;
-        transition: all .5 ease-in-out;
-    }
+    border: 2px solid $right;
+  }
 }
