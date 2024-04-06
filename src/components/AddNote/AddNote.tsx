@@ -3,7 +3,8 @@ import cl from "./AddNote.module.scss";
 import cn from "classnames";
 import { AddNoteProps } from "./AddNoteProps";
 import { motion } from "framer-motion";
-import { ICPlus } from "../../icons";
+import { IoMdAdd } from "react-icons/io";
+// import { ICPlus } from "../../icons";
 export const AddNote: FC<AddNoteProps> = ({ className, onAddNote }) => {
   return (
     <div className={cn(cl.wrapper, className)} onClick={onAddNote}>
@@ -14,8 +15,8 @@ export const AddNote: FC<AddNoteProps> = ({ className, onAddNote }) => {
           transition: { duration: 0.2, ease: "easeInOut" },
         }}
       >
-        {/* <IoMdAdd size={35} className={cl.plus} /> */}
-        <ICPlus className={cl.plus} />
+        <IoMdAdd size={35} className={cl.plus} />
+        {/* <ICPlus className={cl.plus} /> */}
       </motion.div>
     </div>
   );
