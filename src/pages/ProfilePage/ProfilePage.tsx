@@ -95,6 +95,7 @@ export const ProfilePage = () => {
   return (
     <div className={cl.wrapper} onClick={() => setIsDropdownOpen(false)}>
       <div className={cl.window}>
+        <div className={cl.settings}>
         <ProfileInfoPart title="Логин">{login}</ProfileInfoPart>
         <ProfileInfoPart title="Пароль">
           <Input
@@ -120,6 +121,8 @@ export const ProfilePage = () => {
             setChosenOption={changeGroupHandler}
           />
         </ProfileInfoPart>
+        </div>
+       
 
         <Button onClick={logoutHandler} className={cl.submit}>
           Выйти из профиля

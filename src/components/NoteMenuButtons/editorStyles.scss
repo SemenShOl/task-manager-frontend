@@ -4,10 +4,7 @@
 .ProseMirror {
   background: var(#{--navbar-background-default});
   overflow-y: scroll;
-  // height: 90%;
   padding: 10px;
-  // padding: 0 !important;
-  // min-height: 200px;
   height: 300px;
   border: none;
   color: var(#{--main-text-default});
@@ -81,6 +78,6 @@
 
 @include sm {
   .ProseMirror {
-    height: 350px !important;
+    height: 270px !important;
   }
 }

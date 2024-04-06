@@ -1,23 +1,28 @@
 @import "../../styles/media.module.scss";
-.wrapper {
-  height: 100vh;
-  // background: red;
-  padding: 80px 20px 0px 20px;
-  .container {
+
+  .wrapper {
+    height: 100%; //не убирать
     position: relative;
     width: 100%;
-    height: 90%;
+    padding: 80px 60px 0px 60px;
+    // background: green;
     .header {
       margin-bottom: 30px;
     }
     .tasksAndLessons {
+      position: static;
       width: 100%;
-      height: 100%;
       display: flex;
       align-items: start;
       gap: 60px;
+
+      .addButton {
+        z-index: 5;
+      }
       .taskPart {
+        position: relative;
         flex: 4;
+        z-index: 3;
       }
       .schedulePart {
         color: var(#{--main-text-default});
@@ -29,6 +34,7 @@
         padding: 20px 20px;
         border-radius: 15px;
         flex: 3;
+        z-index: 12;
 
         > div {
           margin-bottom: 20px;
@@ -36,78 +42,52 @@
       }
     }
   }
-}
 
-@include xxl {
-  .container {
-    padding: 0;
-    width: 100%;
-    .tasksAndLessons {
-      gap: 40px;
-
-      .taskPart {
-        width: 50%;
-      }
-      .schedulePart {
-        width: 50%;
-      }
-    }
-  }
-}
-@include xl {
-  .container {
-    width: 100%;
-  }
-}
 
 @include md2 {
-  .container {
-    overflow-x: hidden;
-    width: 90%;
-    .header {
-      margin-bottom: 20px;
-    }
+  .wrapper {
+    padding-top: 60px;
     .tasksAndLessons {
-      width: 100%;
-      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: start;
-      gap: 30px;
-      .taskPart {
-        width: 100%;
 
-        flex: 4;
-        order: 2;
-
-        .addButton {
-          position: fixed;
-          bottom: 30px;
-          z-index: 20;
-          right: 20px;
-          background-color: red;
-          height: 0px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+      .addButton {
+        position: fixed;
+        bottom: -7px;
+        right: 14px;
       }
       .schedulePart {
-        width: 100%;
-        right: 0px;
-        > div {
-          margin-bottom: 10px;
-        }
+        position: static;
+
       }
+      .taskPart {
+        order: 2;
+        width: 100%;
+      }
+
+    
     }
+    
   }
 }
 
+
 @include sm {
-  .container {
+  .wrapper {
+    padding-top: 10px; 
     .header {
-      margin-top: 70px;
       margin-bottom: 20px;
+    }
+    .tasksAndLessons {
+      .schedulePart {
+        width: 100%;
+        padding: 10px 10px;
+        > div {
+          margin-bottom: 8px;
+
+        }
+      }
     }
   }
 }

@@ -3,10 +3,10 @@ import cl from "./PriorityList.module.scss";
 import { PriorityCell } from "../PriorityCell/PriorityCell";
 import { priorities } from "../../utilites/priorityUtilites";
 import { PriorityListProps } from "./PriorityListProps";
-
-export const PriorityList: FC<PriorityListProps> = ({ priorityList, size }) => {
+import cn from "classnames";
+export const PriorityList: FC<PriorityListProps> = ({ priorityList, size, isVertical }) => {
   return (
-    <div className={cl.priorityList} style={{ width: size }}>
+    <div className={isVertical ? cn(cl.priorityList, cl.vertical) :cl.priorityList } style={{ width: size }}>
       <PriorityCell
         size={size}
         numberOfTasks={priorityList.high}

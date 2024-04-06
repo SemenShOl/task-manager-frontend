@@ -1,11 +1,11 @@
 @import "../../styles/colors.scss";
-@import "../../styles/colors.module.scss";
-
+@import "../../styles//media.module.scss";
 .cell {
+  width: 100%;
   background: var(#{--navbar-background-default});
   box-shadow: var(#{--sm-shadow-default});
   color: var(#{--main-text-default});
-  padding: 12px 15px;
+  padding: 12px 13px;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -65,5 +65,12 @@
     height: 2px;
     width: 60px;
     background: var(#{--main-text-default});
+  }
+}
+
+
+@include xl {
+  .cell {
+    padding: 10px 8px;
   }
 }

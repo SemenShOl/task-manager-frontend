@@ -1,8 +1,18 @@
 @import "../../styles/colors.module.scss";
+@import "../../styles/media.module.scss";
 
 .btns {
-  color: red;
   height: 30px;
   display: flex;
   gap: 7px;
+}
+
+@include sm{
+  .btns {
+    gap: 3px;
+
+    >button {
+      padding: 0 6px;
+    }
+  }
 }

@@ -89,7 +89,7 @@ export const DayPage = () => {
 
   return (
     <div className={cl.wrapper}>
-      <div className={cl.container}>
+      {/* <div className={cl.container}> */}
         <div className={cl.header}>
           <TaskPageHeader
             month={month}
@@ -130,7 +130,7 @@ export const DayPage = () => {
             </div>
           ) : null}
         </div>
-      </div>
+      {/* </div> */}
       <TaskParametrs
         activeDay={activeDate}
         user_id={1}

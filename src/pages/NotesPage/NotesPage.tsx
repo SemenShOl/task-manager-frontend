@@ -56,7 +56,6 @@ export const NotesPage = () => {
     }
   };
   return (
-    <div>
       <div className={cl.wrapper}>
         <div className={cl.notesList} ref={parent}>
           {notes.map((note) => (
@@ -74,7 +73,7 @@ export const NotesPage = () => {
           className={cl.addBtn}
           onAddNote={openModalToCreateNewNoteHandler}
         />
-      </div>
+      
       <div>
         <NotesParametrs
           user_id={21}

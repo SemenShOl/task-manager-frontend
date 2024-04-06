@@ -13,12 +13,12 @@ export const PageWrapper: FC<PageWrapperProps> = ({ children, onClick }) => {
 
   return (
     <div className={cl.wrapper} onClick={onClick}>
-      <div className={cl.navBarBody}>
+       <div className={cl.navBarBody}>
         <NavBar />
       </div>
       <div className={cl.pageContent}>
         <Outlet />
-      </div>
+      </div> 
     </div>
   );
 };

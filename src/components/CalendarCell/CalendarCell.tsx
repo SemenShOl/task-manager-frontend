@@ -39,7 +39,7 @@ export const CalendarCell: FC<CalendarCellProps> = ({
       )}
       onClick={clickCellHandler}
     >
-      <PriorityList priorityList={priorityList} size={60} />
+      <PriorityList priorityList={priorityList} size={60} isVertical/>
       <div className={cl.dayNumber}>{thisCellDay.date()}</div>
       {isStudyDay ? (
         <LuBookMarked className={cl.workIcon} />

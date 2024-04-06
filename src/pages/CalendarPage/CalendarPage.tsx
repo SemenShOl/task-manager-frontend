@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { CalendarHeader, CalendarField } from "../../components";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
-import { PageWrapper } from "../../wrappers";
-
+import cl from './CalendarPage.module.scss';
 export const CalendarPage = () => {
   useCheckAuth();
   const today = moment();
@@ -25,7 +24,7 @@ export const CalendarPage = () => {
   };
 
   return (
-    <div>
+    <div className={cl.wrapper}>
       <CalendarHeader
         activeDay={activeDay}
         onAdd={addActiveDayHandler}

@@ -5,32 +5,24 @@
   overflow-y: auto;
   width: 100%;
   min-height: 100%;
-
-  // background: radial-gradient(circle, #e1eec3, rgb(255, 96, 99, 0.5));
-  // background: radial-gradient(circle, #c9d6ff, #e2e2e2);
-  // background: linear-gradient(
-  //   70deg,
-  //   rgb(67, 198, 172, 0.5),
-  //   rgb(248, 255, 174, 0.7)
-  // );
-
   background: var(#{--body-background-default});
+  overflow-y: hidden;
+  // background: red;
 
   display: flex;
   .navBarBody {
-    position: static;
     min-width: 200px;
     width: 15%;
     height: 100vh;
     margin-right: 0;
   }
   .pageContent {
-    position: static;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     // padding: 0 100px;
+    padding: 0;
     height: 100vh;
     overflow-x: hidden;
   }
@@ -38,24 +30,24 @@
 @include xxl {
   .wrapper {
     .pageContent {
-      padding: 30px 80px;
+      // padding: 30px 80px;
+      padding: 0;
     }
   }
 }
 @include xl {
   .wrapper {
     .pageContent {
-      padding: 30px 40px;
+      // padding: 30px 40px;
+      padding: 0;
     }
   }
 }
 
 @include sm {
   .wrapper {
+    flex-direction: column;
     .navBarBody {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 70px;
     }
