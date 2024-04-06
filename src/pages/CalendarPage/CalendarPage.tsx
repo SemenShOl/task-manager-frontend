@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-// import cl from "./CalendarPage.module.scss";
 import { CalendarHeader, CalendarField } from "../../components";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { PageWrapper } from "../../wrappers";
@@ -26,16 +25,14 @@ export const CalendarPage = () => {
   };
 
   return (
-    <PageWrapper >
-      <div>
-        <CalendarHeader
-          activeDay={activeDay}
-          onAdd={addActiveDayHandler}
-          onSubtract={subtractActiveDayHandler}
-          onReset={resetActiveDayHandler}
-        />
-        <CalendarField activeDay={activeDay} startDay={dayToStart} />
-      </div>
-    </PageWrapper>
+    <div>
+      <CalendarHeader
+        activeDay={activeDay}
+        onAdd={addActiveDayHandler}
+        onSubtract={subtractActiveDayHandler}
+        onReset={resetActiveDayHandler}
+      />
+      <CalendarField activeDay={activeDay} startDay={dayToStart} />
+    </div>
   );
 };

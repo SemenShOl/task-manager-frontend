@@ -1,52 +1,50 @@
-@import '../../styles/colors.module.scss';
-
+@import "../../styles/colors.module.scss";
+@import "../../styles/colors.scss";
 
 .wrapper {
-    width: 100%;
+  width: 100%;
 
-    .header {
-        position: relative;
-        background-color: white;
-        padding: 10px 30px 0px 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-top-right-radius: 20px;
-        border-top-left-radius: 20px;
-        height: 70px;
+  .header {
+    background: var(#{--navbar-background-default});
+    box-shadow: var(#{--big-shadow-default});
+    position: relative;
+    padding: 10px 30px 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    height: 70px;
 
-        h2 {
-            font-size: 30px;
-            font-weight: 200;
-            color: $lightGrey;
-            margin-bottom: 8px;
-            color: $right;
+    h2 {
+      font-size: 30px;
+      font-weight: 200;
+      color: $lightGrey;
+      margin-bottom: 8px;
+      color: var(#{--main-text-default});
 
-            span {
-                font-weight: 700;
-            }
-        }
-
-        .btns {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 150px;
-
-            button {
-                padding: 6px 9px;
-                border-radius: 5px;
-                box-shadow: 2px 5px 10px -2px rgba(34, 60, 80, 0.15);
-                font-weight: 600;
-                font-size: 14px;
-
-                &:hover {
-                    box-shadow: 2px 5px 10px -2px rgba(34, 60, 80, 0.15);
-                }
-            }
-        }
-
+      span {
+        font-weight: 700;
+      }
     }
 
+    .btns {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 150px;
 
+      button {
+        padding: 6px 9px;
+        border-radius: 5px;
+        box-shadow: 2px 5px 10px -2px rgba(34, 60, 80, 0.15);
+        font-weight: 600;
+        font-size: 14px;
+
+        &:hover {
+          box-shadow: 2px 5px 10px -2px rgba(34, 60, 80, 0.15);
+        }
+      }
+    }
+  }
 }

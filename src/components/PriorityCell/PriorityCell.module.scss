@@ -1,9 +1,11 @@
-@import '../../styles/colors.module.scss';
+@import "../../styles/colors.module.scss";
+@import "../../styles/colors.scss";
 
 .priority {
-    span {
-        display: block;
-        text-align: center;
-        font-size: 70%;
-    }
+  span {
+    color: var(#{--s-text-default});
+    display: block;
+    text-align: center;
+    font-size: 70%;
+  }
 }

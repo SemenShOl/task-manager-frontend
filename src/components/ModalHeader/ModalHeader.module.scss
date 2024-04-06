@@ -1,18 +1,16 @@
 @import "../../styles/colors.module.scss";
+@import "../../styles/colors.scss";
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(#{--main-text-default});
 
-    .title {
-        color: $middleGrey;
-    }
+  .closeButton {
+    color: var(#{--main-text-default});
+    cursor: pointer;
+  }
 
-    .closeButton {
-        color: $middleGrey;
-        cursor: pointer;
-    }
-
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }

@@ -1,26 +1,26 @@
-@import '../../../styles/colors.module.scss';
+@import "../../../styles/colors.scss";
 
 .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    padding: 9px 16px;
-    cursor: pointer;
-    color: $right;
-    border: none;
-    border-radius: 7px;
-    transition: all .5 ease-in-out;
+  color: var(#{--main-text-default});
+  background: none;
 
-    &:hover {
-        color: white;
-        background-color: $right;
-        transition: all .5 ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  transition: all 0.5 ease-in-out;
 
-    }
+  &:hover {
+    color: var(#{--body-background-default});
+    background: var(#{--main-text-default});
+    transition: all 0.5 ease-in-out;
+  }
 
-    &.disabled {
-        opacity: 0.7;
-        cursor: auto;
-    }
+  &.disabled {
+    opacity: 0.7;
+    cursor: auto;
+  }
 }

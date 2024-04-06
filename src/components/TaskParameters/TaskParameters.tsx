@@ -73,10 +73,7 @@ export const TaskParametrs: FC<TaskParametrsProps> = ({
       isActive={isActive}
       onBackgroundClick={closeModalHandler}
     >
-      <ModalContentWrapper
-        isActive={isActive}
-        // style={{ width: "35%", height: "55%" }}
-      >
+      <ModalContentWrapper isActive={isActive}>
         <ModalHeader
           title={headerTitle}
           onClose={closeModalHandler}

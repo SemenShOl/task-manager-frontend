@@ -1,33 +1,33 @@
-@import '../../../styles/colors.module.scss';
+@import "../../../styles/colors.scss";
+@import "../../../styles/colors.module.scss";
 
 .inputPart {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 
-    ::-webkit-input-placeholder {
-        color: $lightback;
+  ::-webkit-input-placeholder {
+    color: var(#{--s-text-default});
+  }
 
+  input {
+    color: var(#{--main-text-default});
+    background: inherit;
+    width: 350px;
+    height: 40px;
+    overflow: hidden;
+    font-size: 30px;
+    padding: 10px;
+    outline: none;
+
+    &:focus,
+    :active {
+      outline: none;
+      border: none;
     }
+  }
 
-    input {
-        width: 350px;
-        height: 40px;
-        overflow: hidden;
-        font-size: 30px;
-        padding: 10px;
-        outline: none;
-
-        &:focus,
-        :active {
-            outline: none;
-            border: none;
-        }
-
-    }
-
-    .errorMessage {
-        margin-left: 10px;
-        color: $attentionRed;
-        font-size: 13px;
-
-    }
+  .errorMessage {
+    margin-left: 10px;
+    color: $attentionRed;
+    font-size: 13px;
+  }
 }

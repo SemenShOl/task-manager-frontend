@@ -1,0 +1,72 @@
+$navbar-background-light: #fff;
+$navbar-background-dark: #3b475c;
+
+$body-background-dark: rgb(33, 43, 66);
+$body-background-light: linear-gradient(#c9d6ff, #e2e2e2);
+
+$main-text-light: #284b63;
+$main-text-dark: rgb(157, 192, 225);
+
+$s-text-light: rgb(44, 85, 112, 0.8);
+$s-text-dark: rgb(157, 192, 225, 0.8);
+
+$big-shadow-dark: 5px 10px 20px rgba(5, 5, 5, 0.48);
+$big-shadow-light: 0px 3px 10px rgba(147, 144, 144, 0.28);
+
+$sm-shadow-light: 3px 3px 8px rgb(0, 0, 0, 0.08);
+$sm-shadow-dark: 3px 3px 8px rgb(0, 0, 0, 0.15);
+
+$addit-light: #f8ffff;
+$addit-dark: $body-background-dark;
+
+$rest-green: rgb(80, 211, 80);
+$work-red-dark: rgb(255, 50, 50);
+$work-red-light: rgb(255, 0, 0);
+
+$aPriority: rgb(147, 62, 62);
+$bPriority: rgb(165, 146, 47);
+$cPriority: rgb(50, 141, 67);
+
+$attentionRed: rgb(205, 60, 60);
+:root {
+  //body-background
+  --body-background-dark: #{$body-background-dark};
+  --body-background-light: #{$body-background-light};
+  --body-background-default: var(#{--body-background-dark});
+
+  //navbar-background
+  --navbar-background-dark: #{$navbar-background-dark};
+  --navbar-background-light: #{$navbar-background-light};
+  --navbar-background-default: var(#{--navbar-background-dark});
+
+  //main-text and lines
+  --main-text-dark: #{$main-text-dark};
+  --main-text-light: #{$main-text-light};
+  --main-text-default: var(#{--main-text-dark});
+
+  //second-text and lines
+  --s-text-dark: #{$s-text-dark};
+  --s-text-light: #{$s-text-light};
+  --s-text-default: var(#{--s-text-dark});
+
+  //additional
+  --addit-dark: #{$addit-dark};
+  --addit-light: #{$addit-light};
+  --addit-default: var(#{--addit-light});
+
+  //big-shadow
+  --big-shadow-dark: #{$big-shadow-dark};
+  --big-shadow-light: #{$big-shadow-light};
+  --big-shadow-default: var(#{--big-shadow-dark});
+
+  //sm-shadow
+  --sm-shadow-dark: #{$sm-shadow-dark};
+  --sm-shadow-light: #{$sm-shadow-light};
+  --sm-shadow-default: var(#{--sm-shadow-light});
+
+  //rest and tasks
+  --rest-green: #{$rest-green};
+  --work-red-dark: #{$work-red-dark};
+  --work-red-light: #{$work-red-light};
+  --work-red-default: var(#{--work-red-dark});
+}

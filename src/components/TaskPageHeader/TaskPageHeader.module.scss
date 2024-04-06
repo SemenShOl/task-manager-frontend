@@ -1,4 +1,5 @@
 @import "../../styles/colors.module.scss";
+@import "../../styles/colors.scss";
 @import "../../styles/media.module.scss";
 
 .header {
@@ -9,12 +10,12 @@
   gap: 30px;
 
   .date {
+    color: var(#{--s-text-default});
+
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 20px;
-
-    color: $right;
 
     .dayOfWeek {
       font-size: 18px;
@@ -44,8 +45,6 @@
       flex-direction: column;
       align-items: center;
       margin-left: 20px;
-
-      color: $right;
 
       .dayOfWeek {
         font-size: 14px;

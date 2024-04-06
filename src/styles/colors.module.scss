@@ -22,9 +22,9 @@ $left: #6aa0a2;
 $lightLeft: rgb(156, 194, 198);
 
 // $right: #284b63;
-$right: #1a5a65;
 
 // $right: #932d26;
+$right: #1a5a65;
 
 $lightback: #d9d9d9;
 $ligtestback: rgb(245, 245, 245);
@@ -40,16 +40,32 @@ $cPriority: rgb(50, 141, 67);
 
 $attentionRed: rgb(205, 60, 60);
 
-body[data-theme="light"] {
-  $left: #6aa0a2;
-
-  $lightLeft: rgb(156, 194, 198);
-
-  $right: #ff00aa;
+$themes: (
+  dark: (
+    "txt-color": #fcfcfc,
+    "bg-color": rgb(57, 57, 57),
+  ),
+  light: (
+    "txt-color": #284b63,
+    "bg-color": rgba(245, 245, 245, 0.975),
+  ),
+);
+@mixin theme() {
+  @each $theme, $map in $themes {
+    $theme-map: $map !global;
+    .#{$theme} & {
+      @content;
+    }
+  }
+  $theme-map: null !global;
+}
+@function theme-get($key) {
+  @return map-get($theme-map, $key);
 }
 
 :export {
   black: $black;
+  --black: blue;
   black2: $black2;
   black3: $black3;
   aPriority: $aPriority;

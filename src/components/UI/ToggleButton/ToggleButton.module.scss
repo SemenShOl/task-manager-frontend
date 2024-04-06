@@ -1,23 +1,23 @@
-@import "../../../styles/colors.module.scss";
+@import "../../../styles/colors.scss";
 
 .btn {
   padding: 8px 22px;
   border-radius: 20px;
   font-size: 22px;
   background: none;
-  border: 2px solid $right;
-  color: $right;
+  border: 2px solid var(#{--main-text-default});
+  color: var(#{--main-text-default});
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
   &.isActive {
-    background: $right;
-    color: white;
-
-    border: 2px solid $right;
+    background: var(#{--main-text-default});
+    color: var(#{--body-background-default});
+    border: 2px solid var(#{--main-text-default});
   }
   &:hover {
-    background: $right;
-    color: white;
+    background: var(#{--main-text-default});
+    color: var(#{--body-background-default});
 
-    border: 2px solid $right;
+    border: 2px solid var(#{--main-text-default});
   }
 }

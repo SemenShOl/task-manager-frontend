@@ -1,4 +1,6 @@
 @import "../../styles/colors.module.scss";
+@import "../../styles/colors.scss";
+
 .wrapper {
   width: 600px;
   //   background: red;
@@ -17,13 +19,11 @@
       display: flex;
       justify-content: space-between;
       width: 80%;
-      //   background-color: red;
       margin-bottom: 35px;
     }
 
     .timer {
-      color: white;
-      color: $right;
+      color: var(#{--main-text-default});
       font-size: 120px;
       font-weight: bold;
       text-align: center;
@@ -38,7 +38,7 @@
       .btn {
         border: none;
         cursor: pointer;
-        color: $right;
+        color: var(#{--main-text-default});
         font-size: 35px;
         &:active,
         :focus,
