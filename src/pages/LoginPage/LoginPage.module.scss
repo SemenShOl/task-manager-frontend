@@ -1,36 +1,30 @@
-@import '../../styles/colors.module.scss';
+@import "../../styles/colors.module.scss";
 
+.submit {
+  border: 2px solid var(#{--main-text-default});
+  background: none;
+  color: var(#{--main-text-default});
 
+  border-radius: 50px;
+  width: 100%;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 50px;
 
+  &:hover {
+    transition: all 0.3s ease-in-out;
+    background: var(#{--main-text-default});
+    color: var(#{--body-background-default});
+  }
+}
 
+.notRegisterLink {
+  color: var(#{--main-text-default});
 
-        .submit {
-            border: 2px solid $right;
-            border-radius: 50px;
-            width: 100%;
-            height: 40px;
-            padding: 0 20px;
-            font-size: 20px;
-            color: $right;
-            background-color: white;
-            cursor: pointer;
-            transition: all .3s ease-in-out;
-            margin-top: 50px;
-
-            &:hover {
-                transition: all .3s ease-in-out;
-                background-color: $right;
-                color: white;
-            }
-        }
-
-
-        .notRegisterLink {
-            color: $right;
-
-            &:hover {
-                color: $attentionRed;
-            }
-        }
-
-    
+  &:hover {
+    color: var(#{--s-text-default});
+  }
+}

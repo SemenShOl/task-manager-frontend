@@ -1,7 +1,5 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
-import "./styles/theme.css";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import {
@@ -19,28 +17,42 @@ import {
   NotFoundPage,
   PomodoroPage,
 } from "./pages";
+import { PageWrapper } from "./wrappers/PageWrapper/PageWrapper";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <CalendarPage />,
+    element: <PageWrapper />,
     errorElement: <NotFoundPage />,
-  },
-  {
-    path: "/notes",
-    element: <NotesPage />,
-    errorElement: <NotFoundPage />,
-  },
-  {
-    path: "/:date",
-    element: <DayPage />,
-    errorElement: <NotFoundPage />,
-  },
-  {
-    path: "/profile",
-    element: <ProfilePage />,
-    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: "/",
+        element: <CalendarPage />,
+        errorElement: <NotFoundPage />,
+      },
+      {
+        path: "/notes",
+        element: <NotesPage />,
+        errorElement: <NotFoundPage />,
+      },
+      {
+        path: "/:date",
+        element: <DayPage />,
+        errorElement: <NotFoundPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+        errorElement: <NotFoundPage />,
+      },
+
+      {
+        path: "/pomodoro",
+        element: <PomodoroPage />,
+        errorElement: <NotFoundPage />,
+      },
+    ],
   },
   {
     path: "/register",
@@ -50,11 +62,6 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
-    errorElement: <NotFoundPage />,
-  },
-  {
-    path: "/pomodoro",
-    element: <PomodoroPage />,
     errorElement: <NotFoundPage />,
   },
 ]);

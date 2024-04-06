@@ -58,7 +58,7 @@ export const Task: FC<TaskProps> = ({
             size={16}
             color={priorities.get(task.priority)?.color}
           />
-          <IoMdMore className={cl.more} onClick={changeTaskHandler} />
+          {/* <IoMdMore className={cl.more} onClick={changeTaskHandler} /> */}
           <RxCross2 className={cl.cross} onClick={deleteTaskHandler} />
         </div>
       </div>

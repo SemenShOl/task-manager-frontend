@@ -4,7 +4,6 @@ import cl from "./NotesPage.module.scss";
 import { AddNote, Note, NotesParametrs } from "../../components";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { PageWrapper } from "../../wrappers";
 import { fetchDeleteNote, fetchGetAllNotes } from "../../redux/slices/notes";
 import { TNote } from "../../types/globalTypes";
 export const NotesPage = () => {
@@ -57,7 +56,7 @@ export const NotesPage = () => {
     }
   };
   return (
-    <PageWrapper>
+    <div>
       <div className={cl.wrapper}>
         <div className={cl.notesList} ref={parent}>
           {notes.map((note) => (
@@ -84,6 +83,6 @@ export const NotesPage = () => {
           onClose={closeModalParamsHandler}
         />
       </div>
-    </PageWrapper>
+    </div>
   );
 };

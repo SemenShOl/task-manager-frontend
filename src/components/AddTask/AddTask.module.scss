@@ -1,31 +1,30 @@
-@import "../../styles/colors.module.scss";
 @import "../../styles/media.module.scss";
+@import "../../styles/colors.scss";
 
 .wrapper {
+  background: var(#{--navbar-background-default});
+  color: var(#{--main-text-default});
   position: sticky;
+  position: static;
   top: 10px;
   width: 100%;
   height: 50px;
-  background-color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
   cursor: pointer;
   padding: 20px 12px;
   border-radius: 10px;
-  position: sticky;
-  top: 30px;
   margin-bottom: 25px;
   z-index: 10;
-  color: $right;
   &:hover {
     .addIcon {
       .plus {
-        color: white;
+        color: var(#{--main-text-default});
       }
 
       .circle {
-        color: $right;
+        color: var(#{--navbar-background-default});
       }
     }
   }
@@ -40,27 +39,26 @@
     transition: all 0.4s ease-in-out;
 
     .plus {
+      color: var(#{--main-text-default});
       font-size: 20px;
       position: relative;
       margin-top: 2.9px;
       margin-left: 0.8px;
       z-index: 20;
       transition: all 0.4s ease-in-out;
-      color: $right;
     }
 
     .circle {
-      font-size: 26px;
+      color: var(#{--navbar-background-default});
 
+      font-size: 26px;
       position: absolute;
-      color: white;
       transition: all 0.4s ease-in-out;
     }
   }
 
   > p {
     margin-top: 4.9px;
-    color: $right;
   }
 }
 
@@ -84,7 +82,7 @@
         margin: 0;
         font-size: 35px;
         &:hover {
-          color: $right;
+          // color: var(#{--text-hover-default})
         }
       }
     }

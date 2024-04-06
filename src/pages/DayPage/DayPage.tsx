@@ -87,10 +87,9 @@ export const DayPage = () => {
     }
   };
 
-  console.log(schedule);
   return (
-    <PageWrapper>
-      <div className={cl.wrapper}>
+    <div className={cl.wrapper}>
+      <div className={cl.container}>
         <div className={cl.header}>
           <TaskPageHeader
             month={month}
@@ -139,6 +138,6 @@ export const DayPage = () => {
         isActive={modalParams.isActive}
         onClose={closeModalParamsHandler}
       />
-    </PageWrapper>
+    </div>
   );
 };

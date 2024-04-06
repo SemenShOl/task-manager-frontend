@@ -1,21 +1,27 @@
 @import "../../styles/colors.module.scss";
+@import "../../styles/colors.scss";
+
 @import "../../styles/media.module.scss";
 
 .infoPart {
+  color: var(#{--main-text-default});
   display: flex;
-  gap: 15px;
+  // gap: 15px;
   justify-content: space-between;
   margin-bottom: 10px;
 
   .info {
     font-size: 30px;
     width: 150px;
+
+    // background: red;
   }
 
   .title {
     display: flex;
     align-items: center;
     width: 150px;
+    // margin-right: 30px;
   }
 }
 

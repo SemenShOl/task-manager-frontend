@@ -1,19 +1,18 @@
-@import '../../styles/colors.module.scss';
+@import "../../styles/colors.scss";
 
 .days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(1, 40px);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(1, 40px);
 
-    gap: 10px;
+  gap: 10px;
 
-    div {
-        position: relative;
-        padding: 0 0px 10px 6px;
-        display: flex;
-        align-items: end;
-        justify-content: start;
-        color: $right;
-
-    }
+  div {
+    position: relative;
+    padding: 0 0px 10px 6px;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    color: var(#{--main-text-default});
+  }
 }

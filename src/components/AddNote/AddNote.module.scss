@@ -1,20 +1,18 @@
 @import "../../styles/colors.module.scss";
 @import "../../styles/media.module.scss";
+@import "../../styles/colors.scss";
 
 .wrapper {
   position: relative;
-  &:hover {
-    p {
-      transition: transform 0.3s, opacity 0.3s ease-in;
-      transform: translateX(0px);
-      opacity: 1;
-      color: $right;
-    }
-  }
 
   .addIcon {
+    background: var(#{--navbar-background-default});
+    color: var(#{--main-text-default});
+    box-shadow: var(#{--sm-shadow-default});
+    border-radius: 100%;
     position: relative;
-    width: 30px;
+    width: 45px;
+    height: 45px;
     margin-right: 10px;
     display: flex;
     justify-content: center;
@@ -26,26 +24,6 @@
       position: relative;
       z-index: 20;
       transition: all 0.4s ease-in-out;
-      color: $right;
-    }
-
-    .circle {
-      position: absolute;
-      color: transparent;
-      color: white;
-      box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
-      border-radius: 50%;
-      transition: all 0.4s ease-in-out;
-    }
-
-    &:hover {
-      .plus {
-        color: white;
-      }
-
-      .circle {
-        color: $right;
-      }
     }
   }
 }

@@ -1,46 +1,45 @@
-@import "../../styles/colors.module.scss";
-@import "../../styles/theme.css";
 @import "../../styles/media.module.scss";
 .wrapper {
-  position: relative;
-  overflow-y: hidden;
-  width: 100%;
-  height: 90%;
-  .header {
-    margin-bottom: 30px;
-  }
-  .tasksAndLessons {
+  height: 100vh;
+  // background: red;
+  padding: 80px 20px 0px 20px;
+  .container {
+    position: relative;
     width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: start;
-    gap: 60px;
-    .taskPart {
-      flex: 4;
-      // width: 57%;
-      // background-color: aqua;
+    height: 90%;
+    .header {
+      margin-bottom: 30px;
     }
-    .schedulePart {
-      flex: 3;
-      // width: 43%;
+    .tasksAndLessons {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: start;
+      gap: 60px;
+      .taskPart {
+        flex: 4;
+      }
+      .schedulePart {
+        color: var(#{--main-text-default});
+        background: var(#{--navbar-background-default});
+        box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
+        position: sticky;
+        top: 30px;
+        right: 0px;
+        padding: 20px 20px;
+        border-radius: 15px;
+        flex: 3;
 
-      box-shadow: 3px 3px 8px rgb(0, 0, 0, 0.08);
-      color: var(--right);
-      position: sticky;
-      top: 30px;
-      right: 0px;
-      padding: 20px 20px;
-      background-color: white;
-      border-radius: 15px;
-      > div {
-        margin-bottom: 20px;
+        > div {
+          margin-bottom: 20px;
+        }
       }
     }
   }
 }
 
 @include xxl {
-  .wrapper {
+  .container {
     padding: 0;
     width: 100%;
     .tasksAndLessons {
@@ -56,18 +55,17 @@
   }
 }
 @include xl {
-  .wrapper {
+  .container {
     width: 100%;
   }
 }
 
 @include md2 {
-  .wrapper {
+  .container {
     overflow-x: hidden;
     width: 90%;
     .header {
       margin-bottom: 20px;
-      // background-color: rgb(140, 199, 46);
     }
     .tasksAndLessons {
       width: 100%;
@@ -106,7 +104,7 @@
 }
 
 @include sm {
-  .wrapper {
+  .container {
     .header {
       margin-top: 70px;
       margin-bottom: 20px;

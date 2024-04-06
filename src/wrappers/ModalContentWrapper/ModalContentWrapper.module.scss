@@ -1,16 +1,15 @@
 @import "../../styles/media.module.scss";
-
+@import "../../styles/colors.module.scss";
 .contentWindow {
+  background: var(#{--navbar-background-default});
   position: relative;
-  max-height: 90%;
   width: 70%;
   max-width: 550px;
-  min-height: 350px;
+  height: 70%;
   margin: 0 auto;
   transform: translateY(1);
   border-radius: 20px;
   padding: 15px 20px;
-  background-color: white;
   transition: transform 0.2s ease-in-out;
 }
 

@@ -1,6 +1,7 @@
 import cl from "./ProfilePage.module.scss";
+import { useTheme } from "../../hooks";
 import { useEffect, useRef, useState } from "react";
-import { Button, Input, Dropdown } from "../../components/UI";
+import { Button, Input, Dropdown, Toggle } from "../../components/UI";
 import { PageWrapper } from "../../wrappers";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import {
@@ -14,6 +15,8 @@ import { TOption } from "../../types/globalTypes";
 
 export const ProfilePage = () => {
   const dispatch = useAppDispatch();
+
+  const { setTheme } = useTheme();
 
   const [password, setPassword] = useState<string>(
     localStorage.getItem("password") || ""
@@ -90,33 +93,38 @@ export const ProfilePage = () => {
   };
 
   return (
-    <PageWrapper onClick={() => setIsDropdownOpen(false)}>
-      <div className={cl.wrapper}>
-        <div className={cl.window}>
-          <ProfileInfoPart title="Ваш логин:">{login}</ProfileInfoPart>
-          <ProfileInfoPart title="Ваш пароль:">
-            <Input
-              value={password}
-              onInputChange={passwordChangeHandler}
-              placeholder="password"
-              ref={passwordRef}
-            />
-          </ProfileInfoPart>
-          <ProfileInfoPart title="Ваша группа:">
-            <Dropdown
-              isOpen={isDropdownOpen}
-              options={groupOptions}
-              setIsOpen={setIsDropdownOpen}
-              chosenOption={chosenOption}
-              setChosenOption={changeGroupHandler}
-            />
-          </ProfileInfoPart>
+    <div className={cl.wrapper} onClick={() => setIsDropdownOpen(false)}>
+      <div className={cl.window}>
+        <ProfileInfoPart title="Логин">{login}</ProfileInfoPart>
+        <ProfileInfoPart title="Пароль">
+          <Input
+            value={password}
+            onInputChange={passwordChangeHandler}
+            placeholder="password"
+            ref={passwordRef}
+          />
+        </ProfileInfoPart>
+        <ProfileInfoPart title="Цветовая тема">
+          <Toggle
+            onChange={() =>
+              setTheme((prev) => (prev === "light" ? "dark" : "light"))
+            }
+          />
+        </ProfileInfoPart>
+        <ProfileInfoPart title="Учебная группа">
+          <Dropdown
+            isOpen={isDropdownOpen}
+            options={groupOptions}
+            setIsOpen={setIsDropdownOpen}
+            chosenOption={chosenOption}
+            setChosenOption={changeGroupHandler}
+          />
+        </ProfileInfoPart>
 
-          <Button onClick={logoutHandler} className={cl.submit}>
-            Выйти из профиля
-          </Button>
-        </div>
+        <Button onClick={logoutHandler} className={cl.submit}>
+          Выйти из профиля
+        </Button>
       </div>
-    </PageWrapper>
+    </div>
   );
 };

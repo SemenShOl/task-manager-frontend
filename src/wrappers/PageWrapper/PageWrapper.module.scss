@@ -1,22 +1,20 @@
-@import "../../styles/colors.module.scss";
+@import "../../styles/colors.scss";
 @import "../../styles/media.module.scss";
 
 .wrapper {
   overflow-y: auto;
   width: 100%;
   min-height: 100%;
-  // background-image: url("../../imgs/back.jpg");
 
-  // background-position: center center;
-  // background-size: cover;
-  // background: rgb(255, 206, 228);
   // background: radial-gradient(circle, #e1eec3, rgb(255, 96, 99, 0.5));
   // background: radial-gradient(circle, #c9d6ff, #e2e2e2);
-  background: linear-gradient(
-    70deg,
-    rgb(67, 198, 172, 0.5),
-    rgb(248, 255, 174, 0.7)
-  );
+  // background: linear-gradient(
+  //   70deg,
+  //   rgb(67, 198, 172, 0.5),
+  //   rgb(248, 255, 174, 0.7)
+  // );
+
+  background: var(#{--body-background-default});
 
   display: flex;
   .navBarBody {
@@ -27,13 +25,12 @@
     margin-right: 0;
   }
   .pageContent {
-    // background-color: blue;
     position: static;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px 100px;
+    // padding: 0 100px;
     height: 100vh;
     overflow-x: hidden;
   }
@@ -41,7 +38,6 @@
 @include xxl {
   .wrapper {
     .pageContent {
-      // margin-left: 150px;
       padding: 30px 80px;
     }
   }
@@ -49,7 +45,6 @@
 @include xl {
   .wrapper {
     .pageContent {
-      // margin-left: 150px;
       padding: 30px 40px;
     }
   }

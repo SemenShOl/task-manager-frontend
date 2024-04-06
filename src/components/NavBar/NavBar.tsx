@@ -9,7 +9,6 @@ import { CgProfile } from "react-icons/cg";
 import cl from "./NavBar.module.scss";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
-import { motion } from "framer-motion";
 
 export const NavBar = () => {
   const today = moment().format("YYYY-MM-DD");
