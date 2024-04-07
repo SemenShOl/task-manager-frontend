@@ -10,17 +10,20 @@
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
-
+  font-size: 18px;
   .dayNumber {
     display: flex;
-    justify-content: end;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    background: var(#{--navbar-background-default});
 
     span {
       position: relative;
       z-index: 30;
     }
   }
- 
 
   .workIcon {
     color: var(#{--work-red-default});
@@ -58,15 +61,15 @@
   font-weight: bold;
   position: relative;
 
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 8px;
-    left: 18px;
-    border-radius: 10px;
-    height: 2px;
-    width: 60px;
+  .dayNumber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: var(#{--main-text-default});
+    color: var(#{--navbar-background-default});
+    border-radius: 100%;
+    height: 1.5rem;
+    width: 1.5rem;
   }
 }
 
@@ -77,21 +80,19 @@
       flex-direction: column;
       align-items: start;
       justify-content: space-between;
-      height: 100%;;
+      height: 100%;
       gap: 5px;
-      >div {
+      > div {
         display: flex;
-        gap:5px;
+        gap: 5px;
         font-size: 17px;
       }
     }
     .dayNumber {
       font-size: 17px;
-
     }
   }
 }
-
 
 @include md {
   .cell {

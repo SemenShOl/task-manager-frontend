@@ -3,9 +3,9 @@
 .wrapper {
   position: relative;
   width: 60px;
-  //   height: 20px;
   label {
-    background: var(#{--body-background-default});
+    box-shadow: var(#{--sm-shadow-default});
+    background: var(#{--addit-default});
     position: absolute;
     width: 100%;
     height: 25px;
@@ -19,7 +19,7 @@
         background: var(#{--main-text-default});
       }
       &:checked ~ .slider::before {
-        background: var(#{--body-background-default});
+        background: var(#{--addit-default});
         transform: translateX(30px);
         box-shadow: none;
       }
@@ -33,7 +33,7 @@
       transition: 0.3s;
       &::before {
         box-shadow: inset 28px -4px 0px 0px var(#{--main-text-default});
-        background: var(#{--body-background-default});
+        background: var(#{--addit-default});
 
         content: "";
         position: absolute;
