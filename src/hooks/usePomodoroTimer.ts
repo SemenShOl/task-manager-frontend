@@ -27,12 +27,12 @@ export const usePomodoroTimer = (timerSequences: Array<TPomodoroType>) => {
     }
     setIsTimerStarted(false);
   }
-  function resetTimer(newTimerIndex?: number) {
+  function resetTimer(newTimerIndex: number) {
     if (timerId.current) {
       clearInterval(timerId.current);
     }
-
-    setTimerTime(timerSequences[+(String(newTimerIndex)|| timerIndex)].duration);
+  
+    setTimerTime(timerSequences[newTimerIndex === -1 ? timerIndex : newTimerIndex].duration);
     setIsTimerStarted(false);
   }
 

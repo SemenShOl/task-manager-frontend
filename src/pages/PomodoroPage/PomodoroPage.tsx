@@ -58,7 +58,7 @@ console.log('timerTime: ', timerTime)
           ) : (
             <ICPlay onClick={startTimer} className={cl.btn} />
           )}
-          <ICRoundArrow className={cl.btn} onClick={resetTimer} />
+          <ICRoundArrow className={cl.btn} onClick={() => resetTimer(-1)} />
         </div>
       </div>
     </div>
