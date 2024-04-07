@@ -1,7 +1,9 @@
 @import "../../../styles/colors.scss";
 
 .btn {
-  padding: 8px 22px;
+  width: 100px;
+
+  padding: 8px 0px;
   border-radius: 20px;
   font-size: 22px;
   background: none;
@@ -11,12 +13,12 @@
   cursor: pointer;
   &.isActive {
     background: var(#{--main-text-default});
-    color: var(#{--body-background-default});
+    color: var(#{--navbar-background-default});
     border: 2px solid var(#{--main-text-default});
   }
   &:hover {
     background: var(#{--main-text-default});
-    color: var(#{--body-background-default});
+    color: var(#{--navbar-background-default});
     border: 2px solid var(#{--main-text-default});
   }
 }

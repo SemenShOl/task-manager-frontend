@@ -5,13 +5,15 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { fetchUserLogin } from "./../../redux/slices/currentUser";
 import { NavLink, Navigate } from "react-router-dom";
 import { AuthPageWrapper } from "../../wrappers";
-
+import { useTheme } from "../../hooks";
 type TFormLogin = {
   login: string;
   password: string;
 };
 export const LoginPage = () => {
   const { register, handleSubmit } = useForm<TFormLogin>();
+  useTheme();
+
   const dispatch = useAppDispatch();
   const isAuth =
     useAppSelector((state) => state.user.authInfo.isAuth) ||

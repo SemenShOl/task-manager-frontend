@@ -14,7 +14,7 @@
   transition: all 0.5 ease-in-out;
 
   &:hover {
-    color: var(#{--body-background-default});
+    color: var(#{--navbar-background-default  });
     background: var(#{--main-text-default});
     transition: all 0.5 ease-in-out;
   }

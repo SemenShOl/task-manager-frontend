@@ -1,16 +1,14 @@
-@import '../../styles/colors.module.scss';
+@import  '../../styles/media.module.scss';
 
 .wrapper {
-    // width: 1000px;
     width: 100%;
-
     .calendarWrapper {
+        width: 100%;
         display: grid;
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(7, minmax(50px, 1fr));
         grid-template-rows: repeat(6, 75px);
 
         gap: 14px;
-
         div:nth-child(36) {
             border-bottom-left-radius: 20px;
 
@@ -19,7 +17,32 @@
         div:last-child {
             border-bottom-right-radius: 20px;
         }
-
     }
 
+}
+
+@include xl {
+    .wrapper {
+        width: 100%;
+        .calendarWrapper {
+            gap:10px;
+        }
+    }
+}
+
+@include md {
+    .wrapper {
+        .calendarWrapper {
+        grid-template-rows: repeat(6, 55px);
+
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .wrapper {
+        .calendarWrapper{
+            grid-template-columns: repeat(7, minmax(40px, 1fr));
+        }
+    }
 }

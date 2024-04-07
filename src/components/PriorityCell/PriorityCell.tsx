@@ -1,21 +1,21 @@
 import React, { FC } from "react";
 import { FaCircle } from "react-icons/fa";
 import cl from "./PriorityCell.module.scss";
+import cn from "classnames";
 import { PriorityCellProps } from "./PriorityCellProps";
 export const PriorityCell: FC<PriorityCellProps> = ({
   size,
   numberOfTasks,
   color,
+  className
 }) => {
   return (
-    <div className={cl.priority}>
+    <div className={cn(cl.priority, className)}>
       <FaCircle
         color={color}
         className={cl.circle}
-        size={size / 4.5}
-        style={{ marginBottom: size / 25 }}
       />
-      <span style={{ fontSize: size / 5.5 }}>{numberOfTasks}</span>
+      <span >{numberOfTasks}</span>
     </div>
   );
 };

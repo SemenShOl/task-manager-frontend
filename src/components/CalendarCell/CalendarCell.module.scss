@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
+
   .dayNumber {
     display: flex;
     justify-content: end;
@@ -19,11 +20,7 @@
       z-index: 30;
     }
   }
-
-  &:hover {
-    box-shadow: 0px 10px 15px -4px rgba(34, 60, 80, 0.3);
-    cursor: pointer;
-  }
+ 
 
   .workIcon {
     color: var(#{--work-red-default});
@@ -40,6 +37,11 @@
     bottom: 7px;
     right: 10px;
     font-size: 15px;
+  }
+
+  &:hover {
+    box-shadow: 0px 10px 15px -4px rgba(34, 60, 80, 0.3);
+    cursor: pointer;
   }
 }
 .weeknd {
@@ -68,9 +70,36 @@
   }
 }
 
-
 @include xl {
   .cell {
     padding: 10px 8px;
+    .priorityList {
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-between;
+      height: 100%;;
+      gap: 5px;
+      >div {
+        display: flex;
+        gap:5px;
+        font-size: 17px;
+      }
+    }
+    .dayNumber {
+      font-size: 17px;
+
+    }
+  }
+}
+
+
+@include md {
+  .cell {
+    .priorityList {
+      display: none;
+    }
+    .dayNumber {
+      font-size: 14px;
+    }
   }
 }

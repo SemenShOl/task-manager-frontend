@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { fetchUserRegistration } from "../../redux/slices/currentUser";
 import { NavLink, Navigate } from "react-router-dom";
 import { AuthPageWrapper } from "../../wrappers";
+import { useTheme } from "../../hooks";
 
 type TFormLogin = {
   login: string;
@@ -18,6 +19,7 @@ export const RegistrationPage = () => {
   } = useForm<TFormLogin>();
 
   const dispatch = useAppDispatch();
+  useTheme();
   const handleRegistration = (login: string, password: string) => {
     dispatch(fetchUserRegistration({ login, password, groupName: "ПИН-36" }));
   };

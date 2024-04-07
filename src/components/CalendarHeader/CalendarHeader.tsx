@@ -3,6 +3,7 @@ import cl from "./CalendarHeader.module.scss";
 import {
   daysOfWeekInRussian,
   monthsInRussian,
+  shortDaysOfWeekinRussian,
 } from "../../utilites/dateUtilites";
 import { Button } from "../UI";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -33,7 +34,7 @@ export const CalendarHeader: FC<CalendarHeaderProps> = ({
           </Button>
         </div>
       </div>
-      <CalendarDaysOfWeek days={daysOfWeekInRussian} />
+      <CalendarDaysOfWeek days={shortDaysOfWeekinRussian} />
     </div>
   );
 };

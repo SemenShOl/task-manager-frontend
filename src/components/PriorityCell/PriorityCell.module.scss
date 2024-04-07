@@ -2,6 +2,9 @@
 @import "../../styles/colors.scss";
 
 .priority {
+  svg {
+    font-size:12px;
+  }
   span {
     color: var(#{--s-text-default});
     display: block;

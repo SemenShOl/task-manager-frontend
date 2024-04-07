@@ -1,9 +1,7 @@
-@import "../../styles/colors.module.scss";
 @import "../../styles/colors.scss";
-
+@import '../../styles/media.module.scss';
 .wrapper {
   width: 600px;
-  //   background: red;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,6 +18,9 @@
       justify-content: space-between;
       width: 80%;
       margin-bottom: 35px;
+      button {
+        width: 30%;
+      }
     }
 
     .timer {
@@ -36,15 +37,55 @@
       align-items: center;
       justify-content: space-between;
       .btn {
-        border: none;
+        // border: none;
         cursor: pointer;
         color: var(#{--main-text-default});
         font-size: 35px;
-        &:active,
-        :focus,
-        :hover {
-          border: none;
-          outline: none;
+      //   &:active,
+      //   :focus,
+      //   :hover {
+      //     border: none;
+      //     outline: none;
+      //   }
+      }
+    }
+  }
+}
+
+
+
+@include md {
+  .wrapper {
+    .pomodoro{
+      .timeBtns {
+        >button {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+
+@include sm {
+  .wrapper {
+    .pomodoro{
+      .timeBtns {
+        >button {
+          font-size: 15px;
+          // padding: 8px 19px;
+        }
+      }
+    }
+  }
+}
+@include xsm {
+  .wrapper {
+    .pomodoro{
+      .timeBtns {
+        >button {
+          font-size: 14px;
+          // padding: 8px 19px;
         }
       }
     }

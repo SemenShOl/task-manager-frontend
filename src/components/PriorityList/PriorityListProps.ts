@@ -4,4 +4,5 @@ export type PriorityListProps = {
   size: number;
   isVertical?: boolean;
   priorityList: TPriorityList;
+  className?: string;
 };

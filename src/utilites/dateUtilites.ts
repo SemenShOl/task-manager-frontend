@@ -18,14 +18,14 @@ export const daysOfWeekInRussian = [
   "Воскресенье",
 ];
 export const shortDaysOfWeekinRussian = [
-  "Вс",
+  // "Вс",
   "Пн",
   "Вт",
   "Ср",
   "Чт",
   "Пт",
   "Сб",
-  // "Вc",
+  "Вc",
 ];
 export const monthsInRussian = [
   "",
@@ -76,7 +76,7 @@ export const getCalendarCellDayInfo = (
 
 export const getDayInfo = (activeDate: string) => {
   const dateDate = new Date(activeDate);
-  const dayOfWeek = shortDaysOfWeekinRussian[dateDate.getDay()];
+  const dayOfWeek = shortDaysOfWeekinRussian[(dateDate.getDay() + 6) % 7];
   const month = monthsInRussian[(dateDate.getMonth() + 1) % 12];
   const dayOfMonth = dateDate.getDate();
   return {
