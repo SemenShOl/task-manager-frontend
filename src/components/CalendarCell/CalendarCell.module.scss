@@ -103,3 +103,24 @@
     }
   }
 }
+
+@include xsm {
+  .cell {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    .dayNumber {
+      font-size: 12px;
+    }
+
+    .workIcon {
+      bottom: 4px;
+      font-size: 12px;
+    }
+    .restIcon {
+      bottom: 4px;
+
+      font-size: 14px;
+    }
+  }
+}

@@ -46,3 +46,13 @@
         }
     }
 }
+
+@include xsm {
+    .wrapper {
+        .calendarWrapper{
+            grid-template-columns: repeat(7, minmax(30px, 1fr));
+            grid-template-rows: repeat(7, minmax(40px, 1fr));
+
+        }
+    }
+}

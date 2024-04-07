@@ -1,5 +1,3 @@
-import { PageWrapper } from "../../wrappers";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 import cl from "./PomodoroPage.module.scss";
 import { ToggleButton, Button } from "../../components/UI";
 import { secondsToMinutes } from "../../utilites/dateUtilites";
@@ -12,9 +10,9 @@ export type TPomodoroType = {
 export const PomodoroPage = () => {
   // const [parent] = useAutoAnimate();
   const pomodoroTypesInfo: Array<TPomodoroType> = [
-    { duration: 5, buttonNumber: 0 },
-    { duration: 7, buttonNumber: 1 },
-    { duration: 10, buttonNumber: 2 },
+    { duration: 45*60, buttonNumber: 0 },
+    { duration: 5*60, buttonNumber: 1 },
+    { duration: 15*60, buttonNumber: 2 },
   ];
   const {
     timerTime,
@@ -25,10 +23,11 @@ export const PomodoroPage = () => {
     timerIndex,
     isTimerStarted,
   } = usePomodoroTimer(pomodoroTypesInfo);
-  const activeTimerButton = pomodoroTypesInfo[timerIndex.current].buttonNumber;
-
+  const activeTimerButton = pomodoroTypesInfo[timerIndex].buttonNumber;
+  
   const time = secondsToMinutes(timerTime);
-
+console.log('timerIndex: ', timerIndex)
+console.log('timerTime: ', timerTime)
   return (
     <div className={cl.wrapper}>
       <div className={cl.pomodoro}>

@@ -73,8 +73,13 @@
       .timeBtns {
         >button {
           font-size: 15px;
-          // padding: 8px 19px;
         }
+      }
+      .timer{
+        font-size: 80px;
+      }
+      .manageBtns {
+        width: 140px;
       }
     }
   }
@@ -84,7 +89,7 @@
     .pomodoro{
       .timeBtns {
         >button {
-          font-size: 14px;
+          font-size: 12px;
           // padding: 8px 19px;
         }
       }
